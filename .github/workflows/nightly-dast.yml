@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       software_ref:
-        description: Git ref do software repo a testar
+        description: Git ref of the software repo to test
         required: false
         default: master
 
@@ -24,7 +24,7 @@ jobs:
       COMPOSE_PROJECT_NAME: nightly-dast
       GEMINI_KEY: ${{ secrets.GEMINI_KEY }}
     steps:
-      - name: Validar SHARED_TOKEN
+      - name: Validate SHARED_TOKEN
         env:
           SHARED_TOKEN: ${{ secrets.SHARED_TOKEN }}
         run: |
@@ -45,58 +45,58 @@ jobs:
           path: app
           token: ${{ secrets.SHARED_TOKEN }}
 
-      - name: Preparar outputs DAST
+      - name: Prepare DAST outputs
         run: |
           source "${GITHUB_WORKSPACE}/dast/scripts/common.sh"
           clean_generated
           clean_results
           ensure_dirs
 
-      - name: Arrancar stack da aplicacao
+      - name: Start application stack
         run: |
           source "${GITHUB_WORKSPACE}/dast/scripts/common.sh"
           start_app_stack
 
-      - name: Esperar pela API
+      - name: Wait for API
         run: bash ./dast/scripts/wait-for-api.sh
 
-      - name: Esperar pelo frontend
+      - name: Wait for frontend
         run: bash ./dast/scripts/wait-for-frontend.sh
 
-      - name: Exportar OpenAPI
+      - name: Export OpenAPI
         run: bash ./dast/scripts/export-openapi.sh
 
-      - name: Preparar imagem RESTler
+      - name: Prepare RESTler image
         run: bash ./dast/scripts/build-restler-image.sh
 
-      - name: Correr RESTler base
+      - name: Run RESTler base
         continue-on-error: true
         run: bash ./dast/scripts/run-restler.sh
 
-      - name: Correr RESTler deep
+      - name: Run RESTler deep
         continue-on-error: true
         run: bash ./dast/scripts/run-restler-deep.sh
 
-      - name: Gerar manifest de findings
+      - name: Build findings manifest
         run: python3 ./dast/scripts/build-findings-manifest.py
 
-      - name: Gerar input para LLM
+      - name: Build LLM analysis input
         run: python3 ./dast/scripts/build-llm-analysis-input.py
 
-      - name: Avisar quando GEMINI_KEY estiver ausente
+      - name: Warn when GEMINI_KEY is missing
         if: ${{ env.GEMINI_KEY == '' }}
-        run: echo "::warning::GEMINI_KEY not set. Skipping Gemini analysis."
+        run: echo "::warning::GEMINI_KEY is not set. Skipping Gemini analysis."
 
-      - name: Gerar tabela com Gemini
+      - name: Generate findings table with Gemini
         if: ${{ env.GEMINI_KEY != '' }}
         continue-on-error: true
         run: python3 ./dast/scripts/run-llm-analysis.py
 
-      - name: Renderizar HTML LLM
+      - name: Render LLM HTML report
         if: ${{ always() && hashFiles('dast/results/llm/findings_table.json') != '' }}
         run: python3 ./dast/scripts/render-llm-report.py
 
-      - name: Avaliar findings e artefactos do nightly
+      - name: Evaluate nightly findings and required artifacts
         run: |
           python3 ./dast/scripts/evaluate-findings.py ./dast/results/llm/scan_manifest.json \
             --require-file "${GITHUB_WORKSPACE}/dast/generated/openapi.json" \
@@ -106,7 +106,7 @@ jobs:
             --require-file "${GITHUB_WORKSPACE}/dast/results/restler/Fuzz/ResponseBuckets/runSummary.json" \
             --require-file "${GITHUB_WORKSPACE}/dast/results/llm/analysis_input.json"
 
-      - name: Publicar artefactos DAST
+      - name: Upload DAST artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -116,12 +116,12 @@ jobs:
             dast/results
           retention-days: 14
 
-      - name: Parar stack da aplicacao
+      - name: Stop application stack
         if: always()
         run: |
           source "${GITHUB_WORKSPACE}/dast/scripts/common.sh"
           stop_app_stack
 
-      - name: Descartar checkout temporario da app
+      - name: Remove temporary application checkout
         if: always()
         run: rm -rf "${GITHUB_WORKSPACE}/app"

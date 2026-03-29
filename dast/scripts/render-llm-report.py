@@ -27,7 +27,7 @@ def cell(value) -> str:
 def main() -> int:
     payload = load_json(INPUT_PATH)
     rows = payload.get("table", [])
-    notes = payload.get("notas", [])
+    notes = payload.get("notes", payload.get("notas", []))
     generated_at = payload.get("metadata", {}).get(
         "generated_at", datetime.now(timezone.utc).isoformat()
     )
@@ -36,16 +36,16 @@ def main() -> int:
     for row in rows:
         table_rows.append(
             "<tr>"
-            f"<td>{cell(row.get('alvo'))}</td>"
+            f"<td>{cell(row.get('target', row.get('alvo')))}</td>"
             f"<td>{cell(row.get('scanners'))}</td>"
             f"<td>{cell(row.get('endpoint_url'))}</td>"
-            f"<td>{cell(row.get('metodo'))}</td>"
-            f"<td>{cell(row.get('vulnerabilidade'))}</td>"
-            f"<td>{cell(row.get('severidade'))}</td>"
-            f"<td>{cell(row.get('evidencia'))}</td>"
-            f"<td>{cell(row.get('confianca'))}</td>"
-            f"<td>{cell(row.get('relacao_threat_model'))}</td>"
-            f"<td>{cell(row.get('mitigacao_sugerida'))}</td>"
+            f"<td>{cell(row.get('method', row.get('metodo')))}</td>"
+            f"<td>{cell(row.get('vulnerability', row.get('vulnerabilidade')))}</td>"
+            f"<td>{cell(row.get('severity', row.get('severidade')))}</td>"
+            f"<td>{cell(row.get('evidence', row.get('evidencia')))}</td>"
+            f"<td>{cell(row.get('confidence', row.get('confianca')))}</td>"
+            f"<td>{cell(row.get('threat_model_relation', row.get('relacao_threat_model')))}</td>"
+            f"<td>{cell(row.get('suggested_mitigation', row.get('mitigacao_sugerida')))}</td>"
             "</tr>"
         )
 
@@ -101,23 +101,23 @@ def main() -> int:
   <table>
     <thead>
       <tr>
-        <th>alvo</th>
+        <th>target</th>
         <th>scanner(s)</th>
         <th>endpoint/url</th>
-        <th>metodo</th>
-        <th>vulnerabilidade</th>
-        <th>severidade</th>
-        <th>evidencia</th>
-        <th>confianca</th>
-        <th>relacao com threat model</th>
-        <th>mitigacao sugerida</th>
+        <th>method</th>
+        <th>vulnerability</th>
+        <th>severity</th>
+        <th>evidence</th>
+        <th>confidence</th>
+        <th>threat model relation</th>
+        <th>suggested mitigation</th>
       </tr>
     </thead>
     <tbody>
       {''.join(table_rows)}
     </tbody>
   </table>
-  <h2>Notas</h2>
+  <h2>Notes</h2>
   <ul>{notes_html}</ul>
 </body>
 </html>

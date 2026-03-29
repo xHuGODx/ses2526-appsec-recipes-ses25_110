@@ -222,17 +222,17 @@ Fluxo automatizado:
 4. usar `GEMINI_KEY` para produzir `dast/results/llm/findings_table.json`
 5. renderizar `dast/results/llm/findings_table.html`
 
-Prompt operacional sugerido:
+Suggested operational prompt:
 
 ```text
-Recebeste outputs de ZAP, Schemathesis e RESTler sobre a mesma aplicacao,
-incluindo API e frontend. Agrupa resultados equivalentes, nao inventes evidencias,
-preserva a origem de cada finding e produz uma tabela final com: alvo, scanner(s),
-endpoint/url, metodo, vulnerabilidade, severidade, evidencia, confianca, relacao
-com threat model e mitigacao sugerida.
+You received ZAP, Schemathesis, and RESTler outputs for the same application,
+including both API and frontend coverage. Group equivalent results, do not invent
+evidence, preserve the source of each finding, and produce a final table with:
+target, scanner(s), endpoint/url, method, vulnerability, severity, evidence,
+confidence, threat model relation, and suggested mitigation.
 ```
 
-## Notas
+## Notes
 
 - `Schemathesis` e `RESTler` sao API-only.
 - `ZAP` cobre API e frontend.

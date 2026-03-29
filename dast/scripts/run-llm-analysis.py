@@ -40,11 +40,11 @@ def extract_prompt(instructions_path: pathlib.Path) -> str:
     if match:
         return match.group(1).strip()
     return (
-        "Recebeste outputs de ZAP, Schemathesis e RESTler sobre a mesma aplicacao, "
-        "incluindo API e frontend. Agrupa resultados equivalentes, nao inventes "
-        "evidencias, preserva a origem de cada finding e produz uma tabela final com: "
-        "alvo, scanner(s), endpoint/url, metodo, vulnerabilidade, severidade, "
-        "evidencia, confianca, relacao com threat model e mitigacao sugerida."
+        "You received ZAP, Schemathesis, and RESTler outputs for the same application, "
+        "covering both API and frontend. Group equivalent results, do not invent evidence, "
+        "preserve the source of each finding, and produce a final table with: target, "
+        "scanner(s), endpoint/url, method, vulnerability, severity, evidence, confidence, "
+        "threat model relation, and suggested mitigation."
     )
 
 
@@ -53,29 +53,29 @@ def build_user_prompt(payload: dict) -> str:
     response_contract = {
         "table": [
             {
-                "alvo": "api|frontend|shared",
+                "target": "api|frontend|shared",
                 "scanners": ["zap", "schemathesis", "restler"],
                 "endpoint_url": "string or null",
-                "metodo": "string or null",
-                "vulnerabilidade": "string",
-                "severidade": "critical|high|medium|low|info|unknown",
-                "evidencia": "string",
-                "confianca": "high|medium|low",
-                "relacao_threat_model": "string",
-                "mitigacao_sugerida": "string",
+                "method": "string or null",
+                "vulnerability": "string",
+                "severity": "critical|high|medium|low|info|unknown",
+                "evidence": "string",
+                "confidence": "high|medium|low",
+                "threat_model_relation": "string",
+                "suggested_mitigation": "string",
             }
         ],
-        "notas": ["string"],
+        "notes": ["string"],
     }
     return (
-        "Segue estritamente estas instrucoes:\n"
+        "Follow these instructions strictly:\n"
         f"{operational_prompt}\n\n"
-        "Responde apenas com JSON valido. Nao uses markdown. "
-        "Nao inventes endpoints, metodos ou evidencias. "
-        "Se um campo nao estiver suportado pelos dados, usa null ou 'unknown'.\n\n"
-        "O formato de resposta deve ser:\n"
+        "Return valid JSON only. Do not use markdown. "
+        "Do not invent endpoints, methods, or evidence. "
+        "If a field is not supported by the supplied data, use null or 'unknown'.\n\n"
+        "The response format must be:\n"
         f"{json.dumps(response_contract, ensure_ascii=True, indent=2)}\n\n"
-        "Dados para analise:\n"
+        "Data to analyze:\n"
         f"{json.dumps(payload, ensure_ascii=True, indent=2)}"
     )
 
@@ -122,24 +122,25 @@ def normalize_row(row: dict) -> dict:
         scanners = []
 
     return {
-        "alvo": pick("alvo", "target", default="unknown"),
+        "target": pick("target", "alvo", default="unknown"),
         "scanners": scanners,
         "endpoint_url": pick("endpoint_url", "endpoint/url", "endpoint", "url"),
-        "metodo": pick("metodo", "method"),
-        "vulnerabilidade": pick("vulnerabilidade", "vulnerability", default="unknown"),
-        "severidade": str(pick("severidade", "severity", default="unknown")).lower(),
-        "evidencia": pick("evidencia", "evidence", default=""),
-        "confianca": str(pick("confianca", "confidence", default="unknown")).lower(),
-        "relacao_threat_model": pick(
+        "method": pick("method", "metodo"),
+        "vulnerability": pick("vulnerability", "vulnerabilidade", default="unknown"),
+        "severity": str(pick("severity", "severidade", default="unknown")).lower(),
+        "evidence": pick("evidence", "evidencia", default=""),
+        "confidence": str(pick("confidence", "confianca", default="unknown")).lower(),
+        "threat_model_relation": pick(
+            "threat_model_relation",
             "relacao_threat_model",
             "relacao com threat model",
-            "threat_model_relation",
             default="unknown",
         ),
-        "mitigacao_sugerida": pick(
+        "suggested_mitigation": pick(
+            "suggested_mitigation",
+            "mitigation",
             "mitigacao_sugerida",
             "mitigacao sugerida",
-            "mitigation",
             default="unknown",
         ),
     }
@@ -150,7 +151,9 @@ def normalize_payload(raw_payload: dict) -> dict:
     if not isinstance(rows, list):
         rows = []
     normalized_rows = [normalize_row(row) for row in rows if isinstance(row, dict)]
-    notes = raw_payload.get("notas", []) if isinstance(raw_payload, dict) else []
+    notes = []
+    if isinstance(raw_payload, dict):
+        notes = raw_payload.get("notes", raw_payload.get("notas", []))
     if not isinstance(notes, list):
         notes = []
     return {
@@ -160,7 +163,7 @@ def normalize_payload(raw_payload: dict) -> dict:
             "input_path": str(INPUT_PATH.relative_to(ROOT)),
         },
         "table": normalized_rows,
-        "notas": [str(note) for note in notes[:20]],
+        "notes": [str(note) for note in notes[:20]],
     }
 
 
