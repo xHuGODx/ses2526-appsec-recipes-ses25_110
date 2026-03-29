@@ -63,6 +63,11 @@ ensure_dirs() {
     "${RESULTS_DIR}/restler" \
     "${RESULTS_DIR}/llm" \
     "${CACHE_DIR}"
+
+  chmod -R a+rwX \
+    "${GENERATED_DIR}" \
+    "${RESULTS_DIR}" \
+    "${CACHE_DIR}"
 }
 
 clean_dir_contents() {
