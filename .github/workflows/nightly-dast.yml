@@ -1,0 +1,63 @@
+name: Nightly DAST
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      software_ref:
+        description: Git ref do software repo a testar
+        required: false
+        default: master
+
+jobs:
+  restler-deep:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      SOFTWARE_REPOSITORY: xHuGODx/softwate-baseline-ses25_110
+      SOFTWARE_REF: ${{ inputs.software_ref || 'master' }}
+    steps:
+      - name: Validar SHARED_TOKEN
+        env:
+          SHARED_TOKEN: ${{ secrets.SHARED_TOKEN }}
+        run: |
+          if [ -z "${SHARED_TOKEN}" ]; then
+            echo "::error::Missing SHARED_TOKEN secret."
+            echo "::error::Create a token with read access to both repositories and store it as SHARED_TOKEN."
+            exit 1
+          fi
+
+      - name: Checkout appsec repo
+        uses: actions/checkout@v4
+
+      - name: Checkout software repo temporariamente
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SOFTWARE_REPOSITORY }}
+          ref: ${{ env.SOFTWARE_REF }}
+          path: app
+          token: ${{ secrets.SHARED_TOKEN }}
+
+      - name: Executar fluxo nightly RESTler
+        env:
+          APP_REPO_DIR: ${{ github.workspace }}/app
+          APP_COMPOSE_FILE: ${{ github.workspace }}/app/docker-compose.yml
+          AUTO_STOP_STACK: 'true'
+          COMPOSE_PROJECT_NAME: nightly-dast
+        run: bash ./dast/scripts/run-restler-nightly.sh
+
+      - name: Publicar artefactos DAST
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-dast-results
+          path: |
+            dast/generated
+            dast/results
+          retention-days: 14
+
+      - name: Descartar checkout temporario da app
+        if: always()
+        run: rm -rf "${GITHUB_WORKSPACE}/app"
