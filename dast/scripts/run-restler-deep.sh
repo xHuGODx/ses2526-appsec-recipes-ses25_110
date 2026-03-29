@@ -6,6 +6,7 @@ source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/common.sh"
 
 require_basics
 ensure_dirs
+require_cmd timeout
 
 "${DAST_DIR}/scripts/build-restler-image.sh"
 
@@ -44,6 +45,9 @@ with open(output_path, "w", encoding="utf-8") as fh:
 PY
 
 log "Running RESTler deep fuzz mode"
+FUZZ_TIMEOUT="${RESTLER_FUZZ_TIMEOUT:-75m}"
+log "Running RESTler fuzz with timeout ${FUZZ_TIMEOUT} and time budget ${RESTLER_TIME_BUDGET_HOURS:-1}h"
+timeout "${FUZZ_TIMEOUT}" \
 docker run --rm \
   "${HOST_GATEWAY_ARG[@]}" \
   -v "${DAST_DIR}:/work" \

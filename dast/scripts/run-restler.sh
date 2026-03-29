@@ -6,6 +6,7 @@ source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/common.sh"
 
 require_basics
 ensure_dirs
+require_cmd timeout
 
 "${DAST_DIR}/scripts/build-restler-image.sh"
 
@@ -51,6 +52,11 @@ docker run --rm \
   "${RESTLER_IMAGE}" \
   /RESTler/restler/Restler compile --api_spec /work/generated/openapi.json
 
+TEST_TIMEOUT="${RESTLER_TEST_TIMEOUT:-20m}"
+FUZZ_LEAN_TIMEOUT="${RESTLER_FUZZ_LEAN_TIMEOUT:-20m}"
+
+log "Running RESTler test with timeout ${TEST_TIMEOUT}"
+timeout "${TEST_TIMEOUT}" \
 docker run --rm \
   "${HOST_GATEWAY_ARG[@]}" \
   -v "${DAST_DIR}:/work" \
@@ -62,6 +68,8 @@ docker run --rm \
     --settings /work/generated/restler-engine-settings.json \
     "${RESTLER_TRANSPORT_ARGS[@]}"
 
+log "Running RESTler fuzz-lean with timeout ${FUZZ_LEAN_TIMEOUT}"
+timeout "${FUZZ_LEAN_TIMEOUT}" \
 docker run --rm \
   "${HOST_GATEWAY_ARG[@]}" \
   -v "${DAST_DIR}:/work" \
