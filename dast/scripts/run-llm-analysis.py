@@ -40,7 +40,7 @@ def extract_prompt(instructions_path: pathlib.Path) -> str:
     if match:
         return match.group(1).strip()
     return (
-        "You received ZAP, Schemathesis, and RESTler outputs for the same application, "
+        "You received ZAP and Schemathesis outputs for the same application, "
         "covering both API and frontend. Group equivalent results, do not invent evidence, "
         "preserve the source of each finding, and produce a final table with: target, "
         "scanner(s), endpoint/url, method, vulnerability, severity, evidence, confidence, "
@@ -54,7 +54,7 @@ def build_user_prompt(payload: dict) -> str:
         "table": [
             {
                 "target": "api|frontend|shared",
-                "scanners": ["zap", "schemathesis", "restler"],
+                "scanners": ["zap", "schemathesis"],
                 "endpoint_url": "string or null",
                 "method": "string or null",
                 "vulnerability": "string",

@@ -30,10 +30,8 @@ start_or_reuse_app_stack
 "${DAST_DIR}/scripts/wait-for-frontend.sh"
 "${DAST_DIR}/scripts/export-openapi.sh"
 "${DAST_DIR}/scripts/build-schemathesis-image.sh"
-"${DAST_DIR}/scripts/build-restler-image.sh"
 run_step "ZAP" "${DAST_DIR}/scripts/run-zap.sh"
 run_step "Schemathesis" "${DAST_DIR}/scripts/run-schemathesis.sh"
-run_step "RESTler" "${DAST_DIR}/scripts/run-restler.sh"
 run_step "Manifest build" python3 "${DAST_DIR}/scripts/build-findings-manifest.py"
 
 if (( failed_steps > 0 )); then

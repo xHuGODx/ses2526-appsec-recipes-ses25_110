@@ -75,26 +75,6 @@ def parse_schemathesis() -> dict:
         "skipped": skipped,
     }
 
-def parse_restler() -> dict:
-    base = RESULTS / "restler"
-    if not base.exists():
-        return {"present": False}
-
-    bug_bucket_files = list(base.glob("**/bug_buckets/*.txt"))
-    summary_files = list(base.glob("**/ResponseBuckets/runSummary.json"))
-    if not bug_bucket_files and not summary_files:
-        return {"present": False}
-
-    summaries = {}
-    for path in summary_files[:6]:
-        summaries[str(path.relative_to(ROOT))] = load_json(path)
-
-    return {
-        "present": True,
-        "bug_bucket_files": len(bug_bucket_files),
-        "response_summaries": summaries,
-    }
-
 
 def main() -> int:
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
@@ -102,7 +82,6 @@ def main() -> int:
         "scanners": {
             "zap": parse_zap(),
             "schemathesis": parse_schemathesis(),
-            "restler": parse_restler(),
         }
     }
 

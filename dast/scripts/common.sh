@@ -22,18 +22,11 @@ SCANNER_TARGET_SCHEMA_URL="${SCANNER_TARGET_SCHEMA_URL:-${SCANNER_TARGET_BASE_UR
 SCANNER_FRONTEND_BASE_URL="${SCANNER_FRONTEND_BASE_URL:-http://host.docker.internal:5173}"
 
 OPENAPI_PATH="${OPENAPI_PATH:-${GENERATED_DIR}/openapi.json}"
-RESTLER_SETTINGS_PATH="${RESTLER_SETTINGS_PATH:-${GENERATED_DIR}/restler-engine-settings.json}"
 
 ZAP_IMAGE="${ZAP_IMAGE:-zaproxy/zap-stable:2.17.0}"
 SCHEMATHESIS_IMAGE="${SCHEMATHESIS_IMAGE:-ses-schemathesis:4.14.2}"
-RESTLER_IMAGE="${RESTLER_IMAGE:-ses-restler:6d984dee}"
-RESTLER_REF="${RESTLER_REF:-6d984deedbc54aad957fa3da0c7e9e5df23a2aee}"
 
 HOST_GATEWAY_ARG=(--add-host "host.docker.internal:host-gateway")
-RESTLER_TRANSPORT_ARGS=()
-if [[ "${SCANNER_TARGET_BASE_URL}" != https://* ]]; then
-  RESTLER_TRANSPORT_ARGS=(--no_ssl)
-fi
 
 log() {
   printf '[dast] %s\n' "$*"
@@ -65,7 +58,6 @@ ensure_dirs() {
     "${RESULTS_DIR}/zap/api" \
     "${RESULTS_DIR}/zap/frontend" \
     "${RESULTS_DIR}/schemathesis" \
-    "${RESULTS_DIR}/restler" \
     "${RESULTS_DIR}/llm" \
     "${CACHE_DIR}"
 
@@ -78,7 +70,6 @@ ensure_dirs() {
     "${RESULTS_DIR}/zap/api" \
     "${RESULTS_DIR}/zap/frontend" \
     "${RESULTS_DIR}/schemathesis" \
-    "${RESULTS_DIR}/restler" \
     "${RESULTS_DIR}/llm" \
     2>/dev/null || true
 }

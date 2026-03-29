@@ -11,7 +11,7 @@ on:
         default: master
 
 jobs:
-  restler-deep:
+  nightly-dast:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -37,7 +37,7 @@ jobs:
       - name: Checkout appsec repo
         uses: actions/checkout@v4
 
-      - name: Checkout software repo temporariamente
+      - name: Checkout software repo temporarily
         uses: actions/checkout@v4
         with:
           repository: ${{ env.SOFTWARE_REPOSITORY }}
@@ -66,16 +66,16 @@ jobs:
       - name: Export OpenAPI
         run: bash ./dast/scripts/export-openapi.sh
 
-      - name: Prepare RESTler image
-        run: bash ./dast/scripts/build-restler-image.sh
+      - name: Prepare Schemathesis image
+        run: bash ./dast/scripts/build-schemathesis-image.sh
 
-      - name: Run RESTler base
+      - name: Run ZAP
         continue-on-error: true
-        run: bash ./dast/scripts/run-restler.sh
+        run: bash ./dast/scripts/run-zap.sh
 
-      - name: Run RESTler deep
+      - name: Run Schemathesis
         continue-on-error: true
-        run: bash ./dast/scripts/run-restler-deep.sh
+        run: bash ./dast/scripts/run-schemathesis.sh
 
       - name: Build findings manifest
         run: python3 ./dast/scripts/build-findings-manifest.py
@@ -100,10 +100,9 @@ jobs:
         run: |
           python3 ./dast/scripts/evaluate-findings.py ./dast/results/llm/scan_manifest.json \
             --require-file "${GITHUB_WORKSPACE}/dast/generated/openapi.json" \
-            --require-file "${GITHUB_WORKSPACE}/dast/results/restler/Compile/grammar.py" \
-            --require-file "${GITHUB_WORKSPACE}/dast/results/restler/Test/ResponseBuckets/runSummary.json" \
-            --require-file "${GITHUB_WORKSPACE}/dast/results/restler/FuzzLean/ResponseBuckets/runSummary.json" \
-            --require-file "${GITHUB_WORKSPACE}/dast/results/restler/Fuzz/ResponseBuckets/runSummary.json" \
+            --require-file "${GITHUB_WORKSPACE}/dast/results/zap/api/report.json" \
+            --require-file "${GITHUB_WORKSPACE}/dast/results/zap/frontend/report.json" \
+            --require-file "${GITHUB_WORKSPACE}/dast/results/schemathesis/junit.xml" \
             --require-file "${GITHUB_WORKSPACE}/dast/results/llm/analysis_input.json"
 
       - name: Upload DAST artifacts

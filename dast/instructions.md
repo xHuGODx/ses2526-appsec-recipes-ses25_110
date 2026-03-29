@@ -1,248 +1,102 @@
-# Instructions
+# DAST Instructions
 
-## O que este setup faz
+## Scope
 
-Este diretório prepara um fluxo DAST para a app atual usando:
-- `OWASP ZAP`
+This DAST setup uses two scanners:
+- `ZAP`
 - `Schemathesis`
-- `RESTler`
 
-O setup cobre:
-- backend Spring em `http://localhost:8080`
-- frontend SPA em `http://localhost:5173`
+Coverage:
+- `ZAP` scans the API and the frontend
+- `Schemathesis` scans the API only
 
-O backend exporta OpenAPI em `http://localhost:8080/v3/api-docs`.
+## Repository Layout
 
-## Separacao entre repositorios
+This repository stores only security automation and configuration.
 
-Este repo nao versiona o codigo da aplicacao.
+Main entry points:
+- `dast/scripts/run-all.sh`
+- `dast/scripts/run-zap.sh`
+- `dast/scripts/run-schemathesis.sh`
+- `.github/workflows/nightly-dast.yml`
 
-O setup espera que o software repo exista:
-- num checkout temporario do GitHub Actions, ou
-- localmente em `../ses`, por omissao
+## Local Execution
 
-Podes tambem apontar explicitamente para o repo da app:
+Expected layout:
+- software repo at `../ses`, or
+- set `APP_REPO_DIR=/path/to/software-repo`
 
-```bash
-APP_REPO_DIR=/caminho/para/ses
-```
+Useful variables:
+- `APP_REPO_DIR`
+- `APP_COMPOSE_FILE`
+- `TARGET_BASE_URL`
+- `FRONTEND_BASE_URL`
+- `SCANNER_TARGET_BASE_URL`
+- `SCANNER_FRONTEND_BASE_URL`
+- `AUTO_STOP_STACK=true`
+- `SKIP_START_APP_STACK=true`
 
-O `docker-compose.yml` usado para levantar `mysql`, `backend` e `frontend` vem sempre do software repo.
+Main local flow:
+1. start or reuse the application stack from the software repo
+2. wait for the API and frontend
+3. export OpenAPI
+4. run `ZAP`
+5. run `Schemathesis`
+6. build the findings manifest
 
-## Estrutura
-
-O workflow `DAST PR` usa apenas `ZAP + Schemathesis`.
-O `RESTler` fica reservado ao workflow nightly.
-
-- `dast/scripts/run-all.sh`: levanta a app a partir do software repo, exporta o OpenAPI e corre os tres scanners
-- `dast/scripts/run-restler-nightly.sh`: levanta a app e corre o fluxo RESTler pesado para nightly
-- `dast/scripts/run-zap.sh`: corre `ZAP` para API e frontend
-- `dast/scripts/run-schemathesis.sh`: corre `Schemathesis` para a API e guarda `junit.xml + events.ndjson`
-- `dast/scripts/run-restler.sh`: corre `RESTler` em `compile + test + fuzz-lean`
-- `dast/scripts/run-restler-deep.sh`: corre o modo `fuzz` agressivo do `RESTler`
-- `dast/scripts/wait-for-api.sh`: espera pelo backend e pelo OpenAPI
-- `dast/scripts/wait-for-frontend.sh`: espera pelo frontend
-- `dast/scripts/build-findings-manifest.py`: agrega um manifest inicial para posterior triagem
-- `dast/scripts/build-llm-analysis-input.py`: prepara um input compacto e normalizado para o Gemini
-- `dast/scripts/run-llm-analysis.py`: chama o Gemini e gera a tabela consolidada em JSON
-- `dast/scripts/render-llm-report.py`: renderiza a tabela consolidada para HTML
-- `dast/dast_justificacao.md`: explica porque este combo foi escolhido
-
-## Pre-requisitos
-
-- `docker`
-- `docker compose`
-- `curl`
-- `python3`
-
-Nao e preciso instalar os scanners no host. O setup corre-os em containers.
-
-## Onde esta a app alvo
-
-Por omissao:
-
-```bash
-APP_REPO_DIR=../ses
-APP_COMPOSE_FILE=../ses/docker-compose.yml
-```
-
-Nos workflows GitHub Actions, o software repo e obtido por `actions/checkout` para uma pasta temporaria e estes valores sao passados por environment variables.
-
-## Fluxo recomendado
-
-### 1. Correr tudo
+### Full DAST Run
 
 ```bash
 ./dast/scripts/run-all.sh
 ```
 
-Isto faz:
-1. `docker compose -f <software-repo>/docker-compose.yml up -d --build mysql backend frontend`
-2. espera pelo backend
-3. espera pelo frontend
-4. exporta e normaliza o OpenAPI para `dast/generated/openapi.json`
-5. corre `ZAP` na API e na SPA
-6. corre `Schemathesis` na API
-7. corre `RESTler` na API
-8. gera `dast/results/llm/scan_manifest.json`
-9. prepara `dast/results/llm/analysis_input.json`
-10. opcionalmente gera `dast/results/llm/findings_table.json` e `findings_table.html` com Gemini
-
-### 2. Correr scanners individualmente
+### ZAP Only
 
 ```bash
-docker compose -f ../ses/docker-compose.yml up -d --build mysql backend frontend
-./dast/scripts/wait-for-api.sh
-./dast/scripts/wait-for-frontend.sh
-./dast/scripts/export-openapi.sh
 ./dast/scripts/run-zap.sh
+```
+
+### Schemathesis Only
+
+```bash
 ./dast/scripts/run-schemathesis.sh
-./dast/scripts/run-restler.sh
 ```
 
-### 3. RESTler profundo
+## Outputs
 
-Corre isto so depois de `run-restler.sh`:
+Generated files:
+- `dast/generated/openapi.json`
 
-```bash
-./dast/scripts/run-restler-deep.sh
-```
-
-Podes ajustar a duracao:
-
-```bash
-RESTLER_TIME_BUDGET_HOURS=2 ./dast/scripts/run-restler-deep.sh
-```
-
-### 4. Nightly pesado
-
-```bash
-AUTO_STOP_STACK=true ./dast/scripts/run-restler-nightly.sh
-```
-
-Isto faz:
-1. levanta a app a partir do software repo
-2. exporta o OpenAPI
-3. corre `RESTler compile + test + fuzz-lean`
-4. corre `RESTler fuzz`
-5. gera o manifest
-6. faz `docker compose down -v` no fim se `AUTO_STOP_STACK=true`
-
-## O que cada scanner faz aqui
-
-- `ZAP`: `zap-api-scan.py` para a API e `zap-baseline.py` com `Ajax spider` para o frontend
-- `Schemathesis`: fuzzing da API a partir do OpenAPI
-- `RESTler`: compile, test e fuzzing stateful sobre a API
-
-## Variaveis uteis
-
-### URLs do alvo
-
-```bash
-APP_REPO_DIR=../ses
-APP_COMPOSE_FILE=../ses/docker-compose.yml
-COMPOSE_PROJECT_NAME=ses-dast
-
-TARGET_BASE_URL=http://localhost:8080
-TARGET_SCHEMA_URL=http://localhost:8080/v3/api-docs
-FRONTEND_BASE_URL=http://localhost:5173
-
-SCANNER_TARGET_BASE_URL=http://host.docker.internal:8080
-SCANNER_TARGET_SCHEMA_URL=http://host.docker.internal:8080/v3/api-docs
-SCANNER_FRONTEND_BASE_URL=http://host.docker.internal:5173
-```
-
-As variaveis `TARGET_*` e `FRONTEND_*` sao usadas pelos scripts corridos no host.
-As variaveis `SCANNER_*` sao usadas pelos scanners em container.
-Se mudares portas, tens de manter os dois lados coerentes.
-
-`APP_REPO_DIR` e `APP_COMPOSE_FILE` dizem aos scripts onde esta o checkout temporario da aplicacao.
-Usa `SKIP_START_APP_STACK=true` se quiseres apontar os scanners para uma stack ja levantada manualmente.
-
-### Schemathesis
-
-```bash
-SCHEMATHESIS_PHASES=examples,coverage,fuzzing,stateful
-SCHEMATHESIS_MAX_FAILURES=100
-SCHEMATHESIS_REQUEST_TIMEOUT=10
-SCHEMATHESIS_MAX_RESPONSE_TIME=5
-```
-
-### ZAP
-
-```bash
-ZAP_MAX_TIME_MINUTES=15
-ZAP_FRONTEND_SPIDER_MINUTES=3
-ZAP_API_TIMEOUT=20m
-ZAP_FRONTEND_TIMEOUT=12m
-```
-
-O scan frontend usa `zap-baseline.py` sem Ajax spider para reduzir flakiness no GitHub Actions.
-Os dois comandos ZAP sao corridos com `timeout`, para um arranque preso do ZAP nao bloquear o workflow indefinidamente.
-
-### RESTler
-
-```bash
-RESTLER_TIME_BUDGET_HOURS=1
-RESTLER_IMAGE=ses-restler:6d984dee
-RESTLER_REF=6d984deedbc54aad957fa3da0c7e9e5df23a2aee
-```
-
-Quando os scripts geram `dast/generated/restler-engine-settings.json`, o `SCANNER_TARGET_BASE_URL` e separado em:
-- `host`: apenas hostname
-- `target_port`: porta, quando existe
-- `no_ssl`: `true` para `http`, `false` para `https`
-- `use_ssl`: `true` para `https`, `false` para `http`
-
-Exemplo:
-- `SCANNER_TARGET_BASE_URL=http://host.docker.internal:8080`
-- `host=host.docker.internal`
-- `target_port=8080`
-- `no_ssl=true`
-- `use_ssl=false`
-
-Nao coloques `host:port` dentro de `host`, porque o RESTler trata `host` como hostname literal.
-Para endpoints `http://`, os scripts passam tambem `--no_ssl` ao RESTler para evitar tentativas TLS contra um alvo plain HTTP.
-
-## Resultados
-
-Os outputs ficam em:
-- `dast/results/zap/api`
-- `dast/results/zap/frontend`
+Scanner outputs:
+- `dast/results/zap`
 - `dast/results/schemathesis`
-- `dast/results/restler`
+
+Aggregator outputs:
 - `dast/results/llm/scan_manifest.json`
+- `dast/results/llm/analysis_input.json`
+- `dast/results/llm/findings_table.json`
+- `dast/results/llm/findings_table.html`
 
-## Como usar depois com um LLM
+## LLM Reporting
 
-Fluxo automatizado:
-1. correr os scanners
-2. gerar `dast/results/llm/scan_manifest.json`
-3. gerar `dast/results/llm/analysis_input.json`
-4. usar `GEMINI_KEY` para produzir `dast/results/llm/findings_table.json`
-5. renderizar `dast/results/llm/findings_table.html`
+The deterministic aggregator is not replaced.
 
-Suggested operational prompt:
+Flow:
+1. `build-findings-manifest.py` reads the scanner outputs and writes `scan_manifest.json`
+2. `build-llm-analysis-input.py` prepares a normalized input payload
+3. `run-llm-analysis.py` calls Gemini and writes a JSON findings table
+4. `render-llm-report.py` renders that table to HTML
+
+The Gemini step uses `GEMINI_KEY`.
+
+Prompt operational suggestion:
 
 ```text
-You received ZAP, Schemathesis, and RESTler outputs for the same application,
-including both API and frontend coverage. Group equivalent results, do not invent
-evidence, preserve the source of each finding, and produce a final table with:
-target, scanner(s), endpoint/url, method, vulnerability, severity, evidence,
-confidence, threat model relation, and suggested mitigation.
+You received ZAP and Schemathesis outputs for the same application, covering both API and frontend. Group equivalent results, do not invent evidence, preserve the source of each finding, and produce a final table with: target, scanner(s), endpoint/url, method, vulnerability, severity, evidence, confidence, threat model relation, and suggested mitigation.
 ```
 
 ## Notes
 
-- `Schemathesis` e `RESTler` sao API-only.
-- `ZAP` cobre API e frontend.
-- O gate continua deterministico e baseado em `scan_manifest.json`; a fase Gemini e apenas para triagem e reporting.
-- `RESTler` e o scanner mais sensivel ao OpenAPI e o mais agressivo quando usado em `fuzz`.
-- `run-all.sh` nao faz `docker compose down` por omissao; usa `AUTO_STOP_STACK=true` se quiseres cleanup automatico.
-- Usa `SKIP_START_APP_STACK=true` se a app ja estiver levantada fora destes scripts e so quiseres correr os scanners.
-- Se `8080` ou `5173` estiverem ocupados, tens de libertar esses ports ou arrancar o alvo manualmente noutras portas e ajustar as variaveis acima.
-- Se quiseres limpar tudo no fim:
-
-```bash
-docker compose -f ../ses/docker-compose.yml down -v
-```
+- `ZAP` is the only scanner that covers the frontend.
+- `Schemathesis` is API-only and contract-driven.
+- `run-all.sh` does not stop the stack by default; use `AUTO_STOP_STACK=true` if you want automatic cleanup.

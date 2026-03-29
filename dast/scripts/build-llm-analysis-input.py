@@ -177,39 +177,6 @@ def parse_schemathesis_events(events_path: pathlib.Path, limit: int = 60) -> lis
     return findings
 
 
-def parse_restler(limit: int = 12) -> dict:
-    base = RESULTS / "restler"
-    if not base.exists():
-        return {"summaries": [], "bug_buckets": []}
-
-    summaries = []
-    for path in sorted(base.glob("**/ResponseBuckets/runSummary.json"))[:limit]:
-        try:
-            payload = load_json(path)
-        except json.JSONDecodeError:
-            continue
-        summaries.append(
-            {
-                "source": str(path.relative_to(ROOT)),
-                "summary": payload,
-            }
-        )
-
-    bug_buckets = []
-    for path in sorted(base.glob("**/bug_buckets/*.txt"))[:limit]:
-        bug_buckets.append(
-            {
-                "source": str(path.relative_to(ROOT)),
-                "excerpt": truncate(path.read_text(encoding="utf-8", errors="replace"), 2000),
-            }
-        )
-
-    return {
-        "summaries": summaries,
-        "bug_buckets": bug_buckets,
-    }
-
-
 def main() -> int:
     manifest_path = RESULTS / "llm" / "scan_manifest.json"
     manifest = load_json(manifest_path) if manifest_path.exists() else {}
@@ -236,7 +203,6 @@ def main() -> int:
                     RESULTS / "schemathesis" / "events.ndjson"
                 ),
             },
-            "restler": parse_restler(),
         },
     }
 

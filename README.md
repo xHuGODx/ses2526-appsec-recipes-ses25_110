@@ -17,5 +17,5 @@ Uso local:
 
 Entradas principais:
 - `dast/scripts/run-all.sh`
-- `dast/scripts/run-restler-nightly.sh`
+- `.github/workflows/nightly-dast.yml`
 - `dast/instructions.md`

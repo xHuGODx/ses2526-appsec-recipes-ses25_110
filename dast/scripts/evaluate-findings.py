@@ -23,15 +23,6 @@ def schemathesis_findings(data: dict) -> int:
     return int(data.get("failures", 0) or 0) + int(data.get("errors", 0) or 0)
 
 
-def restler_findings(data: dict) -> int:
-    total = int(data.get("bug_bucket_files", 0) or 0)
-    for summary in data.get("response_summaries", {}).values():
-        total += int(summary.get("bugCount", 0) or 0)
-        total += int(summary.get("failedRequestsCount", 0) or 0)
-        total += len(summary.get("errorBuckets", {}) or {})
-    return total
-
-
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("manifest_path")
@@ -58,7 +49,6 @@ def main() -> int:
     summary = {
         "zap": zap_findings(scanners.get("zap", {})),
         "schemathesis": schemathesis_findings(scanners.get("schemathesis", {})),
-        "restler": restler_findings(scanners.get("restler", {})),
     }
     total_findings = sum(summary.values())
     missing_artifacts = [
