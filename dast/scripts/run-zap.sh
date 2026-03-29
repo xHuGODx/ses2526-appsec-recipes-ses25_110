@@ -38,8 +38,6 @@ docker run --rm \
     -I \
     -T "${ZAP_MAX_TIME_MINUTES:-15}" \
     -r "${ZAP_WORKDIR}/results/zap/api/report.html" \
-    -w "${ZAP_WORKDIR}/results/zap/api/report.md" \
-    -x "${ZAP_WORKDIR}/results/zap/api/report.xml" \
     -J "${ZAP_WORKDIR}/results/zap/api/report.json"
 
 log "Running OWASP ZAP baseline scan against ${SCANNER_FRONTEND_BASE_URL}"
@@ -56,8 +54,6 @@ docker run --rm \
     -m "${ZAP_FRONTEND_SPIDER_MINUTES:-3}" \
     -T "${ZAP_MAX_TIME_MINUTES:-15}" \
     -r "results/zap/frontend/report.html" \
-    -w "results/zap/frontend/report.md" \
-    -x "results/zap/frontend/report.xml" \
     -J "results/zap/frontend/report.json"
 
 log "ZAP reports stored in ${RESULTS_DIR}/zap"
