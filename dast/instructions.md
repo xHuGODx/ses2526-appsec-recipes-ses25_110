@@ -31,6 +31,9 @@ O `docker-compose.yml` usado para levantar `mysql`, `backend` e `frontend` vem s
 
 ## Estrutura
 
+O workflow `DAST PR` usa apenas `ZAP + Schemathesis`.
+O `RESTler` fica reservado ao workflow nightly.
+
 - `dast/scripts/run-all.sh`: levanta a app a partir do software repo, exporta o OpenAPI e corre os tres scanners
 - `dast/scripts/run-restler-nightly.sh`: levanta a app e corre o fluxo RESTler pesado para nightly
 - `dast/scripts/run-zap.sh`: corre `ZAP` para API e frontend

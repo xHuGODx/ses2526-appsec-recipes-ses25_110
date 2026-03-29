@@ -13,34 +13,40 @@ if [[ ! -f "${OPENAPI_PATH}" ]]; then
   exit 1
 fi
 
-ZAP_DOCKER_USER="$(id -u):$(id -g)"
+ZAP_WORKDIR="/zap/wrk"
+ZAP_RUNTIME_DIR="${CACHE_DIR}/zap-runtime"
+mkdir -p "${ZAP_RUNTIME_DIR}"
+chmod a+rwx "${ZAP_RUNTIME_DIR}" 2>/dev/null || true
+ZAP_VOLUME_ARGS=(
+  -v "${ZAP_RUNTIME_DIR}:${ZAP_WORKDIR}"
+  -v "${GENERATED_DIR}:${ZAP_WORKDIR}/generated"
+  -v "${RESULTS_DIR}:${ZAP_WORKDIR}/results"
+)
 
 log "Running OWASP ZAP against ${OPENAPI_PATH}"
 timeout "${ZAP_API_TIMEOUT:-20m}" \
 docker run --rm \
-  --user "${ZAP_DOCKER_USER}" \
   "${HOST_GATEWAY_ARG[@]}" \
-  -v "${DAST_DIR}:/zap/wrk" \
+  "${ZAP_VOLUME_ARGS[@]}" \
   "${ZAP_IMAGE}" \
   zap-api-scan.py \
-    -t /zap/wrk/generated/openapi.json \
+    -t "${ZAP_WORKDIR}/generated/openapi.json" \
     -f openapi \
     -O "${SCANNER_TARGET_BASE_URL}" \
     -a \
     -d \
     -I \
     -T "${ZAP_MAX_TIME_MINUTES:-15}" \
-    -r /zap/wrk/results/zap/api/report.html \
-    -w /zap/wrk/results/zap/api/report.md \
-    -x /zap/wrk/results/zap/api/report.xml \
-    -J /zap/wrk/results/zap/api/report.json
+    -r "${ZAP_WORKDIR}/results/zap/api/report.html" \
+    -w "${ZAP_WORKDIR}/results/zap/api/report.md" \
+    -x "${ZAP_WORKDIR}/results/zap/api/report.xml" \
+    -J "${ZAP_WORKDIR}/results/zap/api/report.json"
 
 log "Running OWASP ZAP baseline scan against ${SCANNER_FRONTEND_BASE_URL}"
 timeout "${ZAP_FRONTEND_TIMEOUT:-12m}" \
 docker run --rm \
-  --user "${ZAP_DOCKER_USER}" \
   "${HOST_GATEWAY_ARG[@]}" \
-  -v "${DAST_DIR}:/zap/wrk" \
+  "${ZAP_VOLUME_ARGS[@]}" \
   "${ZAP_IMAGE}" \
   zap-baseline.py \
     -t "${SCANNER_FRONTEND_BASE_URL}" \
@@ -49,9 +55,9 @@ docker run --rm \
     -I \
     -m "${ZAP_FRONTEND_SPIDER_MINUTES:-3}" \
     -T "${ZAP_MAX_TIME_MINUTES:-15}" \
-    -r results/zap/frontend/report.html \
-    -w results/zap/frontend/report.md \
-    -x results/zap/frontend/report.xml \
-    -J results/zap/frontend/report.json
+    -r "${ZAP_WORKDIR}/results/zap/frontend/report.html" \
+    -w "${ZAP_WORKDIR}/results/zap/frontend/report.md" \
+    -x "${ZAP_WORKDIR}/results/zap/frontend/report.xml" \
+    -J "${ZAP_WORKDIR}/results/zap/frontend/report.json"
 
 log "ZAP reports stored in ${RESULTS_DIR}/zap"
