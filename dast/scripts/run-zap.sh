@@ -55,9 +55,9 @@ docker run --rm \
     -I \
     -m "${ZAP_FRONTEND_SPIDER_MINUTES:-3}" \
     -T "${ZAP_MAX_TIME_MINUTES:-15}" \
-    -r "${ZAP_WORKDIR}/results/zap/frontend/report.html" \
-    -w "${ZAP_WORKDIR}/results/zap/frontend/report.md" \
-    -x "${ZAP_WORKDIR}/results/zap/frontend/report.xml" \
-    -J "${ZAP_WORKDIR}/results/zap/frontend/report.json"
+    -r "results/zap/frontend/report.html" \
+    -w "results/zap/frontend/report.md" \
+    -x "results/zap/frontend/report.xml" \
+    -J "results/zap/frontend/report.json"
 
 log "ZAP reports stored in ${RESULTS_DIR}/zap"
