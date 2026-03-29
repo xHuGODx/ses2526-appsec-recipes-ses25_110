@@ -30,6 +30,10 @@ RESTLER_IMAGE="${RESTLER_IMAGE:-ses-restler:6d984dee}"
 RESTLER_REF="${RESTLER_REF:-6d984deedbc54aad957fa3da0c7e9e5df23a2aee}"
 
 HOST_GATEWAY_ARG=(--add-host "host.docker.internal:host-gateway")
+RESTLER_TRANSPORT_ARGS=()
+if [[ "${SCANNER_TARGET_BASE_URL}" != https://* ]]; then
+  RESTLER_TRANSPORT_ARGS=(--no_ssl)
+fi
 
 log() {
   printf '[dast] %s\n' "$*"

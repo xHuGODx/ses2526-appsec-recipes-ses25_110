@@ -36,6 +36,7 @@ if parsed.port is not None:
     data["target_port"] = parsed.port
 else:
     data.pop("target_port", None)
+data["no_ssl"] = parsed.scheme != "https"
 data["use_ssl"] = parsed.scheme == "https"
 with open(output_path, "w", encoding="utf-8") as fh:
     json.dump(data, fh, indent=2)
@@ -52,6 +53,7 @@ docker run --rm \
     --grammar_file Compile/grammar.py \
     --dictionary_file Compile/dict.json \
     --settings /work/generated/restler-engine-settings.json \
+    "${RESTLER_TRANSPORT_ARGS[@]}" \
     --time_budget "${RESTLER_TIME_BUDGET_HOURS:-1}"
 
 log "RESTler deep fuzz output stored in ${RESULTS_DIR}/restler/Fuzz"

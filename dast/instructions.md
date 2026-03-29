@@ -178,15 +178,18 @@ RESTLER_REF=6d984deedbc54aad957fa3da0c7e9e5df23a2aee
 Quando os scripts geram `dast/generated/restler-engine-settings.json`, o `SCANNER_TARGET_BASE_URL` e separado em:
 - `host`: apenas hostname
 - `target_port`: porta, quando existe
+- `no_ssl`: `true` para `http`, `false` para `https`
 - `use_ssl`: `true` para `https`, `false` para `http`
 
 Exemplo:
 - `SCANNER_TARGET_BASE_URL=http://host.docker.internal:8080`
 - `host=host.docker.internal`
 - `target_port=8080`
+- `no_ssl=true`
 - `use_ssl=false`
 
 Nao coloques `host:port` dentro de `host`, porque o RESTler trata `host` como hostname literal.
+Para endpoints `http://`, os scripts passam tambem `--no_ssl` ao RESTler para evitar tentativas TLS contra um alvo plain HTTP.
 
 ## Resultados
 
