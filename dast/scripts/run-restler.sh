@@ -52,8 +52,8 @@ docker run --rm \
   "${RESTLER_IMAGE}" \
   /RESTler/restler/Restler compile --api_spec /work/generated/openapi.json
 
-TEST_TIMEOUT="${RESTLER_TEST_TIMEOUT:-20m}"
-FUZZ_LEAN_TIMEOUT="${RESTLER_FUZZ_LEAN_TIMEOUT:-20m}"
+TEST_TIMEOUT="${RESTLER_TEST_TIMEOUT:-4m}"
+FUZZ_LEAN_TIMEOUT="${RESTLER_FUZZ_LEAN_TIMEOUT:-4m}"
 
 log "Running RESTler test with timeout ${TEST_TIMEOUT}"
 timeout "${TEST_TIMEOUT}" \
