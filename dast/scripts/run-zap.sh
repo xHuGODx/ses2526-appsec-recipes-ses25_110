@@ -13,9 +13,12 @@ if [[ ! -f "${OPENAPI_PATH}" ]]; then
   exit 1
 fi
 
+ZAP_DOCKER_USER="$(id -u):$(id -g)"
+
 log "Running OWASP ZAP against ${OPENAPI_PATH}"
 timeout "${ZAP_API_TIMEOUT:-20m}" \
 docker run --rm \
+  --user "${ZAP_DOCKER_USER}" \
   "${HOST_GATEWAY_ARG[@]}" \
   -v "${DAST_DIR}:/zap/wrk" \
   "${ZAP_IMAGE}" \
@@ -35,6 +38,7 @@ docker run --rm \
 log "Running OWASP ZAP baseline scan against ${SCANNER_FRONTEND_BASE_URL}"
 timeout "${ZAP_FRONTEND_TIMEOUT:-12m}" \
 docker run --rm \
+  --user "${ZAP_DOCKER_USER}" \
   "${HOST_GATEWAY_ARG[@]}" \
   -v "${DAST_DIR}:/zap/wrk" \
   "${ZAP_IMAGE}" \

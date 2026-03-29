@@ -59,6 +59,7 @@ require_cmd() {
 
 ensure_dirs() {
   mkdir -p \
+    "${DAST_DIR}" \
     "${GENERATED_DIR}" \
     "${RESULTS_DIR}" \
     "${RESULTS_DIR}/zap/api" \
@@ -68,10 +69,18 @@ ensure_dirs() {
     "${RESULTS_DIR}/llm" \
     "${CACHE_DIR}"
 
-  chmod -R a+rwX \
+  chmod a+rwx \
+    "${DAST_DIR}" \
     "${GENERATED_DIR}" \
     "${RESULTS_DIR}" \
-    "${CACHE_DIR}"
+    "${CACHE_DIR}" \
+    "${RESULTS_DIR}/zap" \
+    "${RESULTS_DIR}/zap/api" \
+    "${RESULTS_DIR}/zap/frontend" \
+    "${RESULTS_DIR}/schemathesis" \
+    "${RESULTS_DIR}/restler" \
+    "${RESULTS_DIR}/llm" \
+    2>/dev/null || true
 }
 
 clean_dir_contents() {
