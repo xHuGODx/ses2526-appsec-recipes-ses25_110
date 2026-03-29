@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import argparse
 import json
 import pathlib
 import sys
@@ -31,12 +32,22 @@ def restler_findings(data: dict) -> int:
     return total
 
 
-def main() -> int:
-    if len(sys.argv) != 2:
-        print("Usage: evaluate-findings.py <manifest-path>", file=sys.stderr)
-        return 2
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("manifest_path")
+    parser.add_argument(
+        "--require-file",
+        action="append",
+        default=[],
+        dest="required_files",
+        help="Artifact path that must exist for the run to be considered valid.",
+    )
+    return parser.parse_args()
 
-    manifest_path = pathlib.Path(sys.argv[1])
+
+def main() -> int:
+    args = parse_args()
+    manifest_path = pathlib.Path(args.manifest_path)
     if not manifest_path.exists():
         print(f"Manifest not found: {manifest_path}", file=sys.stderr)
         return 2
@@ -50,8 +61,22 @@ def main() -> int:
         "restler": restler_findings(scanners.get("restler", {})),
     }
     total_findings = sum(summary.values())
+    missing_artifacts = [
+        path for path in args.required_files if not pathlib.Path(path).exists()
+    ]
 
-    print(json.dumps({"findings": summary, "total": total_findings}, indent=2))
+    print(
+        json.dumps(
+            {
+                "findings": summary,
+                "total": total_findings,
+                "missing_artifacts": missing_artifacts,
+            },
+            indent=2,
+        )
+    )
+    if missing_artifacts:
+        return 2
     return 1 if total_findings > 0 else 0
 
 

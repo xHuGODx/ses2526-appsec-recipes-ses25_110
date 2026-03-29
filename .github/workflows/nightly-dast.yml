@@ -18,6 +18,10 @@ jobs:
     env:
       SOFTWARE_REPOSITORY: xHuGODx/softwate-baseline-ses25_110
       SOFTWARE_REF: ${{ inputs.software_ref || 'master' }}
+      APP_REPO_DIR: ${{ github.workspace }}/app
+      APP_COMPOSE_FILE: ${{ github.workspace }}/app/docker-compose.yml
+      DAST_ROOT: ${{ github.workspace }}/dast
+      COMPOSE_PROJECT_NAME: nightly-dast
     steps:
       - name: Validar SHARED_TOKEN
         env:
@@ -40,13 +44,49 @@ jobs:
           path: app
           token: ${{ secrets.SHARED_TOKEN }}
 
-      - name: Executar fluxo nightly RESTler
-        env:
-          APP_REPO_DIR: ${{ github.workspace }}/app
-          APP_COMPOSE_FILE: ${{ github.workspace }}/app/docker-compose.yml
-          AUTO_STOP_STACK: 'true'
-          COMPOSE_PROJECT_NAME: nightly-dast
-        run: bash ./dast/scripts/run-restler-nightly.sh
+      - name: Preparar outputs DAST
+        run: |
+          source "${GITHUB_WORKSPACE}/dast/scripts/common.sh"
+          clean_generated
+          clean_results
+          ensure_dirs
+
+      - name: Arrancar stack da aplicacao
+        run: |
+          source "${GITHUB_WORKSPACE}/dast/scripts/common.sh"
+          start_app_stack
+
+      - name: Esperar pela API
+        run: bash ./dast/scripts/wait-for-api.sh
+
+      - name: Esperar pelo frontend
+        run: bash ./dast/scripts/wait-for-frontend.sh
+
+      - name: Exportar OpenAPI
+        run: bash ./dast/scripts/export-openapi.sh
+
+      - name: Preparar imagem RESTler
+        run: bash ./dast/scripts/build-restler-image.sh
+
+      - name: Correr RESTler base
+        continue-on-error: true
+        run: bash ./dast/scripts/run-restler.sh
+
+      - name: Correr RESTler deep
+        continue-on-error: true
+        run: bash ./dast/scripts/run-restler-deep.sh
+
+      - name: Gerar manifest de findings
+        run: python3 ./dast/scripts/build-findings-manifest.py
+
+      - name: Avaliar findings e artefactos do nightly
+        run: |
+          python3 ./dast/scripts/evaluate-findings.py ./dast/results/llm/scan_manifest.json \
+            --require-file "${GITHUB_WORKSPACE}/dast/generated/openapi.json" \
+            --require-file "${GITHUB_WORKSPACE}/dast/results/restler/Compile/grammar.py" \
+            --require-file "${GITHUB_WORKSPACE}/dast/results/restler/Test/ResponseBuckets/runSummary.json" \
+            --require-file "${GITHUB_WORKSPACE}/dast/results/restler/FuzzLean/ResponseBuckets/runSummary.json" \
+            --require-file "${GITHUB_WORKSPACE}/dast/results/restler/Fuzz/ResponseBuckets/runSummary.json"
 
       - name: Publicar artefactos DAST
         if: always()
@@ -57,6 +97,12 @@ jobs:
             dast/generated
             dast/results
           retention-days: 14
+
+      - name: Parar stack da aplicacao
+        if: always()
+        run: |
+          source "${GITHUB_WORKSPACE}/dast/scripts/common.sh"
+          stop_app_stack
 
       - name: Descartar checkout temporario da app
         if: always()
