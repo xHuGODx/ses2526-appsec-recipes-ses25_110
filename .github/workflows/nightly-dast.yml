@@ -22,6 +22,7 @@ jobs:
       APP_COMPOSE_FILE: ${{ github.workspace }}/app/docker-compose.yml
       DAST_ROOT: ${{ github.workspace }}/dast
       COMPOSE_PROJECT_NAME: nightly-dast
+      GEMINI_KEY: ${{ secrets.GEMINI_KEY }}
     steps:
       - name: Validar SHARED_TOKEN
         env:
@@ -79,6 +80,22 @@ jobs:
       - name: Gerar manifest de findings
         run: python3 ./dast/scripts/build-findings-manifest.py
 
+      - name: Gerar input para LLM
+        run: python3 ./dast/scripts/build-llm-analysis-input.py
+
+      - name: Avisar quando GEMINI_KEY estiver ausente
+        if: ${{ env.GEMINI_KEY == '' }}
+        run: echo "::warning::GEMINI_KEY not set. Skipping Gemini analysis."
+
+      - name: Gerar tabela com Gemini
+        if: ${{ env.GEMINI_KEY != '' }}
+        continue-on-error: true
+        run: python3 ./dast/scripts/run-llm-analysis.py
+
+      - name: Renderizar HTML LLM
+        if: ${{ always() && hashFiles('dast/results/llm/findings_table.json') != '' }}
+        run: python3 ./dast/scripts/render-llm-report.py
+
       - name: Avaliar findings e artefactos do nightly
         run: |
           python3 ./dast/scripts/evaluate-findings.py ./dast/results/llm/scan_manifest.json \
@@ -86,7 +103,8 @@ jobs:
             --require-file "${GITHUB_WORKSPACE}/dast/results/restler/Compile/grammar.py" \
             --require-file "${GITHUB_WORKSPACE}/dast/results/restler/Test/ResponseBuckets/runSummary.json" \
             --require-file "${GITHUB_WORKSPACE}/dast/results/restler/FuzzLean/ResponseBuckets/runSummary.json" \
-            --require-file "${GITHUB_WORKSPACE}/dast/results/restler/Fuzz/ResponseBuckets/runSummary.json"
+            --require-file "${GITHUB_WORKSPACE}/dast/results/restler/Fuzz/ResponseBuckets/runSummary.json" \
+            --require-file "${GITHUB_WORKSPACE}/dast/results/llm/analysis_input.json"
 
       - name: Publicar artefactos DAST
         if: always()

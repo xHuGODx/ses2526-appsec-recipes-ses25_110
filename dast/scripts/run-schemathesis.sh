@@ -26,8 +26,9 @@ docker run --rm \
     --mode all \
     --max-failures "${SCHEMATHESIS_MAX_FAILURES:-100}" \
     --continue-on-failure \
-    --report junit \
+    --report junit,ndjson \
     --report-junit-path /work/results/schemathesis/junit.xml \
+    --report-ndjson-path /work/results/schemathesis/events.ndjson \
     --output-sanitize=false \
     --request-timeout "${SCHEMATHESIS_REQUEST_TIMEOUT:-10}" \
     --max-response-time "${SCHEMATHESIS_MAX_RESPONSE_TIME:-5}" \

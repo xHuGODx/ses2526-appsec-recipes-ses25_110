@@ -37,12 +37,15 @@ O `RESTler` fica reservado ao workflow nightly.
 - `dast/scripts/run-all.sh`: levanta a app a partir do software repo, exporta o OpenAPI e corre os tres scanners
 - `dast/scripts/run-restler-nightly.sh`: levanta a app e corre o fluxo RESTler pesado para nightly
 - `dast/scripts/run-zap.sh`: corre `ZAP` para API e frontend
-- `dast/scripts/run-schemathesis.sh`: corre `Schemathesis` para a API e guarda apenas `junit.xml`
+- `dast/scripts/run-schemathesis.sh`: corre `Schemathesis` para a API e guarda `junit.xml + events.ndjson`
 - `dast/scripts/run-restler.sh`: corre `RESTler` em `compile + test + fuzz-lean`
 - `dast/scripts/run-restler-deep.sh`: corre o modo `fuzz` agressivo do `RESTler`
 - `dast/scripts/wait-for-api.sh`: espera pelo backend e pelo OpenAPI
 - `dast/scripts/wait-for-frontend.sh`: espera pelo frontend
 - `dast/scripts/build-findings-manifest.py`: agrega um manifest inicial para posterior triagem
+- `dast/scripts/build-llm-analysis-input.py`: prepara um input compacto e normalizado para o Gemini
+- `dast/scripts/run-llm-analysis.py`: chama o Gemini e gera a tabela consolidada em JSON
+- `dast/scripts/render-llm-report.py`: renderiza a tabela consolidada para HTML
 - `dast/dast_justificacao.md`: explica porque este combo foi escolhido
 
 ## Pre-requisitos
@@ -82,6 +85,8 @@ Isto faz:
 6. corre `Schemathesis` na API
 7. corre `RESTler` na API
 8. gera `dast/results/llm/scan_manifest.json`
+9. prepara `dast/results/llm/analysis_input.json`
+10. opcionalmente gera `dast/results/llm/findings_table.json` e `findings_table.html` com Gemini
 
 ### 2. Correr scanners individualmente
 
@@ -210,16 +215,12 @@ Os outputs ficam em:
 
 ## Como usar depois com um LLM
 
-Fluxo sugerido:
-1. correr os tres scanners
-2. usar `dast/results/llm/scan_manifest.json` como indice inicial
-3. anexar tambem os reports crus mais importantes
-4. pedir ao LLM para:
-   - deduplicar findings
-   - agrupar por alvo, endpoint e vulnerabilidade
-   - distinguir findings confirmados vs ruído
-   - mapear para `TM-*`, `AT-*` e `AS-*`
-   - sugerir mitigacoes
+Fluxo automatizado:
+1. correr os scanners
+2. gerar `dast/results/llm/scan_manifest.json`
+3. gerar `dast/results/llm/analysis_input.json`
+4. usar `GEMINI_KEY` para produzir `dast/results/llm/findings_table.json`
+5. renderizar `dast/results/llm/findings_table.html`
 
 Prompt operacional sugerido:
 
@@ -235,6 +236,7 @@ com threat model e mitigacao sugerida.
 
 - `Schemathesis` e `RESTler` sao API-only.
 - `ZAP` cobre API e frontend.
+- O gate continua deterministico e baseado em `scan_manifest.json`; a fase Gemini e apenas para triagem e reporting.
 - `RESTler` e o scanner mais sensivel ao OpenAPI e o mais agressivo quando usado em `fuzz`.
 - `run-all.sh` nao faz `docker compose down` por omissao; usa `AUTO_STOP_STACK=true` se quiseres cleanup automatico.
 - Usa `SKIP_START_APP_STACK=true` se a app ja estiver levantada fora destes scripts e so quiseres correr os scanners.
