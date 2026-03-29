@@ -37,7 +37,7 @@ O `RESTler` fica reservado ao workflow nightly.
 - `dast/scripts/run-all.sh`: levanta a app a partir do software repo, exporta o OpenAPI e corre os tres scanners
 - `dast/scripts/run-restler-nightly.sh`: levanta a app e corre o fluxo RESTler pesado para nightly
 - `dast/scripts/run-zap.sh`: corre `ZAP` para API e frontend
-- `dast/scripts/run-schemathesis.sh`: corre `Schemathesis` para a API
+- `dast/scripts/run-schemathesis.sh`: corre `Schemathesis` para a API e guarda apenas `junit.xml`
 - `dast/scripts/run-restler.sh`: corre `RESTler` em `compile + test + fuzz-lean`
 - `dast/scripts/run-restler-deep.sh`: corre o modo `fuzz` agressivo do `RESTler`
 - `dast/scripts/wait-for-api.sh`: espera pelo backend e pelo OpenAPI

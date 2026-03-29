@@ -26,13 +26,8 @@ docker run --rm \
     --mode all \
     --max-failures "${SCHEMATHESIS_MAX_FAILURES:-100}" \
     --continue-on-failure \
-    --report junit,har,ndjson,vcr \
-    --report-dir /work/results/schemathesis \
+    --report junit \
     --report-junit-path /work/results/schemathesis/junit.xml \
-    --report-har-path /work/results/schemathesis/traffic.har \
-    --report-ndjson-path /work/results/schemathesis/events.ndjson \
-    --report-vcr-path /work/results/schemathesis/cassette.yaml \
-    --generation-database /work/results/schemathesis/examples.db \
     --output-sanitize=false \
     --request-timeout "${SCHEMATHESIS_REQUEST_TIMEOUT:-10}" \
     --max-response-time "${SCHEMATHESIS_MAX_RESPONSE_TIME:-5}" \
