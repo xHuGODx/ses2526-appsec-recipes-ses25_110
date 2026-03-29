@@ -6,6 +6,7 @@ source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/common.sh"
 
 require_basics
 ensure_dirs
+require_cmd timeout
 
 if [[ ! -f "${OPENAPI_PATH}" ]]; then
   printf 'OpenAPI file not found: %s\nRun export-openapi.sh first.\n' "${OPENAPI_PATH}" >&2
@@ -13,6 +14,7 @@ if [[ ! -f "${OPENAPI_PATH}" ]]; then
 fi
 
 log "Running OWASP ZAP against ${OPENAPI_PATH}"
+timeout "${ZAP_API_TIMEOUT:-20m}" \
 docker run --rm \
   "${HOST_GATEWAY_ARG[@]}" \
   -v "${DAST_DIR}:/zap/wrk" \
@@ -31,6 +33,7 @@ docker run --rm \
     -J /zap/wrk/results/zap/api/report.json
 
 log "Running OWASP ZAP baseline scan against ${SCANNER_FRONTEND_BASE_URL}"
+timeout "${ZAP_FRONTEND_TIMEOUT:-12m}" \
 docker run --rm \
   "${HOST_GATEWAY_ARG[@]}" \
   -v "${DAST_DIR}:/zap/wrk" \
@@ -40,7 +43,6 @@ docker run --rm \
     -a \
     -d \
     -I \
-    -j \
     -m "${ZAP_FRONTEND_SPIDER_MINUTES:-3}" \
     -T "${ZAP_MAX_TIME_MINUTES:-15}" \
     -r results/zap/frontend/report.html \

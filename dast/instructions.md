@@ -165,7 +165,12 @@ SCHEMATHESIS_MAX_RESPONSE_TIME=5
 ```bash
 ZAP_MAX_TIME_MINUTES=15
 ZAP_FRONTEND_SPIDER_MINUTES=3
+ZAP_API_TIMEOUT=20m
+ZAP_FRONTEND_TIMEOUT=12m
 ```
+
+O scan frontend usa `zap-baseline.py` sem Ajax spider para reduzir flakiness no GitHub Actions.
+Os dois comandos ZAP sao corridos com `timeout`, para um arranque preso do ZAP nao bloquear o workflow indefinidamente.
 
 ### RESTler
 
