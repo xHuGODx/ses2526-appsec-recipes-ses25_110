@@ -14,14 +14,24 @@ if [[ ! -f "${OPENAPI_PATH}" ]]; then
   exit 1
 fi
 
-python3 - "${CONFIG_DIR}/restler/engine_settings.json" "${RESTLER_SETTINGS_PATH}" "${SCANNER_TARGET_BASE_URL#http://}" <<'PY'
+python3 - "${CONFIG_DIR}/restler/engine_settings.json" "${RESTLER_SETTINGS_PATH}" "${SCANNER_TARGET_BASE_URL}" <<'PY'
 import json
+from urllib.parse import urlparse
 import sys
 
-template_path, output_path, host = sys.argv[1:4]
+template_path, output_path, target_base_url = sys.argv[1:4]
+parsed = urlparse(target_base_url)
+if not parsed.hostname:
+    raise SystemExit(f"Invalid SCANNER_TARGET_BASE_URL: {target_base_url}")
+
 with open(template_path, "r", encoding="utf-8") as fh:
     data = json.load(fh)
-data["host"] = host
+data["host"] = parsed.hostname
+if parsed.port is not None:
+    data["target_port"] = parsed.port
+else:
+    data.pop("target_port", None)
+data["use_ssl"] = parsed.scheme == "https"
 with open(output_path, "w", encoding="utf-8") as fh:
     json.dump(data, fh, indent=2)
     fh.write("\n")
