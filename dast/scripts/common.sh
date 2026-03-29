@@ -90,6 +90,34 @@ clean_results() {
   clean_dir_contents "${RESULTS_DIR}"
 }
 
+clean_path() {
+  local path="$1"
+  local parent_dir
+  local target_name
+
+  parent_dir="$(dirname "${path}")"
+  target_name="$(basename "${path}")"
+  mkdir -p "${parent_dir}"
+
+  if rm -rf -- "${path}" 2>/dev/null; then
+    return 0
+  fi
+
+  log "Local cleanup failed for ${path}; retrying via Docker for container-owned files"
+  docker run --rm \
+    -e TARGET_NAME="${target_name}" \
+    -v "${parent_dir}:/work" \
+    alpine:3.20 \
+    sh -lc 'rm -rf -- "/work/${TARGET_NAME}"'
+}
+
+clean_paths() {
+  local path
+  for path in "$@"; do
+    clean_path "${path}"
+  done
+}
+
 require_basics() {
   require_cmd docker
   if ! docker compose version >/dev/null 2>&1; then

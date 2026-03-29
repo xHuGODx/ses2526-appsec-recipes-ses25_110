@@ -28,7 +28,10 @@ with open(output_path, "w", encoding="utf-8") as fh:
 PY
 
 log "Running RESTler compile, test and fuzz-lean"
-rm -rf "${RESULTS_DIR}/restler/Compile" "${RESULTS_DIR}/restler/Test" "${RESULTS_DIR}/restler/FuzzLean"
+clean_paths \
+  "${RESULTS_DIR}/restler/Compile" \
+  "${RESULTS_DIR}/restler/Test" \
+  "${RESULTS_DIR}/restler/FuzzLean"
 
 docker run --rm \
   "${HOST_GATEWAY_ARG[@]}" \
