@@ -23,6 +23,16 @@ jobs:
       DAST_ROOT: ${{ github.workspace }}/dast
       COMPOSE_PROJECT_NAME: nightly-dast
       GEMINI_KEY: ${{ secrets.GEMINI_KEY }}
+      ZAP_FRONTEND_MODE: full
+      ZAP_API_TIMEOUT: 25m
+      ZAP_API_MAX_TIME_MINUTES: 20
+      ZAP_FRONTEND_TIMEOUT: 30m
+      ZAP_FRONTEND_SPIDER_MINUTES: 5
+      ZAP_FRONTEND_MAX_TIME_MINUTES: 20
+      SCHEMATHESIS_MAX_EXAMPLES: 500
+      SCHEMATHESIS_MAX_FAILURES: 250
+      SCHEMATHESIS_REQUEST_TIMEOUT: 15
+      SCHEMATHESIS_MAX_RESPONSE_TIME: 10
     steps:
       - name: Validate SHARED_TOKEN
         env:
@@ -69,11 +79,15 @@ jobs:
       - name: Prepare Schemathesis image
         run: bash ./dast/scripts/build-schemathesis-image.sh
 
-      - name: Run ZAP
+      - name: Run ZAP API Scan
         continue-on-error: true
-        run: bash ./dast/scripts/run-zap.sh
+        run: bash ./dast/scripts/run-zap-api.sh
 
-      - name: Run Schemathesis
+      - name: Run ZAP Frontend Full Scan
+        continue-on-error: true
+        run: bash ./dast/scripts/run-zap-frontend.sh
+
+      - name: Run Schemathesis Nightly Profile
         continue-on-error: true
         run: bash ./dast/scripts/run-schemathesis.sh
 

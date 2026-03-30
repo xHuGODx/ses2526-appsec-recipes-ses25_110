@@ -16,6 +16,8 @@ This repository stores only security automation and configuration.
 
 Main entry points:
 - `dast/scripts/run-all.sh`
+- `dast/scripts/run-zap-api.sh`
+- `dast/scripts/run-zap-frontend.sh`
 - `dast/scripts/run-zap.sh`
 - `dast/scripts/run-schemathesis.sh`
 - `.github/workflows/nightly-dast.yml`
@@ -40,9 +42,10 @@ Main local flow:
 1. start or reuse the application stack from the software repo
 2. wait for the API and frontend
 3. export OpenAPI
-4. run `ZAP`
-5. run `Schemathesis`
-6. build the findings manifest
+4. run `ZAP API Scan`
+5. run `ZAP` against the frontend
+6. run `Schemathesis`
+7. build the findings manifest
 
 ### Full DAST Run
 
@@ -54,6 +57,26 @@ Main local flow:
 
 ```bash
 ./dast/scripts/run-zap.sh
+```
+
+### ZAP API Scan Only
+
+```bash
+./dast/scripts/run-zap-api.sh
+```
+
+### ZAP Frontend Scan Only
+
+Baseline:
+
+```bash
+./dast/scripts/run-zap-frontend.sh
+```
+
+Full scan:
+
+```bash
+ZAP_FRONTEND_MODE=full ./dast/scripts/run-zap-frontend.sh
 ```
 
 ### Schemathesis Only
@@ -99,4 +122,6 @@ You received ZAP and Schemathesis outputs for the same application, covering bot
 
 - `ZAP` is the only scanner that covers the frontend.
 - `Schemathesis` is API-only and contract-driven.
+- the PR flow keeps a lighter frontend baseline scan.
+- the nightly flow uses `ZAP API Scan`, `ZAP Full Scan` on the frontend, and a higher Schemathesis budget.
 - `run-all.sh` does not stop the stack by default; use `AUTO_STOP_STACK=true` if you want automatic cleanup.
