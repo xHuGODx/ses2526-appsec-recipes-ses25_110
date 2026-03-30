@@ -140,9 +140,28 @@ jobs:
         if: always()
         run: |
           rm -rf "${GITHUB_WORKSPACE}/last_results"
-          mkdir -p "${GITHUB_WORKSPACE}/last_results"
-          cp -R "${GITHUB_WORKSPACE}/dast/generated" "${GITHUB_WORKSPACE}/last_results/generated"
-          cp -R "${GITHUB_WORKSPACE}/dast/results" "${GITHUB_WORKSPACE}/last_results/results"
+          mkdir -p "${GITHUB_WORKSPACE}/last_results/generated"
+          mkdir -p "${GITHUB_WORKSPACE}/last_results/results/zap/api"
+          mkdir -p "${GITHUB_WORKSPACE}/last_results/results/zap/frontend"
+          mkdir -p "${GITHUB_WORKSPACE}/last_results/results/schemathesis"
+          mkdir -p "${GITHUB_WORKSPACE}/last_results/results/llm"
+
+          cp "${GITHUB_WORKSPACE}/dast/generated/openapi.json" "${GITHUB_WORKSPACE}/last_results/generated/openapi.json"
+          cp "${GITHUB_WORKSPACE}/dast/results/zap/api/report.json" "${GITHUB_WORKSPACE}/last_results/results/zap/api/report.json"
+          cp "${GITHUB_WORKSPACE}/dast/results/zap/api/report.html" "${GITHUB_WORKSPACE}/last_results/results/zap/api/report.html"
+          cp "${GITHUB_WORKSPACE}/dast/results/zap/frontend/report.json" "${GITHUB_WORKSPACE}/last_results/results/zap/frontend/report.json"
+          cp "${GITHUB_WORKSPACE}/dast/results/zap/frontend/report.html" "${GITHUB_WORKSPACE}/last_results/results/zap/frontend/report.html"
+          cp "${GITHUB_WORKSPACE}/dast/results/schemathesis/junit.xml" "${GITHUB_WORKSPACE}/last_results/results/schemathesis/junit.xml"
+          cp "${GITHUB_WORKSPACE}/dast/results/llm/scan_manifest.json" "${GITHUB_WORKSPACE}/last_results/results/llm/scan_manifest.json"
+          cp "${GITHUB_WORKSPACE}/dast/results/llm/analysis_input.json" "${GITHUB_WORKSPACE}/last_results/results/llm/analysis_input.json"
+
+          if [ -f "${GITHUB_WORKSPACE}/dast/results/llm/findings_table.json" ]; then
+            cp "${GITHUB_WORKSPACE}/dast/results/llm/findings_table.json" "${GITHUB_WORKSPACE}/last_results/results/llm/findings_table.json"
+          fi
+
+          if [ -f "${GITHUB_WORKSPACE}/dast/results/llm/findings_table.html" ]; then
+            cp "${GITHUB_WORKSPACE}/dast/results/llm/findings_table.html" "${GITHUB_WORKSPACE}/last_results/results/llm/findings_table.html"
+          fi
 
       - name: Commit last_results to repo
         if: always()
