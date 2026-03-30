@@ -55,6 +55,7 @@ def extract_prompt(instructions_path: pathlib.Path) -> str:
 
 def build_user_prompt(payload: dict) -> str:
     operational_prompt = extract_prompt(INSTRUCTIONS_PATH)
+    compact_payload = json.dumps(payload, ensure_ascii=True, separators=(",", ":"))
     response_contract = {
         "table": [
             {
@@ -81,7 +82,7 @@ def build_user_prompt(payload: dict) -> str:
         "The response format must be:\n"
         f"{json.dumps(response_contract, ensure_ascii=True, indent=2)}\n\n"
         "Data to analyze:\n"
-        f"{json.dumps(payload, ensure_ascii=True, indent=2)}"
+        f"{compact_payload}"
     )
 
 

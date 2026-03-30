@@ -58,10 +58,10 @@ def extract_method_and_target(*parts):
 
 def compact_evidence(items: list[tuple[str, str]]) -> str:
     chunks = [f"{key}: {value}" for key, value in items if value]
-    return truncate("\n".join(chunks), 1800)
+    return truncate("\n".join(chunks), 500)
 
 
-def parse_zap_report(report: pathlib.Path, target: str, limit: int = 80) -> list[dict]:
+def parse_zap_report(report: pathlib.Path, target: str, limit: int = 12) -> list[dict]:
     if not report.exists():
         return []
 
@@ -70,40 +70,38 @@ def parse_zap_report(report: pathlib.Path, target: str, limit: int = 80) -> list
     for site in data.get("site", []):
         for alert in site.get("alerts", []):
             instances = alert.get("instances") or [{}]
-            for instance in instances:
-                method = instance.get("method")
-                url = instance.get("uri") or site.get("@name")
-                evidence = compact_evidence(
-                    [
-                        ("evidence", instance.get("evidence")),
-                        ("parameter", instance.get("param")),
-                        ("attack", instance.get("attack")),
-                        ("other_info", alert.get("otherinfo")),
-                        ("description", alert.get("desc")),
-                        ("solution", alert.get("solution")),
-                    ]
-                )
-                findings.append(
-                    {
-                        "scanner": "zap",
-                        "target": target,
-                        "url": url,
-                        "method": method,
-                        "vulnerability": alert.get("name"),
-                        "severity": normalize_severity(
-                            alert.get("riskcode"), alert.get("riskdesc", "")
-                        ),
-                        "confidence": (alert.get("confidence") or "").lower() or "unknown",
-                        "evidence": evidence,
-                        "source": str(report.relative_to(ROOT)),
-                    }
-                )
-                if len(findings) >= limit:
-                    return findings
+            sample = instances[0] if instances else {}
+            findings.append(
+                {
+                    "scanner": "zap",
+                    "target": target,
+                    "url": sample.get("uri") or site.get("@name"),
+                    "method": sample.get("method"),
+                    "vulnerability": alert.get("name"),
+                    "severity": normalize_severity(
+                        alert.get("riskcode"), alert.get("riskdesc", "")
+                    ),
+                    "confidence": (alert.get("confidence") or "").lower() or "unknown",
+                    "instances_count": len(instances),
+                    "evidence": compact_evidence(
+                        [
+                            ("evidence", sample.get("evidence")),
+                            ("parameter", sample.get("param")),
+                            ("attack", sample.get("attack")),
+                            ("other_info", alert.get("otherinfo")),
+                            ("description", alert.get("desc")),
+                            ("solution", alert.get("solution")),
+                        ]
+                    ),
+                    "source": str(report.relative_to(ROOT)),
+                }
+            )
+            if len(findings) >= limit:
+                return findings
     return findings
 
 
-def parse_schemathesis_junit(junit: pathlib.Path, limit: int = 80) -> list[dict]:
+def parse_schemathesis_junit(junit: pathlib.Path, limit: int = 20) -> list[dict]:
     if not junit.exists():
         return []
 
@@ -121,7 +119,7 @@ def parse_schemathesis_junit(junit: pathlib.Path, limit: int = 80) -> list[dict]
             classname = testcase.attrib.get("classname", "")
             name = testcase.attrib.get("name", "")
             message = node.attrib.get("message", "")
-            details = truncate((node.text or "").strip(), 2200)
+            details = truncate((node.text or "").strip(), 700)
             method, target = extract_method_and_target(classname, name, message, details)
             findings.append(
                 {
@@ -148,7 +146,7 @@ def parse_schemathesis_junit(junit: pathlib.Path, limit: int = 80) -> list[dict]
     return findings
 
 
-def parse_schemathesis_events(events_path: pathlib.Path, limit: int = 60) -> list[dict]:
+def parse_schemathesis_events(events_path: pathlib.Path, limit: int = 10) -> list[dict]:
     if not events_path.exists():
         return []
 
@@ -169,12 +167,36 @@ def parse_schemathesis_events(events_path: pathlib.Path, limit: int = 60) -> lis
             findings.append(
                 {
                     "event_type": payload.get("event_type"),
-                    "excerpt": truncate(blob, 1800),
+                    "excerpt": truncate(blob, 500),
                 }
             )
             if len(findings) >= limit:
                 break
     return findings
+
+
+def summarize_manifest(manifest: dict) -> dict:
+    scanners = manifest.get("scanners", {})
+    zap = scanners.get("zap", {})
+    schemathesis = scanners.get("schemathesis", {})
+    return {
+        "zap": {
+            "api": {
+                "alert_types": zap.get("api", {}).get("alert_types", zap.get("api", {}).get("alerts")),
+                "instances": zap.get("api", {}).get("instances"),
+            },
+            "frontend": {
+                "alert_types": zap.get("frontend", {}).get("alert_types", zap.get("frontend", {}).get("alerts")),
+                "instances": zap.get("frontend", {}).get("instances"),
+            },
+        },
+        "schemathesis": {
+            "tests": schemathesis.get("tests"),
+            "failures": schemathesis.get("failures"),
+            "errors": schemathesis.get("errors"),
+            "skipped": schemathesis.get("skipped"),
+        },
+    }
 
 
 def main() -> int:
@@ -184,10 +206,9 @@ def main() -> int:
     payload = {
         "metadata": {
             "generated_at": datetime.now(timezone.utc).isoformat(),
-            "root": str(ROOT),
             "manifest_path": str(manifest_path.relative_to(ROOT)) if manifest_path.exists() else None,
         },
-        "manifest": manifest,
+        "manifest_summary": summarize_manifest(manifest),
         "findings": {
             "zap": {
                 "api": parse_zap_report(RESULTS / "zap" / "api" / "report.json", "api"),
