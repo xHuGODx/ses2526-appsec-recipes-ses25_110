@@ -1,0 +1,329 @@
+{
+  "metadata": {
+    "generated_at": "2026-03-30T11:44:43.204249+00:00",
+    "manifest_path": "results/llm/scan_manifest.json"
+  },
+  "manifest_summary": {
+    "zap": {
+      "api": {
+        "alert_types": 9,
+        "instances": 73
+      },
+      "frontend": {
+        "alert_types": 12,
+        "instances": 44
+      }
+    },
+    "schemathesis": {
+      "tests": 11,
+      "failures": 11,
+      "errors": 0,
+      "skipped": 1
+    }
+  },
+  "findings": {
+    "zap": {
+      "api": [
+        {
+          "scanner": "zap",
+          "target": "api",
+          "url": "http://host.docker.internal:8080/api/pizzerias/1",
+          "method": "DELETE",
+          "vulnerability": "Cross-Origin-Resource-Policy Header Missing or Invalid",
+          "severity": "low",
+          "confidence": "2",
+          "instances_count": 5,
+          "evidence": "parameter: Cross-Origin-Resource-Policy\ndescription: <p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>\nsolution: <p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secu...",
+          "source": "results/zap/api/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "api",
+          "url": "http://host.docker.internal:8080/api/pizzas?pizzeriaId=1",
+          "method": "GET",
+          "vulnerability": "X-Content-Type-Options Header Missing",
+          "severity": "low",
+          "confidence": "2",
+          "instances_count": 5,
+          "evidence": "parameter: x-content-type-options\nother_info: <p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>\ndescription: <p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions...",
+          "source": "results/zap/api/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "api",
+          "url": "http://host.docker.internal:8080/api/pizzas/1",
+          "method": "DELETE",
+          "vulnerability": "A Client Error response code was returned by the server",
+          "severity": "info",
+          "confidence": "3",
+          "instances_count": 37,
+          "evidence": "evidence: 404\ndescription: <p>A response code of 404 was returned by the server.</p><p>This may indicate that the application is failing to handle unexpected input correctly.</p><p>Raised by the 'Alert on HTTP Response Code Error' script</p>",
+          "source": "results/zap/api/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "api",
+          "url": "http://host.docker.internal:8080/api/pizzas/1",
+          "method": "DELETE",
+          "vulnerability": "Non-Storable Content",
+          "severity": "info",
+          "confidence": "2",
+          "instances_count": 5,
+          "evidence": "evidence: DELETE \ndescription: <p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>\nsolution: <p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" ...",
+          "source": "results/zap/api/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "api",
+          "url": "http://host.docker.internal:8080/api/pizzerias/1",
+          "method": "DELETE",
+          "vulnerability": "Sec-Fetch-Dest Header is Missing",
+          "severity": "info",
+          "confidence": "3",
+          "instances_count": 4,
+          "evidence": "parameter: Sec-Fetch-Dest\ndescription: <p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>\nsolution: <p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
+          "source": "results/zap/api/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "api",
+          "url": "http://host.docker.internal:8080/api/pizzerias/1",
+          "method": "DELETE",
+          "vulnerability": "Sec-Fetch-Mode Header is Missing",
+          "severity": "info",
+          "confidence": "3",
+          "instances_count": 4,
+          "evidence": "parameter: Sec-Fetch-Mode\ndescription: <p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>\nsolution: <p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
+          "source": "results/zap/api/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "api",
+          "url": "http://host.docker.internal:8080/api/pizzerias/1",
+          "method": "DELETE",
+          "vulnerability": "Sec-Fetch-Site Header is Missing",
+          "severity": "info",
+          "confidence": "3",
+          "instances_count": 4,
+          "evidence": "parameter: Sec-Fetch-Site\ndescription: <p>Specifies the relationship between request initiator's origin and target's origin.</p>\nsolution: <p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
+          "source": "results/zap/api/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "api",
+          "url": "http://host.docker.internal:8080/api/pizzerias/1",
+          "method": "DELETE",
+          "vulnerability": "Sec-Fetch-User Header is Missing",
+          "severity": "info",
+          "confidence": "3",
+          "instances_count": 4,
+          "evidence": "parameter: Sec-Fetch-User\ndescription: <p>Specifies if a navigation request was initiated by a user.</p>\nsolution: <p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
+          "source": "results/zap/api/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "api",
+          "url": "http://host.docker.internal:8080/api/pizzas?pizzeriaId=1",
+          "method": "GET",
+          "vulnerability": "Storable and Cacheable Content",
+          "severity": "info",
+          "confidence": "2",
+          "instances_count": 5,
+          "evidence": "other_info: <p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>\ndescription: <p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specifi...",
+          "source": "results/zap/api/report.json"
+        }
+      ],
+      "frontend": [
+        {
+          "scanner": "zap",
+          "target": "frontend",
+          "url": "http://host.docker.internal:5173",
+          "method": "GET",
+          "vulnerability": "Content Security Policy (CSP) Header Not Set",
+          "severity": "medium",
+          "confidence": "3",
+          "instances_count": 4,
+          "evidence": "description: <p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, C...",
+          "source": "results/zap/frontend/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "frontend",
+          "url": "http://host.docker.internal:5173",
+          "method": "GET",
+          "vulnerability": "Missing Anti-clickjacking Header",
+          "severity": "medium",
+          "confidence": "2",
+          "instances_count": 2,
+          "evidence": "parameter: x-frame-options\ndescription: <p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>\nsolution: <p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll...",
+          "source": "results/zap/frontend/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "frontend",
+          "url": "http://host.docker.internal:5173",
+          "method": "GET",
+          "vulnerability": "Cross-Origin-Embedder-Policy Header Missing or Invalid",
+          "severity": "low",
+          "confidence": "2",
+          "instances_count": 2,
+          "evidence": "parameter: Cross-Origin-Embedder-Policy\ndescription: <p>Cross-Origin-Embedder-Policy header is a response header that prevents a document from loading any cross-origin resources that don't explicitly grant the document permission (using CORP or CORS).</p>\nsolution: <p>Ensure that the application/web server sets the Cross-Origin-Embedder-Policy header appropriately, and that it sets the Cross-Origin-Embedder-Policy header to 'require-corp' for documents.</p><p>If possible, ensure that the end ...",
+          "source": "results/zap/frontend/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "frontend",
+          "url": "http://host.docker.internal:5173",
+          "method": "GET",
+          "vulnerability": "Cross-Origin-Opener-Policy Header Missing or Invalid",
+          "severity": "low",
+          "confidence": "2",
+          "instances_count": 2,
+          "evidence": "parameter: Cross-Origin-Opener-Policy\ndescription: <p>Cross-Origin-Opener-Policy header is a response header that allows a site to control if others included documents share the same browsing context. Sharing the same browsing context with untrusted documents might lead to data leak.</p>\nsolution: <p>Ensure that the application/web server sets the Cross-Origin-Opener-Policy header appropriately, and that it sets the Cross-Origin-Opener-Policy header to 'same-origin' for documents.</p><p>'same...",
+          "source": "results/zap/frontend/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "frontend",
+          "url": "http://host.docker.internal:5173",
+          "method": "GET",
+          "vulnerability": "Cross-Origin-Resource-Policy Header Missing or Invalid",
+          "severity": "low",
+          "confidence": "2",
+          "instances_count": 5,
+          "evidence": "parameter: Cross-Origin-Resource-Policy\ndescription: <p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>\nsolution: <p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secu...",
+          "source": "results/zap/frontend/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "frontend",
+          "url": "http://host.docker.internal:5173/robots.txt",
+          "method": "GET",
+          "vulnerability": "In Page Banner Information Leak",
+          "severity": "low",
+          "confidence": "3",
+          "instances_count": 2,
+          "evidence": "evidence: nginx/1.27.5\nother_info: <p>There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body.</p>\ndescription: <p>The server returned a version banner string in the response content. Such information leaks may allow attackers to further target specific issues impacting the product and version in use.</p>\nsolution: <p>Configure the server to prevent such information leaks. For example:</p><p>Under Tomcat this is d...",
+          "source": "results/zap/frontend/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "frontend",
+          "url": "http://host.docker.internal:5173",
+          "method": "GET",
+          "vulnerability": "Permissions Policy Header Not Set",
+          "severity": "low",
+          "confidence": "2",
+          "instances_count": 5,
+          "evidence": "description: <p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen et...",
+          "source": "results/zap/frontend/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "frontend",
+          "url": "http://host.docker.internal:5173",
+          "method": "GET",
+          "vulnerability": "Server Leaks Version Information via \"Server\" HTTP Response Header Field",
+          "severity": "low",
+          "confidence": "3",
+          "instances_count": 5,
+          "evidence": "evidence: nginx/1.27.5\ndescription: <p>The web/application server is leaking version information via the \"Server\" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.</p>\nsolution: <p>Ensure that your web server, application server, load balancer, etc. is configured to suppress the \"Server\" header or provide generic details.</p>",
+          "source": "results/zap/frontend/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "frontend",
+          "url": "http://host.docker.internal:5173",
+          "method": "GET",
+          "vulnerability": "X-Content-Type-Options Header Missing",
+          "severity": "low",
+          "confidence": "2",
+          "instances_count": 5,
+          "evidence": "parameter: x-content-type-options\nother_info: <p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>\ndescription: <p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions...",
+          "source": "results/zap/frontend/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "frontend",
+          "url": "http://host.docker.internal:5173",
+          "method": "GET",
+          "vulnerability": "Modern Web Application",
+          "severity": "info",
+          "confidence": "2",
+          "instances_count": 2,
+          "evidence": "evidence: <script type=\"module\" crossorigin src=\"/assets/index-CiF0xUcj.js\"></script>\nother_info: <p>No links have been found while there are scripts, which is an indication that this is a modern web application.</p>\ndescription: <p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>\nsolution: <p>This is an informational alert and so no changes are required.</p>",
+          "source": "results/zap/frontend/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "frontend",
+          "url": "http://host.docker.internal:5173",
+          "method": "GET",
+          "vulnerability": "Storable and Cacheable Content",
+          "severity": "info",
+          "confidence": "2",
+          "instances_count": 5,
+          "evidence": "other_info: <p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>\ndescription: <p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specifi...",
+          "source": "results/zap/frontend/report.json"
+        },
+        {
+          "scanner": "zap",
+          "target": "frontend",
+          "url": "http://host.docker.internal:5173/robots.txt",
+          "method": "GET",
+          "vulnerability": "User Agent Fuzzer",
+          "severity": "info",
+          "confidence": "2",
+          "instances_count": 5,
+          "evidence": "parameter: Header User-Agent\nattack: Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko\ndescription: <p>Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.</p>",
+          "source": "results/zap/frontend/report.json"
+        }
+      ]
+    },
+    "schemathesis": {
+      "junit_findings": [],
+      "event_samples": [
+        {
+          "event_type": null,
+          "excerpt": "{\"Initialize\": {\"command\": \"st run /work/generated/openapi.json --url http://host.docker.internal:8080 --phases examples,coverage,fuzzing,stateful --checks all --mode all --max-failures 250 --continue-on-failure --report junit,ndjson --report-junit-path /work/results/schemathesis/junit.xml --report-ndjson-path /work/results/schemathesis/events.ndjson --output-sanitize=false --request-timeout 15 --max-response-time 10 --seed 1337 --max-examples 500\", \"schemathesis_version\": \"4.14.2\", \"seed\": 1..."
+        },
+        {
+          "event_type": null,
+          "excerpt": "{\"PhaseFinished\": {\"id\": \"e6fc242a1ae049e395a0de8f9d14e312\", \"payload\": {\"probes\": [{\"outcome\": \"failure\", \"probe\": {\"name\": \"Supports NULL byte in headers\"}, \"request\": {\"body\": null, \"headers\": {\"Accept\": \"*/*\", \"Accept-Encoding\": \"gzip, deflate\", \"Connection\": \"keep-alive\", \"User-Agent\": \"schemathesis/4.14.2\", \"X-Schemathesis-Probe\": \"Supports NULL byte in headers\", \"X-Schemathesis-Probe-Null\": \"\\u0000\"}, \"method\": \"GET\", \"url\": \"http://host.docker.internal:8080/\"}, \"response\": \"<Response ..."
+        },
+        {
+          "event_type": null,
+          "excerpt": "{\"PhaseStarted\": {\"id\": \"1ff286144ad242eca8f3b0091e3bfa30\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"timestamp\": 1774870850.5193906}}"
+        },
+        {
+          "event_type": null,
+          "excerpt": "{\"PhaseFinished\": {\"id\": \"04e67675771b4b6581a3e306e3ddf014\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"status\": \"success\", \"timestamp\": 1774870850.5211444}}"
+        },
+        {
+          "event_type": null,
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.04507550099998525, \"id\": \"6684e7be16fd499fbc51669f041a1e15\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"N187NB\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+351912345678\"}, \"id\": \"N187NB\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\": \"/api/pizzerias\"}}}, \"checks\": {\"N187NB\": [{\"name\": \"not_a_server_error\", \"status\": \"success\"}, {\"name\": \"status_code_conform..."
+        },
+        {
+          "event_type": null,
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.0003720700000258148, \"id\": \"eeb29741ba6f4c5892de2f0224af2661\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"label\": \"GET /api/pizzerias\"}, \"skip_reason\": \"No examples in schema\", \"status\": \"skip\", \"suite_id\": \"512cc6aaaa6c4a0d946e484cb237d645\", \"timestamp\": 1774870850.576394}}"
+        },
+        {
+          "event_type": null,
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.009891922000008435, \"id\": \"ebdf553ad2e34bd7845eaea03c35cf20\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"fji5Po\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"ingredients\": \"Tomato, mozzarella, basil\", \"isAvailable\": true, \"name\": \"Margherita\", \"photoUrl\": \"https://example.com/pizzas/margherita.jpg\", \"pizzeriaId\": 1, \"price\": 12.5, \"size\": \"medium\"}, \"id\": \"fji5Po\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\":..."
+        },
+        {
+          "event_type": null,
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.007327387000032104, \"id\": \"6f5f0a033e1e4235918fbb8a08c8878e\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"6f9bZF\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"ingredients\": \"Tomato, mozzarella, basil\", \"isAvailable\": true, \"name\": \"Margherita\", \"photoUrl\": \"https://example.com/pizzas/margherita.jpg\", \"pizzeriaId\": 1, \"price\": 12.5, \"size\": \"medium\"}, \"id\": \"6f9bZF\", \"media_type\": \"application/json\", \"method\": \"PUT\", \"path\": ..."
+        },
+        {
+          "event_type": null,
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.013832894000017859, \"id\": \"ec55c1f84a3340e2a5eedf003ece4536\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"3XHB44\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+351912345678\"}, \"id\": \"3XHB44\", \"media_type\": \"application/json\", \"method\": \"PUT\", \"path\": \"/api/pizzerias/{id}\", \"path_parameters\": {\"id\": 320}}}, \"LHduND\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"addre..."
+        },
+        {
+          "event_type": null,
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.012692054000012831, \"id\": \"0e1190ac5f524350a4c55f2095349dcc\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"DDECFK\": {\"is_transition_applied\": false, \"value\": {\"id\": \"DDECFK\", \"method\": \"GET\", \"path\": \"/api/pizzas\", \"query\": {\"pizzeriaId\": 1}}}, \"lDTb4n\": {\"is_transition_applied\": false, \"value\": {\"id\": \"lDTb4n\", \"method\": \"GET\", \"path\": \"/api/pizzas\", \"query\": {\"pizzeriaId\": 320}}}}, \"checks\": {\"DDECFK\": [{\"name\": \"not_a_server_error\"..."
+        }
+      ]
+    }
+  }
+}
