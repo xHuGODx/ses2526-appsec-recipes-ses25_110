@@ -4,7 +4,9 @@ import json
 import os
 import pathlib
 import re
+import socket
 import sys
+import time
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
@@ -16,6 +18,9 @@ OUTPUT_PATH = ROOT / "results" / "llm" / "findings_table.json"
 INSTRUCTIONS_PATH = ROOT / "instructions.md"
 MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
 API_KEY = os.environ.get("GEMINI_KEY", "").strip()
+REQUEST_TIMEOUT = int(os.environ.get("GEMINI_REQUEST_TIMEOUT", "180"))
+MAX_RETRIES = int(os.environ.get("GEMINI_MAX_RETRIES", "3"))
+RETRY_DELAY_SECONDS = int(os.environ.get("GEMINI_RETRY_DELAY_SECONDS", "5"))
 PROMPT_RE = re.compile(r"Prompt operacional sugerido:\s*```text\n(.*?)\n```", re.S)
 
 
@@ -104,8 +109,47 @@ def gemini_request(prompt: str) -> dict:
         headers={"Content-Type": "application/json"},
         method="POST",
     )
-    with urllib.request.urlopen(request, timeout=120) as response:
+    with urllib.request.urlopen(request, timeout=REQUEST_TIMEOUT) as response:
         return json.loads(response.read().decode("utf-8"))
+
+
+def is_retryable_http(exc: urllib.error.HTTPError) -> bool:
+    return exc.code in {408, 429, 500, 502, 503, 504}
+
+
+def gemini_request_with_retries(prompt: str) -> dict:
+    last_error = None
+    attempts = max(MAX_RETRIES, 1)
+    for attempt in range(1, attempts + 1):
+        try:
+            return gemini_request(prompt)
+        except urllib.error.HTTPError as exc:
+            last_error = exc
+            body = exc.read().decode("utf-8", errors="replace")
+            if attempt >= attempts or not is_retryable_http(exc):
+                print(f"Gemini API HTTP error: {exc.code}\n{body}", file=sys.stderr)
+                raise
+            print(
+                f"Gemini API retryable HTTP error on attempt {attempt}/{attempts}: {exc.code}",
+                file=sys.stderr,
+            )
+        except (TimeoutError, socket.timeout, urllib.error.URLError) as exc:
+            last_error = exc
+            if attempt >= attempts:
+                print(
+                    f"Gemini API request failed after {attempts} attempts: {exc}",
+                    file=sys.stderr,
+                )
+                raise
+            print(
+                f"Gemini API transient failure on attempt {attempt}/{attempts}: {exc}",
+                file=sys.stderr,
+            )
+        if attempt < attempts:
+            time.sleep(RETRY_DELAY_SECONDS * attempt)
+    if last_error is not None:
+        raise last_error
+    raise RuntimeError("Gemini API request failed without an exception")
 
 
 def normalize_row(row: dict) -> dict:
@@ -177,10 +221,8 @@ def main() -> int:
 
     prompt = build_user_prompt(load_json(INPUT_PATH))
     try:
-        response = gemini_request(prompt)
+        response = gemini_request_with_retries(prompt)
     except urllib.error.HTTPError as exc:
-        body = exc.read().decode("utf-8", errors="replace")
-        print(f"Gemini API HTTP error: {exc.code}\n{body}", file=sys.stderr)
         return 1
     except Exception as exc:  # noqa: BLE001
         print(f"Gemini API request failed: {exc}", file=sys.stderr)

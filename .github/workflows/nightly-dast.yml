@@ -101,6 +101,13 @@ jobs:
         if: ${{ env.GEMINI_KEY == '' }}
         run: echo "::warning::GEMINI_KEY is not set. Skipping Gemini analysis."
 
+      - name: Smoke test Gemini API
+        if: ${{ env.GEMINI_KEY != '' }}
+        continue-on-error: true
+        run: |
+          python3 ./dast/scripts/test-gemini-api.py \
+            --prompt "Reply with exactly: GEMINI_OK"
+
       - name: Generate findings table with Gemini
         if: ${{ env.GEMINI_KEY != '' }}
         continue-on-error: true
