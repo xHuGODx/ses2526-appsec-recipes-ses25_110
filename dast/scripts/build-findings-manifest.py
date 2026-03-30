@@ -39,6 +39,7 @@ def parse_zap_report(report: pathlib.Path) -> dict:
     return {
         "present": True,
         "report": str(report.relative_to(ROOT)),
+        "alert_types": len(alerts),
         "alerts": len(alerts),
         "instances": total_instances,
         "top_alerts": alerts[:20],

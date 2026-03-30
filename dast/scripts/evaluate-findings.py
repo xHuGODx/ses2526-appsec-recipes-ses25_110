@@ -15,8 +15,19 @@ def zap_findings(data: dict) -> int:
     total = 0
     for target in ("api", "frontend"):
         report = data.get(target, {})
-        total += int(report.get("alerts", 0) or 0)
+        total += int(report.get("instances", report.get("alerts", 0)) or 0)
     return total
+
+
+def zap_details(data: dict) -> dict:
+    details = {}
+    for target in ("api", "frontend"):
+        report = data.get(target, {})
+        details[target] = {
+            "alert_types": int(report.get("alert_types", report.get("alerts", 0)) or 0),
+            "instances": int(report.get("instances", 0) or 0),
+        }
+    return details
 
 
 def schemathesis_findings(data: dict) -> int:
@@ -50,6 +61,9 @@ def main() -> int:
         "zap": zap_findings(scanners.get("zap", {})),
         "schemathesis": schemathesis_findings(scanners.get("schemathesis", {})),
     }
+    details = {
+        "zap": zap_details(scanners.get("zap", {})),
+    }
     total_findings = sum(summary.values())
     missing_artifacts = [
         path for path in args.required_files if not pathlib.Path(path).exists()
@@ -59,6 +73,7 @@ def main() -> int:
         json.dumps(
             {
                 "findings": summary,
+                "details": details,
                 "total": total_findings,
                 "missing_artifacts": missing_artifacts,
             },
