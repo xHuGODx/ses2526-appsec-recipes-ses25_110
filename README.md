@@ -18,4 +18,3 @@ Uso local:
 Entradas principais:
 - `dast/scripts/run-all.sh`
 - `.github/workflows/nightly-dast.yml`
-- `dast/instructions.md`

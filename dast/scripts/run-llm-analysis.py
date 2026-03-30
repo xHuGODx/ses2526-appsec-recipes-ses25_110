@@ -40,10 +40,11 @@ def load_json(path: pathlib.Path):
 
 
 def extract_prompt(instructions_path: pathlib.Path) -> str:
-    content = instructions_path.read_text(encoding="utf-8")
-    match = PROMPT_RE.search(content)
-    if match:
-        return match.group(1).strip()
+    if instructions_path.exists():
+        content = instructions_path.read_text(encoding="utf-8")
+        match = PROMPT_RE.search(content)
+        if match:
+            return match.group(1).strip()
     return (
         "You received ZAP and Schemathesis outputs for the same application, "
         "covering both API and frontend. Group equivalent results, do not invent evidence, "
