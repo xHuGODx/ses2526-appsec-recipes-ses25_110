@@ -14,7 +14,7 @@ jobs:
   nightly-dast:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
     env:
       SOFTWARE_REPOSITORY: xHuGODx/softwate-baseline-ses25_110
       SOFTWARE_REF: ${{ inputs.software_ref || 'master' }}
@@ -128,6 +128,27 @@ jobs:
             dast/generated
             dast/results
           retention-days: 14
+
+      - name: Replace last_results directory
+        if: always()
+        run: |
+          rm -rf "${GITHUB_WORKSPACE}/last_results"
+          mkdir -p "${GITHUB_WORKSPACE}/last_results"
+          cp -R "${GITHUB_WORKSPACE}/dast/generated" "${GITHUB_WORKSPACE}/last_results/generated"
+          cp -R "${GITHUB_WORKSPACE}/dast/results" "${GITHUB_WORKSPACE}/last_results/results"
+
+      - name: Commit last_results to repo
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A last_results
+          if git diff --cached --quiet; then
+            echo "No changes in last_results to commit."
+            exit 0
+          fi
+          git commit -m "Update last_results from nightly DAST"
+          git push origin HEAD:${GITHUB_REF_NAME}
 
       - name: Stop application stack
         if: always()
