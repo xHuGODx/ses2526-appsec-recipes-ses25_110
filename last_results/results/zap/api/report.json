@@ -1,8 +1,8 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.17.0",
-	"@generated": "Wed, 1 Apr 2026 04:48:07",
-	"created": "2026-04-01T04:48:07.048939480Z",
+	"@generated": "Thu, 2 Apr 2026 04:30:49",
+	"created": "2026-04-02T04:30:49.099724373Z",
 	"insights":[
 		{
 			"level": "Low",
@@ -67,6 +67,14 @@
 			"key": "insight.endpoint.total",
 			"description": "Count of total endpoints",
 			"statistic": "36"
+		},
+		{
+			"level": "Info",
+			"reason": "Informational",
+			"site": "http://host.docker.internal:8080",
+			"key": "insight.response.slow",
+			"description": "Percentage of slow responses",
+			"statistic": "10"
 		}
 	],
 	"site":[ 
@@ -87,7 +95,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "121",
+							"id": "11",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1",
 							"method": "DELETE",
@@ -97,7 +105,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "155",
+							"id": "43",
+							"uri": "http://host.docker.internal:8080/api/pizzas?pizzeriaId=1",
+							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas (pizzeriaId)",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "40",
 							"uri": "http://host.docker.internal:8080/api/pizzerias",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias",
 							"method": "GET",
@@ -107,7 +125,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "133",
+							"id": "15",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1",
 							"method": "GET",
@@ -117,17 +135,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "157",
-							"uri": "http://host.docker.internal:8080/api/pizzerias",
-							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias ()({name,address,phone})",
-							"method": "POST",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "125",
+							"id": "14",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1 ()({name,address,phone})",
 							"method": "PUT",
@@ -157,7 +165,7 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"id": "160",
+							"id": "37",
 							"uri": "http://host.docker.internal:8080/api/pizzas?pizzeriaId=1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas (pizzeriaId)",
 							"method": "GET",
@@ -167,7 +175,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "151",
+							"id": "35",
 							"uri": "http://host.docker.internal:8080/api/pizzerias",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias",
 							"method": "GET",
@@ -177,7 +185,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "116",
+							"id": "6",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1",
 							"method": "GET",
@@ -187,7 +195,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "152",
+							"id": "36",
 							"uri": "http://host.docker.internal:8080/api/pizzerias",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias ()({name,address,phone})",
 							"method": "POST",
@@ -197,7 +205,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "117",
+							"id": "7",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1 ()({name,address,phone})",
 							"method": "PUT",
@@ -237,7 +245,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1739",
+							"id": "1736",
 							"uri": "http://host.docker.internal:8080/api/pizzas/1/",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas\/1\/",
 							"method": "DELETE",
@@ -247,7 +255,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1741",
+							"id": "1737",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1/",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1\/",
 							"method": "DELETE",
@@ -257,7 +265,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1304",
+							"id": "1300",
 							"uri": "http://host.docker.internal:8080/computeMetadata/v1/",
 							"nodeName": "http:\/\/host.docker.internal:8080\/computeMetadata\/v1\/",
 							"method": "DELETE",
@@ -267,7 +275,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1296",
+							"id": "1291",
 							"uri": "http://host.docker.internal:8080/latest/meta-data/",
 							"nodeName": "http:\/\/host.docker.internal:8080\/latest\/meta-data\/",
 							"method": "DELETE",
@@ -277,7 +285,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1333",
+							"id": "1338",
 							"uri": "http://host.docker.internal:8080/metadata/instance",
 							"nodeName": "http:\/\/host.docker.internal:8080\/metadata\/instance",
 							"method": "DELETE",
@@ -287,7 +295,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1341",
+							"id": "1345",
 							"uri": "http://host.docker.internal:8080/metadata/v1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/metadata\/v1",
 							"method": "DELETE",
@@ -297,7 +305,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1311",
+							"id": "1310",
 							"uri": "http://host.docker.internal:8080/opc/v1/instance/",
 							"nodeName": "http:\/\/host.docker.internal:8080\/opc\/v1\/instance\/",
 							"method": "DELETE",
@@ -307,7 +315,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1320",
+							"id": "1319",
 							"uri": "http://host.docker.internal:8080/opc/v2/instance/",
 							"nodeName": "http:\/\/host.docker.internal:8080\/opc\/v2\/instance\/",
 							"method": "DELETE",
@@ -317,7 +325,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1343",
+							"id": "1350",
 							"uri": "http://host.docker.internal:8080/openstack/latest/meta_data.json",
 							"nodeName": "http:\/\/host.docker.internal:8080\/openstack\/latest\/meta_data.json",
 							"method": "DELETE",
@@ -327,7 +335,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "8",
+							"id": "42",
 							"uri": "http://host.docker.internal:8080",
 							"nodeName": "http:\/\/host.docker.internal:8080",
 							"method": "GET",
@@ -348,8 +356,8 @@
 						},
 						{
 							"id": "4",
-							"uri": "http://host.docker.internal:8080/8164477335073822797",
-							"nodeName": "http:\/\/host.docker.internal:8080\/8164477335073822797",
+							"uri": "http://host.docker.internal:8080/8942067732104517066",
+							"nodeName": "http:\/\/host.docker.internal:8080\/8942067732104517066",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -357,7 +365,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "11",
+							"id": "46",
 							"uri": "http://host.docker.internal:8080/api",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api",
 							"method": "GET",
@@ -367,7 +375,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1745",
+							"id": "1744",
 							"uri": "http://host.docker.internal:8080/api/",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/",
 							"method": "GET",
@@ -378,8 +386,8 @@
 						},
 						{
 							"id": "5",
-							"uri": "http://host.docker.internal:8080/api/5870122095694088040",
-							"nodeName": "http:\/\/host.docker.internal:8080\/api\/5870122095694088040",
+							"uri": "http://host.docker.internal:8080/api/5346079363183551413",
+							"nodeName": "http:\/\/host.docker.internal:8080\/api\/5346079363183551413",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -397,7 +405,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "23",
+							"id": "55",
 							"uri": "http://host.docker.internal:8080/api/pizzas?pizzeriaId=http%3A%2F%2Fwww.google.com%2F",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas (pizzeriaId)",
 							"method": "GET",
@@ -427,7 +435,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1747",
+							"id": "1745",
 							"uri": "http://host.docker.internal:8080/api/pizzas/1/",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas\/1\/",
 							"method": "GET",
@@ -437,9 +445,9 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "6",
-							"uri": "http://host.docker.internal:8080/api/pizzas/897344464423347545",
-							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas\/897344464423347545",
+							"id": "19",
+							"uri": "http://host.docker.internal:8080/api/pizzas/200148660277941901",
+							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas\/200148660277941901",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -447,7 +455,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1969",
+							"id": "1968",
 							"uri": "http://host.docker.internal:8080/api/pizzas/actuator/health",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas\/actuator\/health",
 							"method": "GET",
@@ -457,7 +465,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1750",
+							"id": "1747",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/",
 							"method": "GET",
@@ -477,9 +485,9 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "7",
-							"uri": "http://host.docker.internal:8080/api/pizzerias/9205875792584877364",
-							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/9205875792584877364",
+							"id": "33",
+							"uri": "http://host.docker.internal:8080/api/pizzerias/6923049840376251319",
+							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/6923049840376251319",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -487,7 +495,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "82",
+							"id": "122",
 							"uri": "http://host.docker.internal:8080/api/pizzas",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas ()({name,ingredients,pizzeriaId,price,size,isAvailable,photoUrl})",
 							"method": "POST",
@@ -507,7 +515,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1738",
+							"id": "1739",
 							"uri": "http://host.docker.internal:8080/api/pizzas/",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas\/ ()({name,ingredients,pizzeriaId,price,size,isAvailable,photoUrl})",
 							"method": "POST",
@@ -517,7 +525,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "91",
+							"id": "132",
 							"uri": "http://host.docker.internal:8080/api/pizzerias",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias ()({name,address,phone})",
 							"method": "POST",
@@ -527,7 +535,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1737",
+							"id": "1738",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/ ()({name,address,phone})",
 							"method": "POST",
@@ -537,7 +545,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "83",
+							"id": "118",
 							"uri": "http://host.docker.internal:8080/api/pizzas/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas\/1 ()({name,ingredients,pizzeriaId,price,size,isAvailable,photoUrl})",
 							"method": "PUT",
@@ -557,7 +565,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1736",
+							"id": "1735",
 							"uri": "http://host.docker.internal:8080/api/pizzas/1/",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas\/1\/ ()({name,ingredients,pizzeriaId,price,size,isAvailable,photoUrl})",
 							"method": "PUT",
@@ -567,7 +575,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "88",
+							"id": "129",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1 ()({name,address,phone})",
 							"method": "PUT",
@@ -577,7 +585,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "10",
+							"id": "49",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1 ()({name,address,phone})",
 							"method": "PUT",
@@ -587,7 +595,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1742",
+							"id": "1741",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1/",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1\/ ()({name,address,phone})",
 							"method": "PUT",
@@ -617,7 +625,7 @@
 					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
 					"instances":[ 
 						{
-							"id": "150",
+							"id": "34",
 							"uri": "http://host.docker.internal:8080/api/pizzas/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas\/1",
 							"method": "DELETE",
@@ -627,7 +635,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "118",
+							"id": "8",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1",
 							"method": "DELETE",
@@ -637,7 +645,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "156",
+							"id": "44",
 							"uri": "http://host.docker.internal:8080/api/pizzerias",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias ()({name,address,phone})",
 							"method": "POST",
@@ -647,7 +655,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "143",
+							"id": "29",
 							"uri": "http://host.docker.internal:8080/api/pizzas/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas\/1 ()({name,ingredients,pizzeriaId,price,size,isAvailable,photoUrl})",
 							"method": "PUT",
@@ -657,7 +665,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "122",
+							"id": "12",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1 ()({name,address,phone})",
 							"method": "PUT",
@@ -687,7 +695,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "136",
+							"id": "24",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1",
 							"method": "DELETE",
@@ -697,7 +705,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "135",
+							"id": "21",
 							"uri": "http://host.docker.internal:8080/api/pizzas/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas\/1",
 							"method": "GET",
@@ -707,7 +715,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "145",
+							"id": "25",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1",
 							"method": "GET",
@@ -717,7 +725,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "139",
+							"id": "30",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1 ()({name,address,phone})",
 							"method": "PUT",
@@ -747,7 +755,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "132",
+							"id": "20",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1",
 							"method": "DELETE",
@@ -757,7 +765,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "130",
+							"id": "16",
 							"uri": "http://host.docker.internal:8080/api/pizzas/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas\/1",
 							"method": "GET",
@@ -767,7 +775,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "144",
+							"id": "23",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1",
 							"method": "GET",
@@ -777,7 +785,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "134",
+							"id": "27",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1 ()({name,address,phone})",
 							"method": "PUT",
@@ -807,7 +815,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "131",
+							"id": "17",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1",
 							"method": "DELETE",
@@ -817,7 +825,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "126",
+							"id": "13",
 							"uri": "http://host.docker.internal:8080/api/pizzas/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas\/1",
 							"method": "GET",
@@ -827,7 +835,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "141",
+							"id": "18",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1",
 							"method": "GET",
@@ -837,7 +845,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "129",
+							"id": "22",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1 ()({name,address,phone})",
 							"method": "PUT",
@@ -867,7 +875,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "137",
+							"id": "31",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1",
 							"method": "DELETE",
@@ -877,7 +885,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "138",
+							"id": "26",
 							"uri": "http://host.docker.internal:8080/api/pizzas/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas\/1",
 							"method": "GET",
@@ -887,7 +895,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "147",
+							"id": "28",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1",
 							"method": "GET",
@@ -897,7 +905,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "140",
+							"id": "32",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1 ()({name,address,phone})",
 							"method": "PUT",
@@ -927,7 +935,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "161",
+							"id": "41",
 							"uri": "http://host.docker.internal:8080/api/pizzas?pizzeriaId=1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas (pizzeriaId)",
 							"method": "GET",
@@ -937,7 +945,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "119",
+							"id": "9",
 							"uri": "http://host.docker.internal:8080/api/pizzas/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas\/1",
 							"method": "GET",
@@ -947,7 +955,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "154",
+							"id": "38",
 							"uri": "http://host.docker.internal:8080/api/pizzerias",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias",
 							"method": "GET",
@@ -957,7 +965,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "124",
+							"id": "10",
 							"uri": "http://host.docker.internal:8080/api/pizzerias/1",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzerias\/1",
 							"method": "GET",
@@ -967,7 +975,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "162",
+							"id": "39",
 							"uri": "http://host.docker.internal:8080/api/pizzas",
 							"nodeName": "http:\/\/host.docker.internal:8080\/api\/pizzas ()({name,ingredients,pizzeriaId,price,size,isAvailable,photoUrl})",
 							"method": "POST",
