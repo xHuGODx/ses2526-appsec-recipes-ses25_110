@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-04-04T04:25:23.686410+00:00",
+    "generated_at": "2026-04-05T04:44:50.934910+00:00",
     "model": "gemini-2.5-flash",
     "input_path": "results/llm/analysis_input.json"
   },
@@ -16,7 +16,7 @@
       "severity": "low",
       "evidence": "parameter: Cross-Origin-Resource-Policy\ndescription: <p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
       "confidence": "medium",
-      "threat_model_relation": "side-channels attacks like Spectre",
+      "threat_model_relation": "unknown",
       "suggested_mitigation": "Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages."
     },
     {
@@ -28,10 +28,10 @@
       "method": "GET",
       "vulnerability": "X-Content-Type-Options Header Missing",
       "severity": "low",
-      "evidence": "parameter: x-content-type-options\nother_info: <p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>\ndescription: <p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions...</p>",
+      "evidence": "parameter: x-content-type-options\nother_info: <p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>\ndescription: <p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions...",
       "confidence": "medium",
-      "threat_model_relation": "browsers sniffing pages away from their actual content type, injection issues",
-      "suggested_mitigation": "Ensure the X-Content-Type-Options header is set to 'nosniff'."
+      "threat_model_relation": "unknown",
+      "suggested_mitigation": "Ensure that the X-Content-Type-Options header is set to 'nosniff' on all responses."
     },
     {
       "target": "api",
@@ -44,8 +44,8 @@
       "severity": "info",
       "evidence": "evidence: 404\ndescription: <p>A response code of 404 was returned by the server.</p><p>This may indicate that the application is failing to handle unexpected input correctly.</p><p>Raised by the 'Alert on HTTP Response Code Error' script</p>",
       "confidence": "high",
-      "threat_model_relation": "application is failing to handle unexpected input correctly",
-      "suggested_mitigation": "Ensure the application handles unexpected input correctly to avoid client error response codes."
+      "threat_model_relation": "unknown",
+      "suggested_mitigation": "Ensure the application handles unexpected input gracefully and returns appropriate HTTP status codes."
     },
     {
       "target": "api",
@@ -58,8 +58,8 @@
       "severity": "info",
       "evidence": "evidence: DELETE \ndescription: <p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
       "confidence": "medium",
-      "threat_model_relation": "performance (if not cached)",
-      "suggested_mitigation": "The content may be marked as storable by ensuring that the following conditions are satisfied: The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" ...)"
+      "threat_model_relation": "unknown",
+      "suggested_mitigation": "The content may be marked as storable by ensuring that the request method is cacheable (e.g., GET, HEAD, POST with appropriate headers) and response headers allow caching, if the content is not sensitive."
     },
     {
       "target": "api",
@@ -126,10 +126,10 @@
       "method": "GET",
       "vulnerability": "Storable and Cacheable Content",
       "severity": "info",
-      "evidence": "other_info: <p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>\ndescription: <p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specifi...</p>",
+      "evidence": "other_info: <p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>\ndescription: <p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specifi...",
       "confidence": "medium",
-      "threat_model_relation": "sensitive, personal or user-specific information (if cached inappropriately)",
-      "suggested_mitigation": "If the response data is sensitive, personal or user-specific, ensure appropriate caching directives (e.g., Cache-Control: no-store, private) are set."
+      "threat_model_relation": "unknown",
+      "suggested_mitigation": "If the response data is sensitive, personal or user-specific, ensure that appropriate caching directives (e.g., Cache-Control: no-store, private) are set to prevent caching by shared caches."
     },
     {
       "target": "frontend",
@@ -140,10 +140,10 @@
       "method": "GET",
       "vulnerability": "Content Security Policy (CSP) Header Not Set",
       "severity": "medium",
-      "evidence": "description: <p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, C...</p>",
+      "evidence": "description: <p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, C...",
       "confidence": "high",
-      "threat_model_relation": "Cross Site Scripting (XSS) and data injection attacks",
-      "suggested_mitigation": "Implement a Content Security Policy (CSP) header to declare approved sources of content."
+      "threat_model_relation": "unknown",
+      "suggested_mitigation": "Implement and configure a Content Security Policy (CSP) header to restrict content sources and mitigate XSS and data injection attacks."
     },
     {
       "target": "frontend",
@@ -156,7 +156,7 @@
       "severity": "medium",
       "evidence": "parameter: x-frame-options\ndescription: <p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
       "confidence": "medium",
-      "threat_model_relation": "ClickJacking attacks",
+      "threat_model_relation": "unknown",
       "suggested_mitigation": "Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app."
     },
     {
@@ -170,7 +170,7 @@
       "severity": "low",
       "evidence": "parameter: Cross-Origin-Embedder-Policy\ndescription: <p>Cross-Origin-Embedder-Policy header is a response header that prevents a document from loading any cross-origin resources that don't explicitly grant the document permission (using CORP or CORS).</p>",
       "confidence": "medium",
-      "threat_model_relation": "loading any cross-origin resources that don't explicitly grant the document permission",
+      "threat_model_relation": "unknown",
       "suggested_mitigation": "Ensure that the application/web server sets the Cross-Origin-Embedder-Policy header appropriately, and that it sets the Cross-Origin-Embedder-Policy header to 'require-corp' for documents."
     },
     {
@@ -184,7 +184,7 @@
       "severity": "low",
       "evidence": "parameter: Cross-Origin-Opener-Policy\ndescription: <p>Cross-Origin-Opener-Policy header is a response header that allows a site to control if others included documents share the same browsing context. Sharing the same browsing context with untrusted documents might lead to data leak.</p>",
       "confidence": "medium",
-      "threat_model_relation": "data leak",
+      "threat_model_relation": "unknown",
       "suggested_mitigation": "Ensure that the application/web server sets the Cross-Origin-Opener-Policy header appropriately, and that it sets the Cross-Origin-Opener-Policy header to 'same-origin' for documents."
     },
     {
@@ -198,7 +198,7 @@
       "severity": "low",
       "evidence": "parameter: Cross-Origin-Resource-Policy\ndescription: <p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
       "confidence": "medium",
-      "threat_model_relation": "side-channels attacks like Spectre",
+      "threat_model_relation": "unknown",
       "suggested_mitigation": "Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages."
     },
     {
@@ -212,8 +212,8 @@
       "severity": "low",
       "evidence": "evidence: nginx/1.27.5\nother_info: <p>There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body.</p>\ndescription: <p>The server returned a version banner string in the response content. Such information leaks may allow attackers to further target specific issues impacting the product and version in use.</p>",
       "confidence": "high",
-      "threat_model_relation": "information leaks, targeting specific issues",
-      "suggested_mitigation": "Configure the server to prevent such information leaks. For example: Under Tomcat this is d..."
+      "threat_model_relation": "unknown",
+      "suggested_mitigation": "Configure the server to prevent such information leaks, for example, by suppressing version banners."
     },
     {
       "target": "frontend",
@@ -224,10 +224,10 @@
       "method": "GET",
       "vulnerability": "Permissions Policy Header Not Set",
       "severity": "low",
-      "evidence": "description: <p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen et...</p>",
+      "evidence": "description: <p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen et...",
       "confidence": "medium",
-      "threat_model_relation": "unauthorized access or usage of browser/client features, user privacy",
-      "suggested_mitigation": "Implement a Permissions Policy Header to restrict unauthorized access or usage of browser/client features by web resources."
+      "threat_model_relation": "unknown",
+      "suggested_mitigation": "Implement and configure a Permissions Policy Header to restrict unauthorized access or usage of browser/client features by web resources."
     },
     {
       "target": "frontend",
@@ -240,7 +240,7 @@
       "severity": "low",
       "evidence": "evidence: nginx/1.27.5\ndescription: <p>The web/application server is leaking version information via the \"Server\" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.</p>",
       "confidence": "high",
-      "threat_model_relation": "information leaks, identifying other vulnerabilities",
+      "threat_model_relation": "unknown",
       "suggested_mitigation": "Ensure that your web server, application server, load balancer, etc. is configured to suppress the \"Server\" header or provide generic details."
     },
     {
@@ -252,10 +252,10 @@
       "method": "GET",
       "vulnerability": "X-Content-Type-Options Header Missing",
       "severity": "low",
-      "evidence": "parameter: x-content-type-options\nother_info: <p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>\ndescription: <p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions...</p>",
+      "evidence": "parameter: x-content-type-options\nother_info: <p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>\ndescription: <p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions...",
       "confidence": "medium",
-      "threat_model_relation": "browsers sniffing pages away from their actual content type, injection issues",
-      "suggested_mitigation": "Ensure the X-Content-Type-Options header is set to 'nosniff'."
+      "threat_model_relation": "unknown",
+      "suggested_mitigation": "Ensure that the X-Content-Type-Options header is set to 'nosniff' on all responses."
     },
     {
       "target": "frontend",
@@ -280,10 +280,10 @@
       "method": "GET",
       "vulnerability": "Storable and Cacheable Content",
       "severity": "info",
-      "evidence": "other_info: <p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>\ndescription: <p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specifi...</p>",
+      "evidence": "other_info: <p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>\ndescription: <p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specifi...",
       "confidence": "medium",
-      "threat_model_relation": "sensitive, personal or user-specific information (if cached inappropriately)",
-      "suggested_mitigation": "If the response data is sensitive, personal or user-specific, ensure appropriate caching directives (e.g., Cache-Control: no-store, private) are set."
+      "threat_model_relation": "unknown",
+      "suggested_mitigation": "If the response data is sensitive, personal or user-specific, ensure that appropriate caching directives (e.g., Cache-Control: no-store, private) are set to prevent caching by shared caches."
     },
     {
       "target": "frontend",
@@ -297,7 +297,7 @@
       "evidence": "parameter: Header User-Agent\nattack: Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko\ndescription: <p>Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.</p>",
       "confidence": "medium",
       "threat_model_relation": "unknown",
-      "suggested_mitigation": "This is an informational alert and so no changes are required, but differences in response based on User-Agent might indicate potential issues."
+      "suggested_mitigation": "This is an informational alert and so no changes are required."
     },
     {
       "target": "api",
@@ -306,20 +306,17 @@
       ],
       "endpoint_url": "http://host.docker.internal:8080/",
       "method": "GET",
-      "vulnerability": "Supports NULL byte in headers",
-      "severity": "unknown",
-      "evidence": "Probe 'Supports NULL byte in headers' failed. Request headers included 'X-Schemathesis-Probe-Null': '\\u0000'.",
+      "vulnerability": "NULL Byte Injection in Headers",
+      "severity": "medium",
+      "evidence": "Probe 'Supports NULL byte in headers' failed with X-Schemathesis-Probe-Null: \\u0000 in GET request to http://host.docker.internal:8080/",
       "confidence": "high",
-      "threat_model_relation": "potential header parsing vulnerabilities, bypass security controls",
-      "suggested_mitigation": "Ensure that the application correctly handles and sanitizes input, especially in HTTP headers, to prevent NULL byte injection vulnerabilities."
+      "threat_model_relation": "unknown",
+      "suggested_mitigation": "Sanitize or validate all input, especially in headers, to prevent NULL byte injection. Ensure backend systems correctly handle string termination."
     }
   ],
   "notes": [
-    "Schemathesis findings are extracted from 'event_samples' where 'outcome' is 'failure'.",
-    "Schemathesis does not provide explicit severity, confidence, threat model relation, or suggested mitigation; these are inferred or marked as 'unknown'.",
-    "ZAP confidence levels (1, 2, 3) are mapped to 'low', 'medium', 'high' respectively.",
-    "Evidence for ZAP findings combines 'parameter', 'evidence', 'other_info', and 'description' fields.",
-    "Suggested mitigation for ZAP findings prioritizes 'solution' field; otherwise, it's inferred from 'description'.",
-    "Threat model relation for ZAP findings is inferred from 'description' or 'other_info'."
+    "Confidence levels for ZAP findings were mapped from numeric values (3=high, 2=medium, 1=low).",
+    "Suggested mitigations for ZAP findings were extracted from the 'solution' field or inferred from the vulnerability description when the 'solution' was truncated or not explicitly provided.",
+    "Threat model relation is marked as 'unknown' as no information was provided in the scanner outputs to establish this relationship."
   ]
 }
