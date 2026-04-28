@@ -1,13 +1,13 @@
 {
   "metadata": {
-    "generated_at": "2026-04-27T05:27:43.033055+00:00",
+    "generated_at": "2026-04-28T05:35:44.469379+00:00",
     "manifest_path": "results/llm/scan_manifest.json"
   },
   "manifest_summary": {
     "zap": {
       "api": {
         "alert_types": 9,
-        "instances": 77
+        "instances": 73
       },
       "frontend": {
         "alert_types": 12,
@@ -80,7 +80,7 @@
           "vulnerability": "Sec-Fetch-Dest Header is Missing",
           "severity": "info",
           "confidence": "3",
-          "instances_count": 5,
+          "instances_count": 4,
           "evidence": "parameter: Sec-Fetch-Dest\ndescription: <p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>\nsolution: <p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
           "source": "results/zap/api/report.json"
         },
@@ -92,7 +92,7 @@
           "vulnerability": "Sec-Fetch-Mode Header is Missing",
           "severity": "info",
           "confidence": "3",
-          "instances_count": 5,
+          "instances_count": 4,
           "evidence": "parameter: Sec-Fetch-Mode\ndescription: <p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>\nsolution: <p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
           "source": "results/zap/api/report.json"
         },
@@ -104,7 +104,7 @@
           "vulnerability": "Sec-Fetch-Site Header is Missing",
           "severity": "info",
           "confidence": "3",
-          "instances_count": 5,
+          "instances_count": 4,
           "evidence": "parameter: Sec-Fetch-Site\ndescription: <p>Specifies the relationship between request initiator's origin and target's origin.</p>\nsolution: <p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
           "source": "results/zap/api/report.json"
         },
@@ -116,7 +116,7 @@
           "vulnerability": "Sec-Fetch-User Header is Missing",
           "severity": "info",
           "confidence": "3",
-          "instances_count": 5,
+          "instances_count": 4,
           "evidence": "parameter: Sec-Fetch-User\ndescription: <p>Specifies if a navigation request was initiated by a user.</p>\nsolution: <p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
           "source": "results/zap/api/report.json"
         },
@@ -221,7 +221,7 @@
         {
           "scanner": "zap",
           "target": "frontend",
-          "url": "http://host.docker.internal:5173",
+          "url": "http://host.docker.internal:5173/",
           "method": "GET",
           "vulnerability": "Server Leaks Version Information via \"Server\" HTTP Response Header Field",
           "severity": "low",
@@ -289,39 +289,39 @@
         },
         {
           "event_type": null,
-          "excerpt": "{\"PhaseFinished\": {\"id\": \"11fd9e17ed964cd591cd44f5b2a02f1c\", \"payload\": {\"probes\": [{\"outcome\": \"failure\", \"probe\": {\"name\": \"Supports NULL byte in headers\"}, \"request\": {\"body\": null, \"headers\": {\"Accept\": \"*/*\", \"Accept-Encoding\": \"gzip, deflate\", \"Connection\": \"keep-alive\", \"User-Agent\": \"schemathesis/4.14.2\", \"X-Schemathesis-Probe\": \"Supports NULL byte in headers\", \"X-Schemathesis-Probe-Null\": \"\\u0000\"}, \"method\": \"GET\", \"url\": \"http://host.docker.internal:8080/\"}, \"response\": \"<Response ..."
+          "excerpt": "{\"PhaseFinished\": {\"id\": \"42a3a91af51d47b4830b8e0f5010d4d0\", \"payload\": {\"probes\": [{\"outcome\": \"failure\", \"probe\": {\"name\": \"Supports NULL byte in headers\"}, \"request\": {\"body\": null, \"headers\": {\"Accept\": \"*/*\", \"Accept-Encoding\": \"gzip, deflate\", \"Connection\": \"keep-alive\", \"User-Agent\": \"schemathesis/4.14.2\", \"X-Schemathesis-Probe\": \"Supports NULL byte in headers\", \"X-Schemathesis-Probe-Null\": \"\\u0000\"}, \"method\": \"GET\", \"url\": \"http://host.docker.internal:8080/\"}, \"response\": \"<Response ..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"PhaseStarted\": {\"id\": \"b640cdad2bf843918deaaef86c686c3b\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"timestamp\": 1777267503.4273674}}"
+          "excerpt": "{\"PhaseStarted\": {\"id\": \"15f277203fc7435cb1b5a281176d0efa\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"timestamp\": 1777354337.5329912}}"
         },
         {
           "event_type": null,
-          "excerpt": "{\"PhaseFinished\": {\"id\": \"15bf3c683f1248b09cf4b3a21f377e62\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"status\": \"success\", \"timestamp\": 1777267503.4289584}}"
+          "excerpt": "{\"PhaseFinished\": {\"id\": \"de8783dfd1f04a3487ea511bd4eaea95\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"status\": \"success\", \"timestamp\": 1777354337.5345867}}"
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.03474838700003602, \"id\": \"25a7aeb5f3c842ce9b6c972c90e14cec\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"Xr9aa7\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+351912345678\"}, \"id\": \"Xr9aa7\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\": \"/api/pizzerias\"}}}, \"checks\": {\"Xr9aa7\": [{\"name\": \"not_a_server_error\", \"status\": \"success\"}, {\"name\": \"status_code_conform..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.035722813999996106, \"id\": \"cbc7f659dfeb4709a2a1819bbc5d44c9\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"epgMqs\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+351912345678\"}, \"id\": \"epgMqs\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\": \"/api/pizzerias\"}}}, \"checks\": {\"epgMqs\": [{\"name\": \"not_a_server_error\", \"status\": \"success\"}, {\"name\": \"status_code_confor..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.00032478699995408533, \"id\": \"0fa346c8a43449dda59274ff569cf0b0\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"label\": \"GET /api/pizzerias\"}, \"skip_reason\": \"No examples in schema\", \"status\": \"skip\", \"suite_id\": \"cbf500bed8254eebb7c08eb42a5dc5a4\", \"timestamp\": 1777267503.4738169}}"
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.00037493199999971694, \"id\": \"a1172bb8c412472797286f63ab6f2320\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"label\": \"GET /api/pizzerias\"}, \"skip_reason\": \"No examples in schema\", \"status\": \"skip\", \"suite_id\": \"e4065b1b9cd04479bf21b3f1512d313e\", \"timestamp\": 1777354337.580818}}"
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.005582872999980282, \"id\": \"b1ea6f1e913b438da6b9e754d0c0f8cb\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"NlzBxf\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"ingredients\": \"Tomato, mozzarella, basil\", \"isAvailable\": true, \"name\": \"Margherita\", \"photoUrl\": \"https://example.com/pizzas/margherita.jpg\", \"pizzeriaId\": 1, \"price\": 12.5, \"size\": \"medium\"}, \"id\": \"NlzBxf\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\":..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.0068886310000380035, \"id\": \"2621e56678384f5995257ea5279f88fa\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"bpJqY3\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"ingredients\": \"Tomato, mozzarella, basil\", \"isAvailable\": true, \"name\": \"Margherita\", \"photoUrl\": \"https://example.com/pizzas/margherita.jpg\", \"pizzeriaId\": 1, \"price\": 12.5, \"size\": \"medium\"}, \"id\": \"bpJqY3\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\"..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.005949850999968476, \"id\": \"ba624d2e0cea4c20a3611fba566cdd7f\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"wu2XAu\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"ingredients\": \"Tomato, mozzarella, basil\", \"isAvailable\": true, \"name\": \"Margherita\", \"photoUrl\": \"https://example.com/pizzas/margherita.jpg\", \"pizzeriaId\": 1, \"price\": 12.5, \"size\": \"medium\"}, \"id\": \"wu2XAu\", \"media_type\": \"application/json\", \"method\": \"PUT\", \"path\": ..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.006816776999926333, \"id\": \"d7fe60b8ce20461e984db7e1a7ed952c\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"bJzs83\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"ingredients\": \"Tomato, mozzarella, basil\", \"isAvailable\": true, \"name\": \"Margherita\", \"photoUrl\": \"https://example.com/pizzas/margherita.jpg\", \"pizzeriaId\": 1, \"price\": 12.5, \"size\": \"medium\"}, \"id\": \"bJzs83\", \"media_type\": \"application/json\", \"method\": \"PUT\", \"path\": ..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.009438358000011249, \"id\": \"f307b8109ad34d1d892a5005fc138b33\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"0ZSx9F\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+351912345678\"}, \"id\": \"0ZSx9F\", \"media_type\": \"application/json\", \"method\": \"PUT\", \"path\": \"/api/pizzerias/{id}\", \"path_parameters\": {\"id\": 1}}}, \"hIgPiR\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.0111196430000291, \"id\": \"3d13a70f3bca466880fcac5e8a9e8d9b\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"fRreNN\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+351912345678\"}, \"id\": \"fRreNN\", \"media_type\": \"application/json\", \"method\": \"PUT\", \"path\": \"/api/pizzerias/{id}\", \"path_parameters\": {\"id\": 1}}}, \"l3ewxc\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\":..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.00834743799998705, \"id\": \"8efdb7258a8a402dbc7cbbb0b6a4ed71\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"9hb2oK\": {\"is_transition_applied\": false, \"value\": {\"id\": \"9hb2oK\", \"method\": \"GET\", \"path\": \"/api/pizzas\", \"query\": {\"pizzeriaId\": 320}}}, \"qaWmbf\": {\"is_transition_applied\": false, \"value\": {\"id\": \"qaWmbf\", \"method\": \"GET\", \"path\": \"/api/pizzas\", \"query\": {\"pizzeriaId\": 1}}}}, \"checks\": {\"9hb2oK\": [{\"name\": \"not_a_server_error\",..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.008655481999994663, \"id\": \"6ee9cf397eeb458381e8275cd13e3231\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"epH4o3\": {\"is_transition_applied\": false, \"value\": {\"id\": \"epH4o3\", \"method\": \"GET\", \"path\": \"/api/pizzas\", \"query\": {\"pizzeriaId\": 320}}}, \"fv7i8W\": {\"is_transition_applied\": false, \"value\": {\"id\": \"fv7i8W\", \"method\": \"GET\", \"path\": \"/api/pizzas\", \"query\": {\"pizzeriaId\": 1}}}}, \"checks\": {\"epH4o3\": [{\"name\": \"not_a_server_error\"..."
         }
       ]
     }
