@@ -1,0 +1,689 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://host.docker.internal:8080"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Pizzas",
+      "description": "CRUD operations for pizzas"
+    },
+    {
+      "name": "Pizzerias",
+      "description": "CRUD operations for pizzerias"
+    }
+  ],
+  "paths": {
+    "/api/pizzerias/{id}": {
+      "get": {
+        "tags": [
+          "Pizzerias"
+        ],
+        "summary": "Get a pizzeria by ID",
+        "operationId": "findById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Pizzeria identifier",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pizzeria found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pizzeria"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Pizzeria not found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Pizzerias"
+        ],
+        "summary": "Update a pizzeria",
+        "description": "Updates an existing pizzeria by its ID.",
+        "operationId": "update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Pizzeria identifier",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1
+          }
+        ],
+        "requestBody": {
+          "description": "Pizzeria data to update",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PizzeriaRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Pizzeria updated successfully",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pizzeria"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request payload or database constraint violation",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Pizzeria not found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Pizzerias"
+        ],
+        "summary": "Delete a pizzeria",
+        "description": "Deletes a pizzeria and its pizzas (cascade delete).",
+        "operationId": "delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Pizzeria identifier",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Pizzeria deleted successfully"
+          },
+          "404": {
+            "description": "Pizzeria not found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pizzas/{id}": {
+      "get": {
+        "tags": [
+          "Pizzas"
+        ],
+        "summary": "Get a pizza by ID",
+        "operationId": "findById_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Pizza identifier",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pizza found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pizza"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Pizza not found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Pizzas"
+        ],
+        "summary": "Update a pizza",
+        "description": "Updates an existing pizza by its ID.",
+        "operationId": "update_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Pizza identifier",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1
+          }
+        ],
+        "requestBody": {
+          "description": "Pizza data to update",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PizzaRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Pizza updated successfully",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pizza"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request payload or database constraint violation",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Pizza or referenced pizzeria not found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Pizzas"
+        ],
+        "summary": "Delete a pizza",
+        "description": "Deletes a pizza by its ID.",
+        "operationId": "delete_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Pizza identifier",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Pizza deleted successfully"
+          },
+          "404": {
+            "description": "Pizza not found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pizzerias": {
+      "get": {
+        "tags": [
+          "Pizzerias"
+        ],
+        "summary": "List pizzerias",
+        "operationId": "findAll",
+        "responses": {
+          "200": {
+            "description": "Pizzerias retrieved successfully",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pizzeria"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pizzerias"
+        ],
+        "summary": "Create a pizzeria",
+        "operationId": "create",
+        "requestBody": {
+          "description": "Pizzeria data to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PizzeriaRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Pizzeria created successfully",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pizzeria"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request payload or database constraint violation",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pizzas": {
+      "get": {
+        "tags": [
+          "Pizzas"
+        ],
+        "summary": "List pizzas",
+        "description": "Returns all pizzas. Optionally filter results by pizzeria ID.",
+        "operationId": "findAll_1",
+        "parameters": [
+          {
+            "name": "pizzeriaId",
+            "in": "query",
+            "description": "Filter pizzas by pizzeria ID",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pizzas retrieved successfully",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pizza"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid query parameter",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pizzas"
+        ],
+        "summary": "Create a pizza",
+        "description": "Creates a pizza and associates it with an existing pizzeria.",
+        "operationId": "create_1",
+        "requestBody": {
+          "description": "Pizza data to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PizzaRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Pizza created successfully",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pizza"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request payload or database constraint violation",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Referenced pizzeria not found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PizzeriaRequest": {
+        "type": "object",
+        "description": "Payload used to create or update a pizzeria",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Pizzeria name",
+            "example": "Napoli Centrale",
+            "maxLength": 150,
+            "minLength": 0
+          },
+          "address": {
+            "type": "string",
+            "description": "Street address",
+            "example": 123,
+            "maxLength": 255,
+            "minLength": 0
+          },
+          "phone": {
+            "type": "string",
+            "description": "Contact phone number",
+            "example": "+351912345678",
+            "maxLength": 30,
+            "minLength": 0
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "Pizzeria": {
+        "type": "object",
+        "description": "Pizzeria resource returned by the API",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Pizzeria identifier",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "Pizzeria name",
+            "example": "Napoli Centrale"
+          },
+          "address": {
+            "type": "string",
+            "description": "Street address",
+            "example": 123
+          },
+          "phone": {
+            "type": "string",
+            "description": "Contact phone number",
+            "example": "+351912345678"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp",
+            "example": "2026-02-23T10:45:12"
+          }
+        }
+      },
+      "ApiErrorResponse": {
+        "type": "object",
+        "description": "Standard error response returned by the API",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Time when the error was generated",
+            "example": "2026-02-23T10:45:12.345"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "description": "HTTP status code",
+            "example": 400
+          },
+          "error": {
+            "type": "string",
+            "description": "HTTP status reason phrase",
+            "example": "Bad Request"
+          },
+          "message": {
+            "type": "string",
+            "description": "Application error message or validation details",
+            "example": "name: must not be blank"
+          }
+        }
+      },
+      "PizzaRequest": {
+        "type": "object",
+        "description": "Payload used to create or update a pizza",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Pizza name",
+            "example": "Margherita",
+            "maxLength": 150,
+            "minLength": 0
+          },
+          "ingredients": {
+            "type": "string",
+            "description": "Ingredient list or description",
+            "example": "Tomato, mozzarella, basil",
+            "maxLength": 800,
+            "minLength": 0
+          },
+          "pizzeriaId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID of the pizzeria that owns this pizza",
+            "example": 1
+          },
+          "price": {
+            "type": "number",
+            "description": "Price in euros/dollars (2 decimal places)",
+            "example": 12.5,
+            "minimum": 0.0
+          },
+          "size": {
+            "type": "string",
+            "description": "Pizza size",
+            "enum": [
+              "small",
+              "medium",
+              "large"
+            ],
+            "example": "medium"
+          },
+          "isAvailable": {
+            "type": "boolean",
+            "description": "Whether the pizza is available for ordering",
+            "example": true
+          },
+          "photoUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "Photo URL for display purposes",
+            "example": "https://example.com/pizzas/margherita.jpg"
+          }
+        },
+        "required": [
+          "name",
+          "pizzeriaId",
+          "price",
+          "size"
+        ]
+      },
+      "Pizza": {
+        "type": "object",
+        "description": "Pizza resource returned by the API",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Pizza identifier",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "Pizza name",
+            "example": "Margherita"
+          },
+          "ingredients": {
+            "type": "string",
+            "description": "Ingredient list or description",
+            "example": "Tomato, mozzarella, basil"
+          },
+          "price": {
+            "type": "number",
+            "description": "Price",
+            "example": 12.5
+          },
+          "size": {
+            "type": "string",
+            "description": "Pizza size",
+            "enum": [
+              "small",
+              "medium",
+              "large"
+            ],
+            "example": "medium"
+          },
+          "isAvailable": {
+            "type": "boolean",
+            "description": "Whether the pizza is available",
+            "example": true
+          },
+          "photoUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "Photo URL",
+            "example": "https://example.com/pizzas/margherita.jpg"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp",
+            "example": "2026-02-23T10:45:12"
+          },
+          "pizzeriaId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Owning pizzeria identifier",
+            "example": 1
+          }
+        }
+      }
+    }
+  }
+}
