@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<testsuites disabled="0" errors="0" failures="11" tests="11" time="220.22565100399828">
-	<testsuite disabled="0" errors="0" failures="11" name="schemathesis" skipped="1" tests="11" time="220.22565100399828" hostname="992d6b275dfe">
-		<testcase name="POST /api/pizzerias" time="7.244867">
-			<failure type="failure" message="1. Test Case ID: SQJrA3
+<testsuites disabled="0" errors="0" failures="11" tests="11" time="169.57694160199742">
+	<testsuite disabled="0" errors="0" failures="11" name="schemathesis" skipped="1" tests="11" time="169.57694160199742" hostname="496799c290a9">
+		<testcase name="POST /api/pizzerias" time="7.245636">
+			<failure type="failure" message="1. Test Case ID: 2ZMnKW
 
 - Response violates schema
 
@@ -28,7 +28,7 @@
 Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Napoli Centrale&quot;, &quot;address&quot;: 123, &quot;phone&quot;: &quot;+351912345678&quot;}' http://host.docker.internal:8080/api/pizzerias"/>
-			<failure type="failure" message="1. Test Case ID: SQJrA3
+			<failure type="failure" message="1. Test Case ID: 2ZMnKW
 
 - Response violates schema
 
@@ -55,11 +55,11 @@ Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Napoli Centrale&quot;, &quot;address&quot;: 123, &quot;phone&quot;: &quot;+351912345678&quot;}' http://host.docker.internal:8080/api/pizzerias
 
-2. Test Case ID: 5BjTC4
+2. Test Case ID: TuU9P4
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.976905451&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.967833464&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -72,17 +72,33 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.976905451&quot;
+        &quot;2026-07-26T05:33:19.967833464&quot;
 
 [400] Bad Request:
 
-    `{&quot;error&quot;:&quot;Bad Request&quot;,&quot;message&quot;:&quot;name: must not be blank&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.976905451&quot;,&quot;status&quot;:400}`
+    `{&quot;error&quot;:&quot;Bad Request&quot;,&quot;message&quot;:&quot;name: must not be blank&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.967833464&quot;,&quot;status&quot;:400}`
 
 Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;address&quot;: 123, &quot;phone&quot;: &quot;+351912345678&quot;}' http://host.docker.internal:8080/api/pizzerias
 
-3. Test Case ID: 7rnAbr
+3. Test Case ID: Efj6m9
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /properties/phone:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Contact phone number&quot;,
+            &quot;example&quot;: &quot;+351912345678&quot;
+        }
+
+    Value:
+
+        null
 
 - API accepted schema-violating request
 
@@ -98,7 +114,7 @@ Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Napoli Centrale&quot;, &quot;address&quot;: 123, &quot;phone&quot;: null}' http://host.docker.internal:8080/api/pizzerias
 
-4. Test Case ID: 3jeYiN
+4. Test Case ID: zAOh25
 
 - Response violates schema
 
@@ -123,7 +139,7 @@ Reproduce with:
 Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Napoli Centrale&quot;, &quot;address&quot;: null, &quot;phone&quot;: &quot;+351912345678&quot;}' http://host.docker.internal:8080/api/pizzerias"/>
-			<failure type="failure" message="1. Test Case ID: SQJrA3
+			<failure type="failure" message="1. Test Case ID: 2ZMnKW
 
 - Response violates schema
 
@@ -150,11 +166,11 @@ Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Napoli Centrale&quot;, &quot;address&quot;: 123, &quot;phone&quot;: &quot;+351912345678&quot;}' http://host.docker.internal:8080/api/pizzerias
 
-2. Test Case ID: 5BjTC4
+2. Test Case ID: TuU9P4
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.976905451&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.967833464&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -167,17 +183,33 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.976905451&quot;
+        &quot;2026-07-26T05:33:19.967833464&quot;
 
 [400] Bad Request:
 
-    `{&quot;error&quot;:&quot;Bad Request&quot;,&quot;message&quot;:&quot;name: must not be blank&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.976905451&quot;,&quot;status&quot;:400}`
+    `{&quot;error&quot;:&quot;Bad Request&quot;,&quot;message&quot;:&quot;name: must not be blank&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.967833464&quot;,&quot;status&quot;:400}`
 
 Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;address&quot;: 123, &quot;phone&quot;: &quot;+351912345678&quot;}' http://host.docker.internal:8080/api/pizzerias
 
-3. Test Case ID: 7rnAbr
+3. Test Case ID: Efj6m9
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /properties/phone:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Contact phone number&quot;,
+            &quot;example&quot;: &quot;+351912345678&quot;
+        }
+
+    Value:
+
+        null
 
 - API accepted schema-violating request
 
@@ -193,7 +225,7 @@ Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Napoli Centrale&quot;, &quot;address&quot;: 123, &quot;phone&quot;: null}' http://host.docker.internal:8080/api/pizzerias
 
-4. Test Case ID: 3jeYiN
+4. Test Case ID: zAOh25
 
 - Response violates schema
 
@@ -219,7 +251,7 @@ Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Napoli Centrale&quot;, &quot;address&quot;: null, &quot;phone&quot;: &quot;+351912345678&quot;}' http://host.docker.internal:8080/api/pizzerias
 
-5. Test Case ID: B9gYfs
+5. Test Case ID: NFOkSI
 
 - API rejected schema-compliant request
 
@@ -228,18 +260,18 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;error&quot;:&quot;Bad Request&quot;,&quot;message&quot;:&quot;name: must not be blank&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:32.837829353&quot;,&quot;status&quot;:400}`
+    `{&quot;error&quot;:&quot;Bad Request&quot;,&quot;message&quot;:&quot;name: must not be blank&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:28.913164703&quot;,&quot;status&quot;:400}`
 
 Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;&quot;}' http://host.docker.internal:8080/api/pizzerias"/>
 		</testcase>
-		<testcase name="GET /api/pizzerias" time="0.132331">
-			<failure type="failure" message="1. Test Case ID: nsvYZu
+		<testcase name="GET /api/pizzerias" time="0.138789">
+			<failure type="failure" message="1. Test Case ID: xkgjwj
 
 - Response violates schema
 
-    &quot;2026-07-25T05:13:37&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:30:18&quot; is not a &quot;date-time&quot;
 
     Schema at /components/schemas/Pizzeria/properties/createdAt:
 
@@ -252,20 +284,20 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:13:37&quot;
+        &quot;2026-07-26T05:30:18&quot;
 
 [200] OK:
 
-    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;Roma Antica&quot;,&quot;address&quot;:&quot;Avenida da Liberdade 22, Lisboa&quot;,&quot;phone&quot;:&quot;+351 210 200 200&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:35&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:6,&quot;n // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;Roma Antica&quot;,&quot;address&quot;:&quot;Avenida da Liberdade 22, Lisboa&quot;,&quot;phone&quot;:&quot;+351 210 200 200&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;n // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
-			<failure type="failure" message="1. Test Case ID: nsvYZu
+			<failure type="failure" message="1. Test Case ID: xkgjwj
 
 - Response violates schema
 
-    &quot;2026-07-25T05:13:37&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:30:18&quot; is not a &quot;date-time&quot;
 
     Schema at /components/schemas/Pizzeria/properties/createdAt:
 
@@ -278,23 +310,23 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:13:37&quot;
+        &quot;2026-07-26T05:30:18&quot;
 
 [200] OK:
 
-    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;Roma Antica&quot;,&quot;address&quot;:&quot;Avenida da Liberdade 22, Lisboa&quot;,&quot;phone&quot;:&quot;+351 210 200 200&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:35&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:6,&quot;n // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;Roma Antica&quot;,&quot;address&quot;:&quot;Avenida da Liberdade 22, Lisboa&quot;,&quot;phone&quot;:&quot;+351 210 200 200&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;n // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
 			<skipped type="skipped">Hypothesis has been told to run no test cases for this test.</skipped>
 		</testcase>
-		<testcase name="POST /api/pizzas" time="10.756188">
-			<failure type="failure" message="1. Test Case ID: 5mTPJw
+		<testcase name="POST /api/pizzas" time="10.755130">
+			<failure type="failure" message="1. Test Case ID: EBAN0A
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:22.499198151&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:18.444096309&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -307,20 +339,20 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:22.499198151&quot;
+        &quot;2026-07-26T05:33:18.444096309&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:22.499198151&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:18.444096309&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Margherita&quot;, &quot;ingredients&quot;: &quot;Tomato, mozzarella, basil&quot;, &quot;pizzeriaId&quot;: 1, &quot;price&quot;: 12.5, &quot;size&quot;: &quot;medium&quot;, &quot;isAvailable&quot;: true, &quot;photoUrl&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;}' http://host.docker.internal:8080/api/pizzas"/>
-			<failure type="failure" message="1. Test Case ID: 5mTPJw
+			<failure type="failure" message="1. Test Case ID: EBAN0A
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:22.499198151&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:18.444096309&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -333,20 +365,20 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:22.499198151&quot;
+        &quot;2026-07-26T05:33:18.444096309&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:22.499198151&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:18.444096309&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Margherita&quot;, &quot;ingredients&quot;: &quot;Tomato, mozzarella, basil&quot;, &quot;pizzeriaId&quot;: 1, &quot;price&quot;: 12.5, &quot;size&quot;: &quot;medium&quot;, &quot;isAvailable&quot;: true, &quot;photoUrl&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;}' http://host.docker.internal:8080/api/pizzas"/>
-			<failure type="failure" message="1. Test Case ID: 5mTPJw
+			<failure type="failure" message="1. Test Case ID: EBAN0A
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:22.499198151&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:18.444096309&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -359,17 +391,17 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:22.499198151&quot;
+        &quot;2026-07-26T05:33:18.444096309&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:22.499198151&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:18.444096309&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Margherita&quot;, &quot;ingredients&quot;: &quot;Tomato, mozzarella, basil&quot;, &quot;pizzeriaId&quot;: 1, &quot;price&quot;: 12.5, &quot;size&quot;: &quot;medium&quot;, &quot;isAvailable&quot;: true, &quot;photoUrl&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;}' http://host.docker.internal:8080/api/pizzas
 
-2. Test Case ID: HctBTb
+2. Test Case ID: 0tlTsj
 
 - API rejected schema-compliant request
 
@@ -378,25 +410,24 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;error&quot;:&quot;Bad Request&quot;,&quot;message&quot;:&quot;name: must not be blank&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:39.979489668&quot;,&quot;status&quot;:400}`
+    `{&quot;error&quot;:&quot;Bad Request&quot;,&quot;message&quot;:&quot;name: must not be blank&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:36.022944536&quot;,&quot;status&quot;:400}`
 
 Reproduce with:
 
-    curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;&quot;, &quot;pizzeriaId&quot;: 302, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;}' http://host.docker.internal:8080/api/pizzas
+    curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;&quot;, &quot;pizzeriaId&quot;: 284, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;}' http://host.docker.internal:8080/api/pizzas
 
-3. Test Case ID: rinaoy
+3. Test Case ID: pDc6yJ
 
 - Response violates schema
 
     null is not of type &quot;string&quot;
 
-    Schema at /properties/createdAt:
+    Schema at /properties/ingredients:
 
         {
             &quot;type&quot;: &quot;string&quot;,
-            &quot;format&quot;: &quot;date-time&quot;,
-            &quot;description&quot;: &quot;Creation timestamp&quot;,
-            &quot;example&quot;: &quot;2026-02-23T10:45:12&quot;
+            &quot;description&quot;: &quot;Ingredient list or description&quot;,
+            &quot;example&quot;: &quot;Tomato, mozzarella, basil&quot;
         }
 
     Value:
@@ -405,18 +436,45 @@ Reproduce with:
 
 [201] Created:
 
-    `{&quot;id&quot;:7,&quot;name&quot;:&quot;󩥐Ä򏱟&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.0,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:null,&quot;pizzeriaId&quot;:303}`
+    `{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.0,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:null,&quot;pizzeriaId&quot;:284}`
 
 Reproduce with:
 
-    curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\udb66\udd50\u00c4\ud9ff\udc5f&quot;, &quot;pizzeriaId&quot;: 303, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;}' http://host.docker.internal:8080/api/pizzas"/>
+    curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\u00ea:&quot;, &quot;pizzeriaId&quot;: 284, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;, &quot;&quot;: []}' http://host.docker.internal:8080/api/pizzas
+
+4. Test Case ID: 6Lm7Bz
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /properties/photoUrl:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
+        }
+
+    Value:
+
+        null
+
+[201] Created:
+
+    `{&quot;id&quot;:11,&quot;name&quot;:&quot;\u0004Jq\u0011\f5ì(񢻩z4&quot;,&quot;ingredients&quot;:&quot;Q&quot;,&quot;price&quot;:0.0,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:null,&quot;pizzeriaId&quot;:363}`
+
+Reproduce with:
+
+    curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\u0004Jq\u0011\f5\u00ec(\ud94b\udee9z4&quot;, &quot;pizzeriaId&quot;: 363, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;small&quot;, &quot;ingredients&quot;: &quot;Q&quot;}' http://host.docker.internal:8080/api/pizzas"/>
 		</testcase>
-		<testcase name="PUT /api/pizzas/{id}" time="9.795352">
-			<failure type="failure" message="1. Test Case ID: XU3p7P
+		<testcase name="PUT /api/pizzas/{id}" time="11.768369">
+			<failure type="failure" message="1. Test Case ID: 0KYRf6
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.749082461&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.731103779&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -429,20 +487,20 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.749082461&quot;
+        &quot;2026-07-26T05:33:19.731103779&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.749082461&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.731103779&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Margherita&quot;, &quot;ingredients&quot;: &quot;Tomato, mozzarella, basil&quot;, &quot;pizzeriaId&quot;: 1, &quot;price&quot;: 12.5, &quot;size&quot;: &quot;medium&quot;, &quot;isAvailable&quot;: true, &quot;photoUrl&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;}' http://host.docker.internal:8080/api/pizzas/1"/>
-			<failure type="failure" message="1. Test Case ID: XU3p7P
+			<failure type="failure" message="1. Test Case ID: 0KYRf6
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.749082461&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.731103779&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -455,20 +513,20 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.749082461&quot;
+        &quot;2026-07-26T05:33:19.731103779&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.749082461&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.731103779&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Margherita&quot;, &quot;ingredients&quot;: &quot;Tomato, mozzarella, basil&quot;, &quot;pizzeriaId&quot;: 1, &quot;price&quot;: 12.5, &quot;size&quot;: &quot;medium&quot;, &quot;isAvailable&quot;: true, &quot;photoUrl&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;}' http://host.docker.internal:8080/api/pizzas/1"/>
-			<failure type="failure" message="1. Test Case ID: XU3p7P
+			<failure type="failure" message="1. Test Case ID: 0KYRf6
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.749082461&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.731103779&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -481,17 +539,17 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.749082461&quot;
+        &quot;2026-07-26T05:33:19.731103779&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.749082461&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.731103779&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Margherita&quot;, &quot;ingredients&quot;: &quot;Tomato, mozzarella, basil&quot;, &quot;pizzeriaId&quot;: 1, &quot;price&quot;: 12.5, &quot;size&quot;: &quot;medium&quot;, &quot;isAvailable&quot;: true, &quot;photoUrl&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;}' http://host.docker.internal:8080/api/pizzas/1
 
-2. Test Case ID: A2ywGg
+2. Test Case ID: Iw4Cd8
 
 - API rejected schema-compliant request
 
@@ -500,18 +558,71 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;error&quot;:&quot;Bad Request&quot;,&quot;message&quot;:&quot;name: must not be blank&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:50.426657093&quot;,&quot;status&quot;:400}`
+    `{&quot;error&quot;:&quot;Bad Request&quot;,&quot;message&quot;:&quot;name: must not be blank&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:46.484336695&quot;,&quot;status&quot;:400}`
 
 Reproduce with:
 
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;&quot;, &quot;pizzeriaId&quot;: 0, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;}' http://host.docker.internal:8080/api/pizzas/3"/>
+    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;&quot;, &quot;pizzeriaId&quot;: 0, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;}' http://host.docker.internal:8080/api/pizzas/3
+
+3. Test Case ID: o2uBKX
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /properties/ingredients:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Ingredient list or description&quot;,
+            &quot;example&quot;: &quot;Tomato, mozzarella, basil&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.0,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:151}`
+
+Reproduce with:
+
+    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\u009b&quot;, &quot;pizzeriaId&quot;: 151, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;, &quot;&quot;: null}' http://host.docker.internal:8080/api/pizzas/6
+
+4. Test Case ID: 8zKvuS
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /properties/photoUrl:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `{&quot;id&quot;:220,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:&quot;&quot;,&quot;price&quot;:0.0,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:45&quot;,&quot;pizzeriaId&quot;:151}`
+
+Reproduce with:
+
+    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\u009b&quot;, &quot;pizzeriaId&quot;: 151, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;, &quot;ingredients&quot;: &quot;&quot;}' http://host.docker.internal:8080/api/pizzas/220"/>
 		</testcase>
-		<testcase name="PUT /api/pizzerias/{id}" time="13.414654">
-			<failure type="failure" message="1. Test Case ID: OmX5tO
+		<testcase name="PUT /api/pizzerias/{id}" time="15.854934">
+			<failure type="failure" message="1. Test Case ID: AQ0ZCD
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:22&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:18&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/createdAt:
 
@@ -524,21 +635,21 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:22&quot;
+        &quot;2026-07-26T05:33:18&quot;
 
 [200] OK:
 
-    `{&quot;id&quot;:320,&quot;name&quot;:&quot;Napoli Centrale&quot;,&quot;address&quot;:&quot;123&quot;,&quot;phone&quot;:&quot;+351912345678&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:16:22&quot;}`
+    `{&quot;id&quot;:320,&quot;name&quot;:&quot;Napoli Centrale&quot;,&quot;address&quot;:&quot;123&quot;,&quot;phone&quot;:&quot;+351912345678&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:33:18&quot;}`
 
 Reproduce with:
 
     curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Napoli Centrale&quot;, &quot;address&quot;: 123, &quot;phone&quot;: &quot;+351912345678&quot;}' http://host.docker.internal:8080/api/pizzerias/320
 
-2. Test Case ID: QdX9Rj
+2. Test Case ID: CeJGBb
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.766128373&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.74694395&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -551,20 +662,20 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.766128373&quot;
+        &quot;2026-07-26T05:33:19.74694395&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.766128373&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.74694395&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Napoli Centrale&quot;, &quot;address&quot;: 123, &quot;phone&quot;: &quot;+351912345678&quot;}' http://host.docker.internal:8080/api/pizzerias/1"/>
-			<failure type="failure" message="1. Test Case ID: OmX5tO
+			<failure type="failure" message="1. Test Case ID: AQ0ZCD
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:22&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:18&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/createdAt:
 
@@ -577,21 +688,21 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:22&quot;
+        &quot;2026-07-26T05:33:18&quot;
 
 [200] OK:
 
-    `{&quot;id&quot;:320,&quot;name&quot;:&quot;Napoli Centrale&quot;,&quot;address&quot;:&quot;123&quot;,&quot;phone&quot;:&quot;+351912345678&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:16:22&quot;}`
+    `{&quot;id&quot;:320,&quot;name&quot;:&quot;Napoli Centrale&quot;,&quot;address&quot;:&quot;123&quot;,&quot;phone&quot;:&quot;+351912345678&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:33:18&quot;}`
 
 Reproduce with:
 
     curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Napoli Centrale&quot;, &quot;address&quot;: 123, &quot;phone&quot;: &quot;+351912345678&quot;}' http://host.docker.internal:8080/api/pizzerias/320
 
-2. Test Case ID: QdX9Rj
+2. Test Case ID: CeJGBb
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.766128373&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.74694395&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -604,20 +715,20 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.766128373&quot;
+        &quot;2026-07-26T05:33:19.74694395&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.766128373&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.74694395&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Napoli Centrale&quot;, &quot;address&quot;: 123, &quot;phone&quot;: &quot;+351912345678&quot;}' http://host.docker.internal:8080/api/pizzerias/1"/>
-			<failure type="failure" message="1. Test Case ID: OmX5tO
+			<failure type="failure" message="1. Test Case ID: AQ0ZCD
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:22&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:18&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/createdAt:
 
@@ -630,21 +741,21 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:22&quot;
+        &quot;2026-07-26T05:33:18&quot;
 
 [200] OK:
 
-    `{&quot;id&quot;:320,&quot;name&quot;:&quot;Napoli Centrale&quot;,&quot;address&quot;:&quot;123&quot;,&quot;phone&quot;:&quot;+351912345678&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:16:22&quot;}`
+    `{&quot;id&quot;:320,&quot;name&quot;:&quot;Napoli Centrale&quot;,&quot;address&quot;:&quot;123&quot;,&quot;phone&quot;:&quot;+351912345678&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:33:18&quot;}`
 
 Reproduce with:
 
     curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Napoli Centrale&quot;, &quot;address&quot;: 123, &quot;phone&quot;: &quot;+351912345678&quot;}' http://host.docker.internal:8080/api/pizzerias/320
 
-2. Test Case ID: QdX9Rj
+2. Test Case ID: CeJGBb
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.766128373&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.74694395&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -657,17 +768,17 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.766128373&quot;
+        &quot;2026-07-26T05:33:19.74694395&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.766128373&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.74694395&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Napoli Centrale&quot;, &quot;address&quot;: 123, &quot;phone&quot;: &quot;+351912345678&quot;}' http://host.docker.internal:8080/api/pizzerias/1
 
-3. Test Case ID: 1RlCfn
+3. Test Case ID: o5Udlg
 
 - Response violates schema
 
@@ -687,34 +798,60 @@ Reproduce with:
 
 [200] OK:
 
-    `{&quot;id&quot;:302,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:14:45&quot;}`
+    `{&quot;id&quot;:284,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:31:40&quot;}`
 
 Reproduce with:
 
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;ZAP&quot;}' http://host.docker.internal:8080/api/pizzerias/302
+    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;ZAP&quot;}' http://host.docker.internal:8080/api/pizzerias/284
 
-4. Test Case ID: Q9VUDy
+4. Test Case ID: REJy4v
 
 - API rejected schema-compliant request
 
     Valid data should have been accepted
     Expected: 2xx, 401, 403, 404, 409, 5xx
-    Hint: The request body contains 1 additional property not defined in the schema (`yc𕧷`). The server likely rejects unexpected fields. Add `additionalProperties: false` to your schema to prevent this.
+    Hint: The request body contains 2 additional properties not defined in the schema (`󊫦𪀹4`, `dÛ.񢔢xÚ򪔁þø    âf󡹦÷»]Ï¯`). The server likely rejects unexpected fields. Add `additionalProperties: false` to your schema to prevent this.
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:17:00.232Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzerias/162&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:33:58.206Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzerias/7&quot;}`
 
 Reproduce with:
 
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\u00e6\u009e\ud9ad\udfdd\u00b5\ud8c0\ude29&quot;, &quot;address&quot;: &quot;\u0006\n)&quot;, &quot;yc\ud816\uddf7&quot;: [{}]}' http://host.docker.internal:8080/api/pizzerias/162"/>
-		</testcase>
-		<testcase name="GET /api/pizzas" time="6.765397">
-			<failure type="failure" message="1. Test Case ID: fjlV3r
+    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\udaf6\udd9b\u00e4\u00f7&quot;, &quot;address&quot;: &quot;z\ud9e4\udcc9\udaa0\udec0&quot;, &quot;\u001b\udaea\udee6\ud868\udc394&quot;: [], &quot;d\u00db\u0006.\ud949\udd22\u0013x\u00da\u009d\u0005\uda69\udd01\u00fe\u00f8\u001d\u00e2f\udb47\ude66\u00f7\u00bb]\u00cf\u00af&quot;: {}, &quot;phone&quot;: &quot;&quot;}' http://host.docker.internal:8080/api/pizzerias/7
+
+5. Test Case ID: cxw8mm
 
 - Response violates schema
 
-    &quot;2026-07-25T05:13:37&quot; is not a &quot;date-time&quot;
+    null is not of type &quot;string&quot;
+
+    Schema at /properties/phone:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Contact phone number&quot;,
+            &quot;example&quot;: &quot;+351912345678&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `{&quot;id&quot;:374,&quot;name&quot;:&quot;www.google.com:80/search?q=ZAP&quot;,&quot;address&quot;:&quot;󧃔Ò&quot;,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:31&quot;}`
+
+Reproduce with:
+
+    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;www.google.com:80/search?q=ZAP&quot;, &quot; \u00a5&quot;: [[]], &quot;address&quot;: &quot;\udb5c\udcd4\u00d2&quot;}' http://host.docker.internal:8080/api/pizzerias/374"/>
+		</testcase>
+		<testcase name="GET /api/pizzas" time="6.398038">
+			<failure type="failure" message="1. Test Case ID: pVDmLC
+
+- Response violates schema
+
+    &quot;2026-07-26T05:30:18&quot; is not a &quot;date-time&quot;
 
     Schema at /components/schemas/Pizza/properties/createdAt:
 
@@ -727,7 +864,7 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:13:37&quot;
+        &quot;2026-07-26T05:30:18&quot;
 
 - API accepted schema-violating request
 
@@ -737,16 +874,16 @@ Reproduce with:
 
 [200] OK:
 
-    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Pepperoni&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, pepperoni&quot;,&quot;price&quot;:11.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:&quot;https://images.unsplash.com/photo-1513104890138-7c749659a591&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;,&quot;pizzeriaId&quot;:2},{&quot;id&quot;:4,&quot;name&quot;:&quot;Quattro Formaggi&quot;,&quot;ingredients&quot;:&quot;Mozzarella, gorgonzola, parmesan, provolone&quot;,&quot;price&quot;:12.40,&quot;size&quot;:&quot;medium&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;,&quot;pizzeriaId&quot;:2},{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozza // Output truncated...`
+    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Pepperoni&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, pepperoni&quot;,&quot;price&quot;:11.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:&quot;https://images.unsplash.com/photo-1513104890138-7c749659a591&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:2},{&quot;id&quot;:4,&quot;name&quot;:&quot;Quattro Formaggi&quot;,&quot;ingredients&quot;:&quot;Mozzarella, gorgonzola, parmesan, provolone&quot;,&quot;price&quot;:12.40,&quot;size&quot;:&quot;medium&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:2},{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozza // Output truncated...`
 
 Reproduce with:
 
     curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId='"/>
-			<failure type="failure" message="1. Test Case ID: fjlV3r
+			<failure type="failure" message="1. Test Case ID: pVDmLC
 
 - Response violates schema
 
-    &quot;2026-07-25T05:13:37&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:30:18&quot; is not a &quot;date-time&quot;
 
     Schema at /components/schemas/Pizza/properties/createdAt:
 
@@ -759,7 +896,7 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:13:37&quot;
+        &quot;2026-07-26T05:30:18&quot;
 
 - API accepted schema-violating request
 
@@ -769,18 +906,44 @@ Reproduce with:
 
 [200] OK:
 
-    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Pepperoni&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, pepperoni&quot;,&quot;price&quot;:11.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:&quot;https://images.unsplash.com/photo-1513104890138-7c749659a591&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;,&quot;pizzeriaId&quot;:2},{&quot;id&quot;:4,&quot;name&quot;:&quot;Quattro Formaggi&quot;,&quot;ingredients&quot;:&quot;Mozzarella, gorgonzola, parmesan, provolone&quot;,&quot;price&quot;:12.40,&quot;size&quot;:&quot;medium&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;,&quot;pizzeriaId&quot;:2},{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozza // Output truncated...`
+    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Pepperoni&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, pepperoni&quot;,&quot;price&quot;:11.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:&quot;https://images.unsplash.com/photo-1513104890138-7c749659a591&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:2},{&quot;id&quot;:4,&quot;name&quot;:&quot;Quattro Formaggi&quot;,&quot;ingredients&quot;:&quot;Mozzarella, gorgonzola, parmesan, provolone&quot;,&quot;price&quot;:12.40,&quot;size&quot;:&quot;medium&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:2},{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozza // Output truncated...`
 
 Reproduce with:
 
-    curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId='"/>
-		</testcase>
-		<testcase name="GET /api/pizzas/{id}" time="5.042252">
-			<failure type="failure" message="1. Test Case ID: YCoS0C
+    curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId='
+
+2. Test Case ID: f6cLAp
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.787661256&quot; is not a &quot;date-time&quot;
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizza/properties/ingredients:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Ingredient list or description&quot;,
+            &quot;example&quot;: &quot;Tomato, mozzarella, basil&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:14,&quot;name&quot;:&quot;O=~&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;medium&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:40&quot;,&quot;pizzeriaId&quot;:339}]`
+
+Reproduce with:
+
+    curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId=339'"/>
+		</testcase>
+		<testcase name="GET /api/pizzas/{id}" time="7.398717">
+			<failure type="failure" message="1. Test Case ID: fWBAt4
+
+- Response violates schema
+
+    &quot;2026-07-26T05:33:19.768421547&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -793,20 +956,20 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.787661256&quot;
+        &quot;2026-07-26T05:33:19.768421547&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.787661256&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.768421547&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzas/1"/>
-			<failure type="failure" message="1. Test Case ID: YCoS0C
+			<failure type="failure" message="1. Test Case ID: fWBAt4
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.787661256&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.768421547&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -819,17 +982,17 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.787661256&quot;
+        &quot;2026-07-26T05:33:19.768421547&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.787661256&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.768421547&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzas/1
 
-2. Test Case ID: O43Na1
+2. Test Case ID: qcOD0p
 
 - Undocumented HTTP status code
 
@@ -838,16 +1001,16 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:16:28.823Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/null%2Cnull&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:33:24.855Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/null%2Cnull&quot;}`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzas/null%2Cnull"/>
-			<failure type="failure" message="1. Test Case ID: YCoS0C
+			<failure type="failure" message="1. Test Case ID: fWBAt4
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.787661256&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.768421547&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -860,17 +1023,17 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.787661256&quot;
+        &quot;2026-07-26T05:33:19.768421547&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.787661256&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.768421547&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzas/1
 
-2. Test Case ID: O43Na1
+2. Test Case ID: qcOD0p
 
 - Undocumented HTTP status code
 
@@ -879,45 +1042,70 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:16:28.823Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/null%2Cnull&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:33:24.855Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/null%2Cnull&quot;}`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzas/null%2Cnull
 
-3. Test Case ID: X6o3XC
+3. Test Case ID: XGvpy9
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:46&quot; is not a &quot;date-time&quot;
+    null is not of type &quot;string&quot;
 
-    Schema at /properties/createdAt:
+    Schema at /properties/ingredients:
 
         {
-            &quot;format&quot;: &quot;date-time&quot;,
             &quot;type&quot;: &quot;string&quot;,
-            &quot;description&quot;: &quot;Creation timestamp&quot;,
-            &quot;example&quot;: &quot;2026-02-23T10:45:12&quot;
+            &quot;description&quot;: &quot;Ingredient list or description&quot;,
+            &quot;example&quot;: &quot;Tomato, mozzarella, basil&quot;
         }
 
     Value:
 
-        &quot;2026-07-25T05:16:46&quot;
+        null
 
 [200] OK:
 
-    `{&quot;id&quot;:57,&quot;name&quot;:&quot;󩥐Ä򏱟&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:16:46&quot;,&quot;pizzeriaId&quot;:302}`
+    `{&quot;id&quot;:159,&quot;name&quot;:&quot;¢\u001E&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:44&quot;,&quot;pizzeriaId&quot;:330}`
 
 Reproduce with:
 
-    curl -X GET http://host.docker.internal:8080/api/pizzas/57"/>
-		</testcase>
-		<testcase name="GET /api/pizzerias/{id}" time="4.272472">
-			<failure type="failure" message="1. Test Case ID: 0bUaWD
+    curl -X GET http://host.docker.internal:8080/api/pizzas/159
+
+4. Test Case ID: e1pDnm
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:22&quot; is not a &quot;date-time&quot;
+    null is not of type &quot;string&quot;
+
+    Schema at /properties/photoUrl:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `{&quot;id&quot;:13,&quot;name&quot;:&quot;\u0004Jq\u0011\f5ì(񢻩z4&quot;,&quot;ingredients&quot;:&quot;\u0004Jq\u0011\f5ì(񢻩z4&quot;,&quot;price&quot;:0.00,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:39&quot;,&quot;pizzeriaId&quot;:106}`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzas/13
+
+5. Test Case ID: n8UlJQ
+
+- Response violates schema
+
+    &quot;2026-07-26T05:30:18&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/createdAt:
 
@@ -930,21 +1118,64 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:22&quot;
+        &quot;2026-07-26T05:30:18&quot;
 
 [200] OK:
 
-    `{&quot;id&quot;:320,&quot;name&quot;:&quot;Napoli Centrale&quot;,&quot;address&quot;:&quot;123&quot;,&quot;phone&quot;:&quot;+351912345678&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:16:22&quot;}`
+    `{&quot;id&quot;:3,&quot;name&quot;:&quot;Pepperoni&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, pepperoni&quot;,&quot;price&quot;:11.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:&quot;https://images.unsplash.com/photo-1513104890138-7c749659a591&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:2}`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzas/3
+
+6. Test Case ID: 7tQTFk
+
+- API rejected schema-compliant request
+
+    Valid data should have been accepted
+    Expected: 2xx, 401, 403, 404, 409, 5xx
+
+[400] Bad Request:
+
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:34:21.585Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/181149631879909965824&quot;}`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzas/181149631879909965824"/>
+		</testcase>
+		<testcase name="GET /api/pizzerias/{id}" time="4.555453">
+			<failure type="failure" message="1. Test Case ID: AS40Bl
+
+- Response violates schema
+
+    &quot;2026-07-26T05:33:18&quot; is not a &quot;date-time&quot;
+
+    Schema at /properties/createdAt:
+
+        {
+            &quot;format&quot;: &quot;date-time&quot;,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Creation timestamp&quot;,
+            &quot;example&quot;: &quot;2026-02-23T10:45:12&quot;
+        }
+
+    Value:
+
+        &quot;2026-07-26T05:33:18&quot;
+
+[200] OK:
+
+    `{&quot;id&quot;:320,&quot;name&quot;:&quot;Napoli Centrale&quot;,&quot;address&quot;:&quot;123&quot;,&quot;phone&quot;:&quot;+351912345678&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:33:18&quot;}`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias/320
 
-2. Test Case ID: c3D87q
+2. Test Case ID: bDNU2F
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.800518226&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.785578797&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -957,20 +1188,20 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.800518226&quot;
+        &quot;2026-07-26T05:33:19.785578797&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.800518226&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.785578797&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias/1"/>
-			<failure type="failure" message="1. Test Case ID: 0bUaWD
+			<failure type="failure" message="1. Test Case ID: AS40Bl
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:22&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:18&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/createdAt:
 
@@ -983,21 +1214,21 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:22&quot;
+        &quot;2026-07-26T05:33:18&quot;
 
 [200] OK:
 
-    `{&quot;id&quot;:320,&quot;name&quot;:&quot;Napoli Centrale&quot;,&quot;address&quot;:&quot;123&quot;,&quot;phone&quot;:&quot;+351912345678&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:16:22&quot;}`
+    `{&quot;id&quot;:320,&quot;name&quot;:&quot;Napoli Centrale&quot;,&quot;address&quot;:&quot;123&quot;,&quot;phone&quot;:&quot;+351912345678&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:33:18&quot;}`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias/320
 
-2. Test Case ID: c3D87q
+2. Test Case ID: bDNU2F
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.800518226&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.785578797&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -1010,17 +1241,17 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.800518226&quot;
+        &quot;2026-07-26T05:33:19.785578797&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.800518226&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.785578797&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias/1
 
-3. Test Case ID: HnpiCy
+3. Test Case ID: 2gc5BI
 
 - Undocumented HTTP status code
 
@@ -1029,16 +1260,16 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:16:30.111Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzerias/null%2Cnull&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:33:26.165Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzerias/null%2Cnull&quot;}`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias/null%2Cnull"/>
-			<failure type="failure" message="1. Test Case ID: 0bUaWD
+			<failure type="failure" message="1. Test Case ID: AS40Bl
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:22&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:18&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/createdAt:
 
@@ -1051,21 +1282,21 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:22&quot;
+        &quot;2026-07-26T05:33:18&quot;
 
 [200] OK:
 
-    `{&quot;id&quot;:320,&quot;name&quot;:&quot;Napoli Centrale&quot;,&quot;address&quot;:&quot;123&quot;,&quot;phone&quot;:&quot;+351912345678&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:16:22&quot;}`
+    `{&quot;id&quot;:320,&quot;name&quot;:&quot;Napoli Centrale&quot;,&quot;address&quot;:&quot;123&quot;,&quot;phone&quot;:&quot;+351912345678&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:33:18&quot;}`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias/320
 
-2. Test Case ID: c3D87q
+2. Test Case ID: bDNU2F
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.800518226&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.785578797&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -1078,17 +1309,17 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.800518226&quot;
+        &quot;2026-07-26T05:33:19.785578797&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.800518226&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.785578797&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias/1
 
-3. Test Case ID: HnpiCy
+3. Test Case ID: 2gc5BI
 
 - Undocumented HTTP status code
 
@@ -1097,13 +1328,13 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:16:30.111Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzerias/null%2Cnull&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:33:26.165Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzerias/null%2Cnull&quot;}`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias/null%2Cnull
 
-4. Test Case ID: kKeGpd
+4. Test Case ID: 7niAlb
 
 - Response violates schema
 
@@ -1123,18 +1354,44 @@ Reproduce with:
 
 [200] OK:
 
-    `{&quot;id&quot;:308,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:14:45&quot;}`
+    `{&quot;id&quot;:341,&quot;name&quot;:&quot;񈜏Þ76ùÄ\u001F°ÖSì􍇠&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:29&quot;}`
 
 Reproduce with:
 
-    curl -X GET http://host.docker.internal:8080/api/pizzerias/308"/>
-		</testcase>
-		<testcase name="DELETE /api/pizzas/{id}" time="4.354277">
-			<failure type="failure" message="1. Test Case ID: v02Kfb
+    curl -X GET http://host.docker.internal:8080/api/pizzerias/341
+
+5. Test Case ID: 92vXU4
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.807775989&quot; is not a &quot;date-time&quot;
+    null is not of type &quot;string&quot;
+
+    Schema at /properties/phone:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Contact phone number&quot;,
+            &quot;example&quot;: &quot;+351912345678&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `{&quot;id&quot;:382,&quot;name&quot;:&quot;\u0015&quot;,&quot;address&quot;:&quot;&quot;,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:33&quot;}`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias/382"/>
+		</testcase>
+		<testcase name="DELETE /api/pizzas/{id}" time="4.791530">
+			<failure type="failure" message="1. Test Case ID: TLXzv1
+
+- Response violates schema
+
+    &quot;2026-07-26T05:33:19.794883896&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -1147,20 +1404,20 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.807775989&quot;
+        &quot;2026-07-26T05:33:19.794883896&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.807775989&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.794883896&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X DELETE http://host.docker.internal:8080/api/pizzas/1"/>
-			<failure type="failure" message="1. Test Case ID: v02Kfb
+			<failure type="failure" message="1. Test Case ID: TLXzv1
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.807775989&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.794883896&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -1173,17 +1430,17 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.807775989&quot;
+        &quot;2026-07-26T05:33:19.794883896&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.807775989&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.794883896&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X DELETE http://host.docker.internal:8080/api/pizzas/1
 
-2. Test Case ID: 32u5Fl
+2. Test Case ID: AuN9Gg
 
 - Undocumented HTTP status code
 
@@ -1192,16 +1449,16 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:16:31.388Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/null%2Cnull&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:33:27.454Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/null%2Cnull&quot;}`
 
 Reproduce with:
 
     curl -X DELETE http://host.docker.internal:8080/api/pizzas/null%2Cnull"/>
-			<failure type="failure" message="1. Test Case ID: v02Kfb
+			<failure type="failure" message="1. Test Case ID: TLXzv1
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.807775989&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.794883896&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -1214,17 +1471,17 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.807775989&quot;
+        &quot;2026-07-26T05:33:19.794883896&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.807775989&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.794883896&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X DELETE http://host.docker.internal:8080/api/pizzas/1
 
-2. Test Case ID: 32u5Fl
+2. Test Case ID: AuN9Gg
 
 - Undocumented HTTP status code
 
@@ -1233,18 +1490,18 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:16:31.388Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/null%2Cnull&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:33:27.454Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/null%2Cnull&quot;}`
 
 Reproduce with:
 
     curl -X DELETE http://host.docker.internal:8080/api/pizzas/null%2Cnull"/>
 		</testcase>
-		<testcase name="DELETE /api/pizzerias/{id}" time="4.223116">
-			<failure type="failure" message="1. Test Case ID: dk5F4q
+		<testcase name="DELETE /api/pizzerias/{id}" time="4.422158">
+			<failure type="failure" message="1. Test Case ID: dg3j7N
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.821196576&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.810111425&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -1257,20 +1514,20 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.821196576&quot;
+        &quot;2026-07-26T05:33:19.810111425&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.821196576&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.810111425&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X DELETE http://host.docker.internal:8080/api/pizzerias/1"/>
-			<failure type="failure" message="1. Test Case ID: dk5F4q
+			<failure type="failure" message="1. Test Case ID: dg3j7N
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.821196576&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.810111425&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -1283,17 +1540,17 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.821196576&quot;
+        &quot;2026-07-26T05:33:19.810111425&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.821196576&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.810111425&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X DELETE http://host.docker.internal:8080/api/pizzerias/1
 
-2. Test Case ID: rTl1Xd
+2. Test Case ID: bO4aUa
 
 - Undocumented HTTP status code
 
@@ -1302,16 +1559,16 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:16:32.682Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzerias/null%2Cnull&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:33:28.755Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzerias/null%2Cnull&quot;}`
 
 Reproduce with:
 
     curl -X DELETE http://host.docker.internal:8080/api/pizzerias/null%2Cnull"/>
-			<failure type="failure" message="1. Test Case ID: dk5F4q
+			<failure type="failure" message="1. Test Case ID: dg3j7N
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:23.821196576&quot; is not a &quot;date-time&quot;
+    &quot;2026-07-26T05:33:19.810111425&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -1324,17 +1581,17 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-07-25T05:16:23.821196576&quot;
+        &quot;2026-07-26T05:33:19.810111425&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:16:23.821196576&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-26T05:33:19.810111425&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X DELETE http://host.docker.internal:8080/api/pizzerias/1
 
-2. Test Case ID: rTl1Xd
+2. Test Case ID: bO4aUa
 
 - Undocumented HTTP status code
 
@@ -1343,14 +1600,14 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:16:32.682Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzerias/null%2Cnull&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:33:28.755Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzerias/null%2Cnull&quot;}`
 
 Reproduce with:
 
     curl -X DELETE http://host.docker.internal:8080/api/pizzerias/null%2Cnull"/>
 		</testcase>
-		<testcase name="Stateful tests" time="154.224744">
-			<failure type="failure" message="1. Test Case ID: t7n09h
+		<testcase name="Stateful tests" time="96.248189">
+			<failure type="failure" message="1. Test Case ID: VlZX4E
 
 - Response violates schema
 
@@ -1370,12 +1627,12 @@ Reproduce with:
 
 [200] OK:
 
-    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:35&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;http://www.google.com:80/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;http://www.google.com&quot;,&quot;address&quot;:&quot;688 Z // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
-			<failure type="failure" message="1. Test Case ID: t7n09h
+			<failure type="failure" message="1. Test Case ID: VlZX4E
 
 - Response violates schema
 
@@ -1395,12 +1652,12 @@ Reproduce with:
 
 [200] OK:
 
-    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:35&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;http://www.google.com:80/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;http://www.google.com&quot;,&quot;address&quot;:&quot;688 Z // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
-			<failure type="failure" message="1. Test Case ID: t7n09h
+			<failure type="failure" message="1. Test Case ID: VlZX4E
 
 - Response violates schema
 
@@ -1420,12 +1677,12 @@ Reproduce with:
 
 [200] OK:
 
-    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:35&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;http://www.google.com:80/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;http://www.google.com&quot;,&quot;address&quot;:&quot;688 Z // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
-			<failure type="failure" message="1. Test Case ID: t7n09h
+			<failure type="failure" message="1. Test Case ID: VlZX4E
 
 - Response violates schema
 
@@ -1445,12 +1702,12 @@ Reproduce with:
 
 [200] OK:
 
-    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:35&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;http://www.google.com:80/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;http://www.google.com&quot;,&quot;address&quot;:&quot;688 Z // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
-			<failure type="failure" message="1. Test Case ID: t7n09h
+			<failure type="failure" message="1. Test Case ID: VlZX4E
 
 - Response violates schema
 
@@ -1470,12 +1727,12 @@ Reproduce with:
 
 [200] OK:
 
-    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:35&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;http://www.google.com:80/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;http://www.google.com&quot;,&quot;address&quot;:&quot;688 Z // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
-			<failure type="failure" message="1. Test Case ID: t7n09h
+			<failure type="failure" message="1. Test Case ID: VlZX4E
 
 - Response violates schema
 
@@ -1495,41 +1752,214 @@ Reproduce with:
 
 [200] OK:
 
-    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:35&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;http://www.google.com:80/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;http://www.google.com&quot;,&quot;address&quot;:&quot;688 Z // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias
 
-2. Test Case ID: 9Itq01
+2. Test Case ID: 1FDduf
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:46&quot; is not a &quot;date-time&quot;
+    null is not of type &quot;string&quot;
 
-    Schema at /properties/createdAt:
+    Schema at /components/schemas/Pizza/properties/photoUrl:
 
         {
-            &quot;format&quot;: &quot;date-time&quot;,
             &quot;type&quot;: &quot;string&quot;,
-            &quot;description&quot;: &quot;Creation timestamp&quot;,
-            &quot;example&quot;: &quot;2026-02-23T10:45:12&quot;
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
         }
 
     Value:
 
-        &quot;2026-07-25T05:16:46&quot;
+        null
 
 [200] OK:
 
-    `{&quot;id&quot;:86,&quot;name&quot;:&quot;󩥐Ä򏱟&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.0,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:&quot;https://oN3Wn1gcQo.B.bg&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:16:46&quot;,&quot;pizzeriaId&quot;:218}`
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
 
 Reproduce with:
 
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas/86
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\udb66\udd50\u00c4\ud9ff\udc5f&quot;, &quot;pizzeriaId&quot;: 218, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;, &quot;isAvailable&quot;: true, &quot;photoUrl&quot;: &quot;https://oN3Wn1gcQo.B.bg&quot;}' http://host.docker.internal:8080/api/pizzas/86"/>
-			<failure type="failure" message="1. Test Case ID: t7n09h
+    curl -X GET http://host.docker.internal:8080/api/pizzas"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
 
 - Response violates schema
 
@@ -1549,42 +1979,508 @@ Reproduce with:
 
 [200] OK:
 
-    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:35&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;http://www.google.com:80/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;http://www.google.com&quot;,&quot;address&quot;:&quot;688 Z // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias
 
-2. Test Case ID: 9Itq01
+2. Test Case ID: 1FDduf
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:46&quot; is not a &quot;date-time&quot;
+    null is not of type &quot;string&quot;
 
-    Schema at /properties/createdAt:
+    Schema at /components/schemas/Pizza/properties/photoUrl:
 
         {
-            &quot;format&quot;: &quot;date-time&quot;,
             &quot;type&quot;: &quot;string&quot;,
-            &quot;description&quot;: &quot;Creation timestamp&quot;,
-            &quot;example&quot;: &quot;2026-02-23T10:45:12&quot;
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
         }
 
     Value:
 
-        &quot;2026-07-25T05:16:46&quot;
+        null
 
 [200] OK:
 
-    `{&quot;id&quot;:86,&quot;name&quot;:&quot;󩥐Ä򏱟&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.0,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:&quot;https://oN3Wn1gcQo.B.bg&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:16:46&quot;,&quot;pizzeriaId&quot;:218}`
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
 
 Reproduce with:
 
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas/86
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\udb66\udd50\u00c4\ud9ff\udc5f&quot;, &quot;pizzeriaId&quot;: 218, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;, &quot;isAvailable&quot;: true, &quot;photoUrl&quot;: &quot;https://oN3Wn1gcQo.B.bg&quot;}' http://host.docker.internal:8080/api/pizzas/86
+    curl -X GET http://host.docker.internal:8080/api/pizzas"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
 
-3. Test Case ID: ZBbnlO
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias
+
+2. Test Case ID: 1FDduf
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizza/properties/photoUrl:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzas"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias
+
+2. Test Case ID: 1FDduf
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizza/properties/photoUrl:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzas"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias
+
+2. Test Case ID: 1FDduf
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizza/properties/photoUrl:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzas"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias
+
+2. Test Case ID: 1FDduf
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizza/properties/photoUrl:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzas"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias
+
+2. Test Case ID: 1FDduf
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizza/properties/photoUrl:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzas"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias
+
+2. Test Case ID: 1FDduf
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizza/properties/photoUrl:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzas"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias
+
+2. Test Case ID: 1FDduf
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizza/properties/photoUrl:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzas"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias
+
+2. Test Case ID: 1FDduf
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizza/properties/photoUrl:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzas"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias
+
+2. Test Case ID: 1FDduf
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizza/properties/photoUrl:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzas
+
+3. Test Case ID: vVQO3P
 
 - API rejected schema-compliant request
 
@@ -1593,12 +2489,12 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:18:10.434Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:34:53.801Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
 
 Reproduce with:
 
     curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId=-4591344774012470606954496'"/>
-			<failure type="failure" message="1. Test Case ID: t7n09h
+			<failure type="failure" message="1. Test Case ID: VlZX4E
 
 - Response violates schema
 
@@ -1618,42 +2514,40 @@ Reproduce with:
 
 [200] OK:
 
-    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:35&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;http://www.google.com:80/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;http://www.google.com&quot;,&quot;address&quot;:&quot;688 Z // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias
 
-2. Test Case ID: 9Itq01
+2. Test Case ID: 1FDduf
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:46&quot; is not a &quot;date-time&quot;
+    null is not of type &quot;string&quot;
 
-    Schema at /properties/createdAt:
+    Schema at /components/schemas/Pizza/properties/photoUrl:
 
         {
-            &quot;format&quot;: &quot;date-time&quot;,
             &quot;type&quot;: &quot;string&quot;,
-            &quot;description&quot;: &quot;Creation timestamp&quot;,
-            &quot;example&quot;: &quot;2026-02-23T10:45:12&quot;
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
         }
 
     Value:
 
-        &quot;2026-07-25T05:16:46&quot;
+        null
 
 [200] OK:
 
-    `{&quot;id&quot;:86,&quot;name&quot;:&quot;󩥐Ä򏱟&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.0,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:&quot;https://oN3Wn1gcQo.B.bg&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:16:46&quot;,&quot;pizzeriaId&quot;:218}`
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
 
 Reproduce with:
 
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas/86
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\udb66\udd50\u00c4\ud9ff\udc5f&quot;, &quot;pizzeriaId&quot;: 218, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;, &quot;isAvailable&quot;: true, &quot;photoUrl&quot;: &quot;https://oN3Wn1gcQo.B.bg&quot;}' http://host.docker.internal:8080/api/pizzas/86
+    curl -X GET http://host.docker.internal:8080/api/pizzas
 
-3. Test Case ID: ZBbnlO
+3. Test Case ID: vVQO3P
 
 - API rejected schema-compliant request
 
@@ -1662,12 +2556,12 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:18:10.434Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:34:53.801Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
 
 Reproduce with:
 
     curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId=-4591344774012470606954496'"/>
-			<failure type="failure" message="1. Test Case ID: t7n09h
+			<failure type="failure" message="1. Test Case ID: VlZX4E
 
 - Response violates schema
 
@@ -1687,72 +2581,54 @@ Reproduce with:
 
 [200] OK:
 
-    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:35&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;http://www.google.com:80/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;http://www.google.com&quot;,&quot;address&quot;:&quot;688 Z // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias
 
-2. Test Case ID: 9Itq01
+2. Test Case ID: 1FDduf
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:46&quot; is not a &quot;date-time&quot;
+    null is not of type &quot;string&quot;
 
-    Schema at /properties/createdAt:
+    Schema at /components/schemas/Pizza/properties/photoUrl:
 
         {
-            &quot;format&quot;: &quot;date-time&quot;,
             &quot;type&quot;: &quot;string&quot;,
-            &quot;description&quot;: &quot;Creation timestamp&quot;,
-            &quot;example&quot;: &quot;2026-02-23T10:45:12&quot;
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
         }
 
     Value:
 
-        &quot;2026-07-25T05:16:46&quot;
+        null
 
 [200] OK:
 
-    `{&quot;id&quot;:86,&quot;name&quot;:&quot;󩥐Ä򏱟&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.0,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:&quot;https://oN3Wn1gcQo.B.bg&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:16:46&quot;,&quot;pizzeriaId&quot;:218}`
-
-Reproduce with:
-
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas/86
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\udb66\udd50\u00c4\ud9ff\udc5f&quot;, &quot;pizzeriaId&quot;: 218, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;, &quot;isAvailable&quot;: true, &quot;photoUrl&quot;: &quot;https://oN3Wn1gcQo.B.bg&quot;}' http://host.docker.internal:8080/api/pizzas/86
-
-3. Test Case ID: ZBbnlO
-
-- API rejected schema-compliant request
-
-    Valid data should have been accepted
-    Expected: 2xx, 401, 403, 404, 409, 5xx
-
-[400] Bad Request:
-
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:18:10.434Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
-
-Reproduce with:
-
-    curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId=-4591344774012470606954496'
-
-4. Test Case ID: DUfgUq
-
-- API rejected schema-compliant request
-
-    Valid data should have been accepted
-    Expected: 2xx, 401, 403, 404, 409, 5xx
-
-[400] Bad Request:
-
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:18:48.981Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/32826114505188068333679804416&quot;}`
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzas
-    curl -X GET http://host.docker.internal:8080/api/pizzas/32826114505188068333679804416"/>
-			<failure type="failure" message="1. Test Case ID: t7n09h
+
+3. Test Case ID: vVQO3P
+
+- API rejected schema-compliant request
+
+    Valid data should have been accepted
+    Expected: 2xx, 401, 403, 404, 409, 5xx
+
+[400] Bad Request:
+
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:34:53.801Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
+
+Reproduce with:
+
+    curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId=-4591344774012470606954496'"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
 
 - Response violates schema
 
@@ -1772,72 +2648,54 @@ Reproduce with:
 
 [200] OK:
 
-    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:35&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;http://www.google.com:80/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;http://www.google.com&quot;,&quot;address&quot;:&quot;688 Z // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias
 
-2. Test Case ID: 9Itq01
+2. Test Case ID: 1FDduf
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:46&quot; is not a &quot;date-time&quot;
+    null is not of type &quot;string&quot;
 
-    Schema at /properties/createdAt:
+    Schema at /components/schemas/Pizza/properties/photoUrl:
 
         {
-            &quot;format&quot;: &quot;date-time&quot;,
             &quot;type&quot;: &quot;string&quot;,
-            &quot;description&quot;: &quot;Creation timestamp&quot;,
-            &quot;example&quot;: &quot;2026-02-23T10:45:12&quot;
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
         }
 
     Value:
 
-        &quot;2026-07-25T05:16:46&quot;
+        null
 
 [200] OK:
 
-    `{&quot;id&quot;:86,&quot;name&quot;:&quot;󩥐Ä򏱟&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.0,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:&quot;https://oN3Wn1gcQo.B.bg&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:16:46&quot;,&quot;pizzeriaId&quot;:218}`
-
-Reproduce with:
-
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas/86
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\udb66\udd50\u00c4\ud9ff\udc5f&quot;, &quot;pizzeriaId&quot;: 218, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;, &quot;isAvailable&quot;: true, &quot;photoUrl&quot;: &quot;https://oN3Wn1gcQo.B.bg&quot;}' http://host.docker.internal:8080/api/pizzas/86
-
-3. Test Case ID: ZBbnlO
-
-- API rejected schema-compliant request
-
-    Valid data should have been accepted
-    Expected: 2xx, 401, 403, 404, 409, 5xx
-
-[400] Bad Request:
-
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:18:10.434Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
-
-Reproduce with:
-
-    curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId=-4591344774012470606954496'
-
-4. Test Case ID: DUfgUq
-
-- API rejected schema-compliant request
-
-    Valid data should have been accepted
-    Expected: 2xx, 401, 403, 404, 409, 5xx
-
-[400] Bad Request:
-
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:18:48.981Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/32826114505188068333679804416&quot;}`
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzas
-    curl -X GET http://host.docker.internal:8080/api/pizzas/32826114505188068333679804416"/>
-			<failure type="failure" message="1. Test Case ID: t7n09h
+
+3. Test Case ID: vVQO3P
+
+- API rejected schema-compliant request
+
+    Valid data should have been accepted
+    Expected: 2xx, 401, 403, 404, 409, 5xx
+
+[400] Bad Request:
+
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:34:53.801Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
+
+Reproduce with:
+
+    curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId=-4591344774012470606954496'"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
 
 - Response violates schema
 
@@ -1857,88 +2715,54 @@ Reproduce with:
 
 [200] OK:
 
-    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:35&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;http://www.google.com:80/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;http://www.google.com&quot;,&quot;address&quot;:&quot;688 Z // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias
 
-2. Test Case ID: 9Itq01
+2. Test Case ID: 1FDduf
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:46&quot; is not a &quot;date-time&quot;
+    null is not of type &quot;string&quot;
 
-    Schema at /properties/createdAt:
+    Schema at /components/schemas/Pizza/properties/photoUrl:
 
         {
-            &quot;format&quot;: &quot;date-time&quot;,
             &quot;type&quot;: &quot;string&quot;,
-            &quot;description&quot;: &quot;Creation timestamp&quot;,
-            &quot;example&quot;: &quot;2026-02-23T10:45:12&quot;
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
         }
 
     Value:
 
-        &quot;2026-07-25T05:16:46&quot;
+        null
 
 [200] OK:
 
-    `{&quot;id&quot;:86,&quot;name&quot;:&quot;󩥐Ä򏱟&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.0,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:&quot;https://oN3Wn1gcQo.B.bg&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:16:46&quot;,&quot;pizzeriaId&quot;:218}`
-
-Reproduce with:
-
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas/86
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\udb66\udd50\u00c4\ud9ff\udc5f&quot;, &quot;pizzeriaId&quot;: 218, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;, &quot;isAvailable&quot;: true, &quot;photoUrl&quot;: &quot;https://oN3Wn1gcQo.B.bg&quot;}' http://host.docker.internal:8080/api/pizzas/86
-
-3. Test Case ID: ZBbnlO
-
-- API rejected schema-compliant request
-
-    Valid data should have been accepted
-    Expected: 2xx, 401, 403, 404, 409, 5xx
-
-[400] Bad Request:
-
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:18:10.434Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
-
-Reproduce with:
-
-    curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId=-4591344774012470606954496'
-
-4. Test Case ID: DUfgUq
-
-- API rejected schema-compliant request
-
-    Valid data should have been accepted
-    Expected: 2xx, 401, 403, 404, 409, 5xx
-
-[400] Bad Request:
-
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:18:48.981Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/32826114505188068333679804416&quot;}`
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzas
-    curl -X GET http://host.docker.internal:8080/api/pizzas/32826114505188068333679804416
 
-5. Test Case ID: WVZG4b
+3. Test Case ID: vVQO3P
 
-- API accepted schema-violating request
+- API rejected schema-compliant request
 
-    Invalid data should have been rejected
-    Expected: 400, 401, 403, 404, 406, 422, 428, 5xx
+    Valid data should have been accepted
+    Expected: 2xx, 401, 403, 404, 409, 5xx
 
-[200] OK:
+[400] Bad Request:
 
-    `{&quot;id&quot;:235,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:null,&quot;phone&quot;:&quot;-6.680738138486418e-66&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:43&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:34:53.801Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
 
 Reproduce with:
 
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzerias
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;phone&quot;: -6.680738138486418e-66, &quot;\u000f\u00de\u0097&quot;: [], &quot;name&quot;: &quot;ZAP&quot;}' http://host.docker.internal:8080/api/pizzerias/235"/>
-			<failure type="failure" message="1. Test Case ID: t7n09h
+    curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId=-4591344774012470606954496'"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
 
 - Response violates schema
 
@@ -1958,107 +2782,54 @@ Reproduce with:
 
 [200] OK:
 
-    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:35&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;http://www.google.com:80/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;http://www.google.com&quot;,&quot;address&quot;:&quot;688 Z // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias
 
-2. Test Case ID: 9Itq01
+2. Test Case ID: 1FDduf
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:46&quot; is not a &quot;date-time&quot;
+    null is not of type &quot;string&quot;
 
-    Schema at /properties/createdAt:
+    Schema at /components/schemas/Pizza/properties/photoUrl:
 
         {
-            &quot;format&quot;: &quot;date-time&quot;,
             &quot;type&quot;: &quot;string&quot;,
-            &quot;description&quot;: &quot;Creation timestamp&quot;,
-            &quot;example&quot;: &quot;2026-02-23T10:45:12&quot;
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
         }
 
     Value:
 
-        &quot;2026-07-25T05:16:46&quot;
+        null
 
 [200] OK:
 
-    `{&quot;id&quot;:86,&quot;name&quot;:&quot;󩥐Ä򏱟&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.0,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:&quot;https://oN3Wn1gcQo.B.bg&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:16:46&quot;,&quot;pizzeriaId&quot;:218}`
-
-Reproduce with:
-
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas/86
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\udb66\udd50\u00c4\ud9ff\udc5f&quot;, &quot;pizzeriaId&quot;: 218, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;, &quot;isAvailable&quot;: true, &quot;photoUrl&quot;: &quot;https://oN3Wn1gcQo.B.bg&quot;}' http://host.docker.internal:8080/api/pizzas/86
-
-3. Test Case ID: ZBbnlO
-
-- API rejected schema-compliant request
-
-    Valid data should have been accepted
-    Expected: 2xx, 401, 403, 404, 409, 5xx
-
-[400] Bad Request:
-
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:18:10.434Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
-
-Reproduce with:
-
-    curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId=-4591344774012470606954496'
-
-4. Test Case ID: DUfgUq
-
-- API rejected schema-compliant request
-
-    Valid data should have been accepted
-    Expected: 2xx, 401, 403, 404, 409, 5xx
-
-[400] Bad Request:
-
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:18:48.981Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/32826114505188068333679804416&quot;}`
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzas
-    curl -X GET http://host.docker.internal:8080/api/pizzas/32826114505188068333679804416
 
-5. Test Case ID: WVZG4b
+3. Test Case ID: vVQO3P
 
-- API accepted schema-violating request
+- API rejected schema-compliant request
 
-    Invalid data should have been rejected
-    Expected: 400, 401, 403, 404, 406, 422, 428, 5xx
+    Valid data should have been accepted
+    Expected: 2xx, 401, 403, 404, 409, 5xx
 
-[200] OK:
+[400] Bad Request:
 
-    `{&quot;id&quot;:235,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:null,&quot;phone&quot;:&quot;-6.680738138486418e-66&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:43&quot;}`
-
-Reproduce with:
-
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzerias
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;phone&quot;: -6.680738138486418e-66, &quot;\u000f\u00de\u0097&quot;: [], &quot;name&quot;: &quot;ZAP&quot;}' http://host.docker.internal:8080/api/pizzerias/235
-
-6. Test Case ID: nebRpC
-
-- Resource is not available after creation
-
-    The API returned `404 Not Found` for a resource that was just created.
-
-    Created with      : `POST /api/pizzas`
-    Not available with: `PUT /api/pizzas/{id}`
-
-[404] Not Found:
-
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 0 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:19:38.828885179&quot;,&quot;status&quot;:404}`
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:34:53.801Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
 
 Reproduce with:
 
-    curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\r\u0094\u0002n&quot;, &quot;pizzeriaId&quot;: 274, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;}' http://host.docker.internal:8080/api/pizzas
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzerias
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\r\u0094\u0002n&quot;, &quot;pizzeriaId&quot;: 0, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;}' http://host.docker.internal:8080/api/pizzas/278"/>
-			<failure type="failure" message="1. Test Case ID: t7n09h
+    curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId=-4591344774012470606954496'"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
 
 - Response violates schema
 
@@ -2078,42 +2849,40 @@ Reproduce with:
 
 [200] OK:
 
-    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:35&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;http://www.google.com:80/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;http://www.google.com&quot;,&quot;address&quot;:&quot;688 Z // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias
 
-2. Test Case ID: 9Itq01
+2. Test Case ID: 1FDduf
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:46&quot; is not a &quot;date-time&quot;
+    null is not of type &quot;string&quot;
 
-    Schema at /properties/createdAt:
+    Schema at /components/schemas/Pizza/properties/photoUrl:
 
         {
-            &quot;format&quot;: &quot;date-time&quot;,
             &quot;type&quot;: &quot;string&quot;,
-            &quot;description&quot;: &quot;Creation timestamp&quot;,
-            &quot;example&quot;: &quot;2026-02-23T10:45:12&quot;
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
         }
 
     Value:
 
-        &quot;2026-07-25T05:16:46&quot;
+        null
 
 [200] OK:
 
-    `{&quot;id&quot;:86,&quot;name&quot;:&quot;󩥐Ä򏱟&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.0,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:&quot;https://oN3Wn1gcQo.B.bg&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:16:46&quot;,&quot;pizzeriaId&quot;:218}`
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
 
 Reproduce with:
 
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas/86
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\udb66\udd50\u00c4\ud9ff\udc5f&quot;, &quot;pizzeriaId&quot;: 218, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;, &quot;isAvailable&quot;: true, &quot;photoUrl&quot;: &quot;https://oN3Wn1gcQo.B.bg&quot;}' http://host.docker.internal:8080/api/pizzas/86
+    curl -X GET http://host.docker.internal:8080/api/pizzas
 
-3. Test Case ID: ZBbnlO
+3. Test Case ID: vVQO3P
 
 - API rejected schema-compliant request
 
@@ -2122,63 +2891,38 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:18:10.434Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:34:53.801Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
 
 Reproduce with:
 
     curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId=-4591344774012470606954496'
 
-4. Test Case ID: DUfgUq
+4. Test Case ID: X61PnP
 
-- API rejected schema-compliant request
+- Response violates schema
 
-    Valid data should have been accepted
-    Expected: 2xx, 401, 403, 404, 409, 5xx
+    null is not of type &quot;string&quot;
 
-[400] Bad Request:
+    Schema at /components/schemas/Pizzeria/properties/phone:
 
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:18:48.981Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/32826114505188068333679804416&quot;}`
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Contact phone number&quot;,
+            &quot;example&quot;: &quot;+351912345678&quot;
+        }
 
-Reproduce with:
+    Value:
 
-    curl -X GET http://host.docker.internal:8080/api/pizzas
-    curl -X GET http://host.docker.internal:8080/api/pizzas/32826114505188068333679804416
-
-5. Test Case ID: WVZG4b
-
-- API accepted schema-violating request
-
-    Invalid data should have been rejected
-    Expected: 400, 401, 403, 404, 406, 422, 428, 5xx
+        null
 
 [200] OK:
 
-    `{&quot;id&quot;:235,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:null,&quot;phone&quot;:&quot;-6.680738138486418e-66&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:43&quot;}`
+    `[{&quot;id&quot;:121,&quot;name&quot;:&quot;www.google.com:80/search?q=ZAP&quot;,&quot;address&quot;:&quot;&quot;,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:122,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999' AND '1'='1&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:123,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:124,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:125,&quot;name&quot;:&quot;\&quot;;print(chr(122).chr(97).c // Output truncated...`
 
 Reproduce with:
 
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzerias
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;phone&quot;: -6.680738138486418e-66, &quot;\u000f\u00de\u0097&quot;: [], &quot;name&quot;: &quot;ZAP&quot;}' http://host.docker.internal:8080/api/pizzerias/235
-
-6. Test Case ID: nebRpC
-
-- Resource is not available after creation
-
-    The API returned `404 Not Found` for a resource that was just created.
-
-    Created with      : `POST /api/pizzas`
-    Not available with: `PUT /api/pizzas/{id}`
-
-[404] Not Found:
-
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 0 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:19:38.828885179&quot;,&quot;status&quot;:404}`
-
-Reproduce with:
-
-    curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\r\u0094\u0002n&quot;, &quot;pizzeriaId&quot;: 274, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;}' http://host.docker.internal:8080/api/pizzas
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzerias
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\r\u0094\u0002n&quot;, &quot;pizzeriaId&quot;: 0, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;}' http://host.docker.internal:8080/api/pizzas/278"/>
-			<failure type="failure" message="1. Test Case ID: t7n09h
+    curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
 
 - Response violates schema
 
@@ -2198,42 +2942,40 @@ Reproduce with:
 
 [200] OK:
 
-    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-25T05:13:37&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:35&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;http://www.google.com:80/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:36&quot;},{&quot;id&quot;:7,&quot;name&quot;:&quot;http://www.google.com&quot;,&quot;address&quot;:&quot;688 Z // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias
 
-2. Test Case ID: 9Itq01
+2. Test Case ID: 1FDduf
 
 - Response violates schema
 
-    &quot;2026-07-25T05:16:46&quot; is not a &quot;date-time&quot;
+    null is not of type &quot;string&quot;
 
-    Schema at /properties/createdAt:
+    Schema at /components/schemas/Pizza/properties/photoUrl:
 
         {
-            &quot;format&quot;: &quot;date-time&quot;,
             &quot;type&quot;: &quot;string&quot;,
-            &quot;description&quot;: &quot;Creation timestamp&quot;,
-            &quot;example&quot;: &quot;2026-02-23T10:45:12&quot;
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
         }
 
     Value:
 
-        &quot;2026-07-25T05:16:46&quot;
+        null
 
 [200] OK:
 
-    `{&quot;id&quot;:86,&quot;name&quot;:&quot;󩥐Ä򏱟&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.0,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:&quot;https://oN3Wn1gcQo.B.bg&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:16:46&quot;,&quot;pizzeriaId&quot;:218}`
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
 
 Reproduce with:
 
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas/86
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzas
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\udb66\udd50\u00c4\ud9ff\udc5f&quot;, &quot;pizzeriaId&quot;: 218, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;, &quot;isAvailable&quot;: true, &quot;photoUrl&quot;: &quot;https://oN3Wn1gcQo.B.bg&quot;}' http://host.docker.internal:8080/api/pizzas/86
+    curl -X GET http://host.docker.internal:8080/api/pizzas
 
-3. Test Case ID: ZBbnlO
+3. Test Case ID: vVQO3P
 
 - API rejected schema-compliant request
 
@@ -2242,64 +2984,91 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:18:10.434Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:34:53.801Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
 
 Reproduce with:
 
     curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId=-4591344774012470606954496'
 
-4. Test Case ID: DUfgUq
+4. Test Case ID: X61PnP
 
-- API rejected schema-compliant request
+- Response violates schema
 
-    Valid data should have been accepted
-    Expected: 2xx, 401, 403, 404, 409, 5xx
+    null is not of type &quot;string&quot;
 
-[400] Bad Request:
+    Schema at /components/schemas/Pizzeria/properties/phone:
 
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:18:48.981Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/32826114505188068333679804416&quot;}`
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Contact phone number&quot;,
+            &quot;example&quot;: &quot;+351912345678&quot;
+        }
 
-Reproduce with:
+    Value:
 
-    curl -X GET http://host.docker.internal:8080/api/pizzas
-    curl -X GET http://host.docker.internal:8080/api/pizzas/32826114505188068333679804416
-
-5. Test Case ID: WVZG4b
-
-- API accepted schema-violating request
-
-    Invalid data should have been rejected
-    Expected: 400, 401, 403, 404, 406, 422, 428, 5xx
+        null
 
 [200] OK:
 
-    `{&quot;id&quot;:235,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:null,&quot;phone&quot;:&quot;-6.680738138486418e-66&quot;,&quot;createdAt&quot;:&quot;2026-07-25T05:14:43&quot;}`
+    `[{&quot;id&quot;:121,&quot;name&quot;:&quot;www.google.com:80/search?q=ZAP&quot;,&quot;address&quot;:&quot;&quot;,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:122,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999' AND '1'='1&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:123,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:124,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:125,&quot;name&quot;:&quot;\&quot;;print(chr(122).chr(97).c // Output truncated...`
 
 Reproduce with:
 
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzerias
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;phone&quot;: -6.680738138486418e-66, &quot;\u000f\u00de\u0097&quot;: [], &quot;name&quot;: &quot;ZAP&quot;}' http://host.docker.internal:8080/api/pizzerias/235
+    curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
 
-6. Test Case ID: nebRpC
+- Response violates schema
 
-- Resource is not available after creation
+    null is not of type &quot;string&quot;
 
-    The API returned `404 Not Found` for a resource that was just created.
+    Schema at /components/schemas/Pizzeria/properties/address:
 
-    Created with      : `POST /api/pizzas`
-    Not available with: `PUT /api/pizzas/{id}`
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
 
-[404] Not Found:
+    Value:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 0 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-07-25T05:19:38.828885179&quot;,&quot;status&quot;:404}`
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
 
 Reproduce with:
 
-    curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\r\u0094\u0002n&quot;, &quot;pizzeriaId&quot;: 274, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;}' http://host.docker.internal:8080/api/pizzas
-    curl -X GET -H 'Content-Type: application/json' http://host.docker.internal:8080/api/pizzerias
-    curl -X PUT -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;\r\u0094\u0002n&quot;, &quot;pizzeriaId&quot;: 0, &quot;price&quot;: 0.0, &quot;size&quot;: &quot;large&quot;}' http://host.docker.internal:8080/api/pizzas/278
+    curl -X GET http://host.docker.internal:8080/api/pizzerias
 
-7. Test Case ID: hLZI2S
+2. Test Case ID: 1FDduf
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizza/properties/photoUrl:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzas
+
+3. Test Case ID: vVQO3P
 
 - API rejected schema-compliant request
 
@@ -2308,12 +3077,223 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-07-25T05:20:25.991Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/6976009762606631107703778320580608&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:34:53.801Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
+
+Reproduce with:
+
+    curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId=-4591344774012470606954496'
+
+4. Test Case ID: X61PnP
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/phone:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Contact phone number&quot;,
+            &quot;example&quot;: &quot;+351912345678&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:121,&quot;name&quot;:&quot;www.google.com:80/search?q=ZAP&quot;,&quot;address&quot;:&quot;&quot;,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:122,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999' AND '1'='1&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:123,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:124,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:125,&quot;name&quot;:&quot;\&quot;;print(chr(122).chr(97).c // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias
+
+2. Test Case ID: 1FDduf
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizza/properties/photoUrl:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzas
-    curl -X DELETE http://host.docker.internal:8080/api/pizzas/6976009762606631107703778320580608"/>
+
+3. Test Case ID: vVQO3P
+
+- API rejected schema-compliant request
+
+    Valid data should have been accepted
+    Expected: 2xx, 401, 403, 404, 409, 5xx
+
+[400] Bad Request:
+
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:34:53.801Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
+
+Reproduce with:
+
+    curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId=-4591344774012470606954496'
+
+4. Test Case ID: X61PnP
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/phone:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Contact phone number&quot;,
+            &quot;example&quot;: &quot;+351912345678&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:121,&quot;name&quot;:&quot;www.google.com:80/search?q=ZAP&quot;,&quot;address&quot;:&quot;&quot;,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:122,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999' AND '1'='1&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:123,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:124,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:125,&quot;name&quot;:&quot;\&quot;;print(chr(122).chr(97).c // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
+			<failure type="failure" message="1. Test Case ID: VlZX4E
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/address:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Street address&quot;,
+            &quot;example&quot;: 123
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;ZAP\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;address&quot;:null,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:32&quot;},{&quot;id&quot;:6,&quot;name&quot;:&quot;&lt;!--&quot;,&quot;address&quot;:null,&quot;phone&quot;: // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias
+
+2. Test Case ID: 1FDduf
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizza/properties/photoUrl:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;description&quot;: &quot;Photo URL&quot;,
+            &quot;example&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, peppers, onion, olives&quot;,&quot;price&quot;:9.90,&quot;size&quot;:&quot;small&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:3},{&quot;id&quot;:6,&quot;name&quot;:&quot;&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:30:18&quot;,&quot;pizzeriaId&quot;:31},{&quot;id&quot;:7,&quot;name&quot;:&quot;ê:&quot;,&quot;ingredients&quot;:null,&quot;price&quot;:0.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:33:37&quot;,&quot;pizzeriaId&quot;:284},{&quot;id // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzas
+
+3. Test Case ID: vVQO3P
+
+- API rejected schema-compliant request
+
+    Valid data should have been accepted
+    Expected: 2xx, 401, 403, 404, 409, 5xx
+
+[400] Bad Request:
+
+    `{&quot;timestamp&quot;:&quot;2026-07-26T05:34:53.801Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas&quot;}`
+
+Reproduce with:
+
+    curl -X GET 'http://host.docker.internal:8080/api/pizzas?pizzeriaId=-4591344774012470606954496'
+
+4. Test Case ID: X61PnP
+
+- Response violates schema
+
+    null is not of type &quot;string&quot;
+
+    Schema at /components/schemas/Pizzeria/properties/phone:
+
+        {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Contact phone number&quot;,
+            &quot;example&quot;: &quot;+351912345678&quot;
+        }
+
+    Value:
+
+        null
+
+[200] OK:
+
+    `[{&quot;id&quot;:121,&quot;name&quot;:&quot;www.google.com:80/search?q=ZAP&quot;,&quot;address&quot;:&quot;&quot;,&quot;phone&quot;:null,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:122,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999' AND '1'='1&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:123,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:124,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-07-26T05:31:36&quot;},{&quot;id&quot;:125,&quot;name&quot;:&quot;\&quot;;print(chr(122).chr(97).c // Output truncated...`
+
+Reproduce with:
+
+    curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
 		</testcase>
 	</testsuite>
 </testsuites>
