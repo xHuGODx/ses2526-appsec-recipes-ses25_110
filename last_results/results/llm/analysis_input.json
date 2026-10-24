@@ -1,17 +1,17 @@
 {
   "metadata": {
-    "generated_at": "2026-10-23T07:01:31.900678+00:00",
+    "generated_at": "2026-10-24T06:58:21.498376+00:00",
     "manifest_path": "results/llm/scan_manifest.json"
   },
   "manifest_summary": {
     "zap": {
       "api": {
-        "alert_types": 9,
-        "instances": 73
+        "alert_types": 2,
+        "instances": 42
       },
       "frontend": {
-        "alert_types": 12,
-        "instances": 44
+        "alert_types": 7,
+        "instances": 25
       }
     },
     "schemathesis": {
@@ -24,18 +24,6 @@
   "findings": {
     "zap": {
       "api": [
-        {
-          "scanner": "zap",
-          "target": "api",
-          "url": "http://host.docker.internal:8080/api/pizzerias/1",
-          "method": "DELETE",
-          "vulnerability": "Cross-Origin-Resource-Policy Header Missing or Invalid",
-          "severity": "low",
-          "confidence": "2",
-          "instances_count": 5,
-          "evidence": "parameter: Cross-Origin-Resource-Policy\ndescription: <p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>\nsolution: <p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secu...",
-          "source": "results/zap/api/report.json"
-        },
         {
           "scanner": "zap",
           "target": "api",
@@ -58,78 +46,6 @@
           "confidence": "3",
           "instances_count": 37,
           "evidence": "evidence: 404\ndescription: <p>A response code of 404 was returned by the server.</p><p>This may indicate that the application is failing to handle unexpected input correctly.</p><p>Raised by the 'Alert on HTTP Response Code Error' script</p>",
-          "source": "results/zap/api/report.json"
-        },
-        {
-          "scanner": "zap",
-          "target": "api",
-          "url": "http://host.docker.internal:8080/api/pizzas/1",
-          "method": "DELETE",
-          "vulnerability": "Non-Storable Content",
-          "severity": "info",
-          "confidence": "2",
-          "instances_count": 5,
-          "evidence": "evidence: DELETE \ndescription: <p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>\nsolution: <p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" ...",
-          "source": "results/zap/api/report.json"
-        },
-        {
-          "scanner": "zap",
-          "target": "api",
-          "url": "http://host.docker.internal:8080/api/pizzerias/1",
-          "method": "DELETE",
-          "vulnerability": "Sec-Fetch-Dest Header is Missing",
-          "severity": "info",
-          "confidence": "3",
-          "instances_count": 4,
-          "evidence": "parameter: Sec-Fetch-Dest\ndescription: <p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>\nsolution: <p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
-          "source": "results/zap/api/report.json"
-        },
-        {
-          "scanner": "zap",
-          "target": "api",
-          "url": "http://host.docker.internal:8080/api/pizzerias/1",
-          "method": "DELETE",
-          "vulnerability": "Sec-Fetch-Mode Header is Missing",
-          "severity": "info",
-          "confidence": "3",
-          "instances_count": 4,
-          "evidence": "parameter: Sec-Fetch-Mode\ndescription: <p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>\nsolution: <p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
-          "source": "results/zap/api/report.json"
-        },
-        {
-          "scanner": "zap",
-          "target": "api",
-          "url": "http://host.docker.internal:8080/api/pizzerias/1",
-          "method": "DELETE",
-          "vulnerability": "Sec-Fetch-Site Header is Missing",
-          "severity": "info",
-          "confidence": "3",
-          "instances_count": 4,
-          "evidence": "parameter: Sec-Fetch-Site\ndescription: <p>Specifies the relationship between request initiator's origin and target's origin.</p>\nsolution: <p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
-          "source": "results/zap/api/report.json"
-        },
-        {
-          "scanner": "zap",
-          "target": "api",
-          "url": "http://host.docker.internal:8080/api/pizzerias/1",
-          "method": "DELETE",
-          "vulnerability": "Sec-Fetch-User Header is Missing",
-          "severity": "info",
-          "confidence": "3",
-          "instances_count": 4,
-          "evidence": "parameter: Sec-Fetch-User\ndescription: <p>Specifies if a navigation request was initiated by a user.</p>\nsolution: <p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
-          "source": "results/zap/api/report.json"
-        },
-        {
-          "scanner": "zap",
-          "target": "api",
-          "url": "http://host.docker.internal:8080/api/pizzas?pizzeriaId=1",
-          "method": "GET",
-          "vulnerability": "Storable and Cacheable Content",
-          "severity": "info",
-          "confidence": "2",
-          "instances_count": 5,
-          "evidence": "other_info: <p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>\ndescription: <p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specifi...",
           "source": "results/zap/api/report.json"
         }
       ],
@@ -161,42 +77,6 @@
         {
           "scanner": "zap",
           "target": "frontend",
-          "url": "http://host.docker.internal:5173",
-          "method": "GET",
-          "vulnerability": "Cross-Origin-Embedder-Policy Header Missing or Invalid",
-          "severity": "low",
-          "confidence": "2",
-          "instances_count": 2,
-          "evidence": "parameter: Cross-Origin-Embedder-Policy\ndescription: <p>Cross-Origin-Embedder-Policy header is a response header that prevents a document from loading any cross-origin resources that don't explicitly grant the document permission (using CORP or CORS).</p>\nsolution: <p>Ensure that the application/web server sets the Cross-Origin-Embedder-Policy header appropriately, and that it sets the Cross-Origin-Embedder-Policy header to 'require-corp' for documents.</p><p>If possible, ensure that the end ...",
-          "source": "results/zap/frontend/report.json"
-        },
-        {
-          "scanner": "zap",
-          "target": "frontend",
-          "url": "http://host.docker.internal:5173",
-          "method": "GET",
-          "vulnerability": "Cross-Origin-Opener-Policy Header Missing or Invalid",
-          "severity": "low",
-          "confidence": "2",
-          "instances_count": 2,
-          "evidence": "parameter: Cross-Origin-Opener-Policy\ndescription: <p>Cross-Origin-Opener-Policy header is a response header that allows a site to control if others included documents share the same browsing context. Sharing the same browsing context with untrusted documents might lead to data leak.</p>\nsolution: <p>Ensure that the application/web server sets the Cross-Origin-Opener-Policy header appropriately, and that it sets the Cross-Origin-Opener-Policy header to 'same-origin' for documents.</p><p>'same...",
-          "source": "results/zap/frontend/report.json"
-        },
-        {
-          "scanner": "zap",
-          "target": "frontend",
-          "url": "http://host.docker.internal:5173",
-          "method": "GET",
-          "vulnerability": "Cross-Origin-Resource-Policy Header Missing or Invalid",
-          "severity": "low",
-          "confidence": "2",
-          "instances_count": 5,
-          "evidence": "parameter: Cross-Origin-Resource-Policy\ndescription: <p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>\nsolution: <p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secu...",
-          "source": "results/zap/frontend/report.json"
-        },
-        {
-          "scanner": "zap",
-          "target": "frontend",
           "url": "http://host.docker.internal:5173/robots.txt",
           "method": "GET",
           "vulnerability": "In Page Banner Information Leak",
@@ -204,18 +84,6 @@
           "confidence": "3",
           "instances_count": 2,
           "evidence": "evidence: nginx/1.27.5\nother_info: <p>There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body.</p>\ndescription: <p>The server returned a version banner string in the response content. Such information leaks may allow attackers to further target specific issues impacting the product and version in use.</p>\nsolution: <p>Configure the server to prevent such information leaks. For example:</p><p>Under Tomcat this is d...",
-          "source": "results/zap/frontend/report.json"
-        },
-        {
-          "scanner": "zap",
-          "target": "frontend",
-          "url": "http://host.docker.internal:5173",
-          "method": "GET",
-          "vulnerability": "Permissions Policy Header Not Set",
-          "severity": "low",
-          "confidence": "2",
-          "instances_count": 5,
-          "evidence": "description: <p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen et...",
           "source": "results/zap/frontend/report.json"
         },
         {
@@ -257,18 +125,6 @@
         {
           "scanner": "zap",
           "target": "frontend",
-          "url": "http://host.docker.internal:5173",
-          "method": "GET",
-          "vulnerability": "Storable and Cacheable Content",
-          "severity": "info",
-          "confidence": "2",
-          "instances_count": 5,
-          "evidence": "other_info: <p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>\ndescription: <p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specifi...",
-          "source": "results/zap/frontend/report.json"
-        },
-        {
-          "scanner": "zap",
-          "target": "frontend",
           "url": "http://host.docker.internal:5173/robots.txt",
           "method": "GET",
           "vulnerability": "User Agent Fuzzer",
@@ -289,39 +145,39 @@
         },
         {
           "event_type": null,
-          "excerpt": "{\"PhaseFinished\": {\"id\": \"4b83e6f2efc9434ba9180ac309c7cd00\", \"payload\": {\"probes\": [{\"outcome\": \"failure\", \"probe\": {\"name\": \"Supports NULL byte in headers\"}, \"request\": {\"body\": null, \"headers\": {\"Accept\": \"*/*\", \"Accept-Encoding\": \"gzip, deflate\", \"Connection\": \"keep-alive\", \"User-Agent\": \"schemathesis/4.14.2\", \"X-Schemathesis-Probe\": \"Supports NULL byte in headers\", \"X-Schemathesis-Probe-Null\": \"\\u0000\"}, \"method\": \"GET\", \"url\": \"http://host.docker.internal:8080/\"}, \"response\": \"<Response ..."
+          "excerpt": "{\"PhaseFinished\": {\"id\": \"a07df78adc0d4c579d4f46b85e108ebf\", \"payload\": {\"probes\": [{\"outcome\": \"failure\", \"probe\": {\"name\": \"Supports NULL byte in headers\"}, \"request\": {\"body\": null, \"headers\": {\"Accept\": \"*/*\", \"Accept-Encoding\": \"gzip, deflate\", \"Connection\": \"keep-alive\", \"User-Agent\": \"schemathesis/4.14.2\", \"X-Schemathesis-Probe\": \"Supports NULL byte in headers\", \"X-Schemathesis-Probe-Null\": \"\\u0000\"}, \"method\": \"GET\", \"url\": \"http://host.docker.internal:8080/\"}, \"response\": \"<Response ..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"PhaseStarted\": {\"id\": \"5f16f53dc17b4c388c2307f7595187e3\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"timestamp\": 1792738725.2972047}}"
+          "excerpt": "{\"PhaseStarted\": {\"id\": \"b8a900d74992483182adcb501e73c393\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"timestamp\": 1792824885.6296172}}"
         },
         {
           "event_type": null,
-          "excerpt": "{\"PhaseFinished\": {\"id\": \"94d5283c6df74f15897b3ba922716ad0\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"status\": \"success\", \"timestamp\": 1792738725.2987707}}"
+          "excerpt": "{\"PhaseFinished\": {\"id\": \"6b37141b06854d83931887826c169d7d\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"status\": \"success\", \"timestamp\": 1792824885.6312838}}"
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.03422767499995416, \"id\": \"15a1a4eacb1c4f658e9b331fa8989d3a\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"mHtg3t\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+351912345678\"}, \"id\": \"mHtg3t\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\": \"/api/pizzerias\"}}}, \"checks\": {\"mHtg3t\": [{\"name\": \"not_a_server_error\", \"status\": \"success\"}, {\"name\": \"status_code_conform..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.04121866999997792, \"id\": \"74e2a16ec78c4e83b2abcfa58ff2bcb7\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"NQ7OkK\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+351912345678\"}, \"id\": \"NQ7OkK\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\": \"/api/pizzerias\"}}}, \"checks\": {\"NQ7OkK\": [{\"name\": \"not_a_server_error\", \"status\": \"success\"}, {\"name\": \"status_code_conform..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.006171246000008068, \"id\": \"82ebd16c6bcd4440868b22944f834174\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"rvM7lb\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"ingredients\": \"Tomato, mozzarella, basil\", \"isAvailable\": true, \"name\": \"Margherita\", \"photoUrl\": \"https://example.com/pizzas/margherita.jpg\", \"pizzeriaId\": 1, \"price\": 12.5, \"size\": \"medium\"}, \"id\": \"rvM7lb\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\":..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.006893003000016051, \"id\": \"9c78b784858c4c399843a71ab0a2caab\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"I5zPma\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"ingredients\": \"Tomato, mozzarella, basil\", \"isAvailable\": true, \"name\": \"Margherita\", \"photoUrl\": \"https://example.com/pizzas/margherita.jpg\", \"pizzeriaId\": 1, \"price\": 12.5, \"size\": \"medium\"}, \"id\": \"I5zPma\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\":..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.005779640000014297, \"id\": \"bc159b983c9d4e45a7c99d042a6e235d\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"XolgRR\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"ingredients\": \"Tomato, mozzarella, basil\", \"isAvailable\": true, \"name\": \"Margherita\", \"photoUrl\": \"https://example.com/pizzas/margherita.jpg\", \"pizzeriaId\": 1, \"price\": 12.5, \"size\": \"medium\"}, \"id\": \"XolgRR\", \"media_type\": \"application/json\", \"method\": \"PUT\", \"path\": ..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.006370621000030496, \"id\": \"0551529714bc4854b08292041cf4384b\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"yM2EgF\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"ingredients\": \"Tomato, mozzarella, basil\", \"isAvailable\": true, \"name\": \"Margherita\", \"photoUrl\": \"https://example.com/pizzas/margherita.jpg\", \"pizzeriaId\": 1, \"price\": 12.5, \"size\": \"medium\"}, \"id\": \"yM2EgF\", \"media_type\": \"application/json\", \"method\": \"PUT\", \"path\": ..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.008547946000021511, \"id\": \"f043d49758524e91af3cbc406941af0c\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"jN6YZk\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+351912345678\"}, \"id\": \"jN6YZk\", \"media_type\": \"application/json\", \"method\": \"PUT\", \"path\": \"/api/pizzerias/{id}\", \"path_parameters\": {\"id\": 1}}}, \"pCNE2j\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.008805085000005874, \"id\": \"522f19892a4544ecbd305a3c1850d7eb\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"UIBNDI\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+351912345678\"}, \"id\": \"UIBNDI\", \"media_type\": \"application/json\", \"method\": \"PUT\", \"path\": \"/api/pizzerias/{id}\", \"path_parameters\": {\"id\": 1}}}, \"iBPIQw\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.009050076999983503, \"id\": \"357fa48234a4470a97cc34cbb66bf9aa\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"UlD75T\": {\"is_transition_applied\": false, \"value\": {\"id\": \"UlD75T\", \"method\": \"GET\", \"path\": \"/api/pizzas\", \"query\": {\"pizzeriaId\": 320}}}, \"jx9Fc5\": {\"is_transition_applied\": false, \"value\": {\"id\": \"jx9Fc5\", \"method\": \"GET\", \"path\": \"/api/pizzas\", \"query\": {\"pizzeriaId\": 1}}}}, \"checks\": {\"UlD75T\": [{\"name\": \"not_a_server_error\"..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.008182798999996521, \"id\": \"f2b53c9e567f4763bbdde4188c0670e0\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"5y7Jdu\": {\"is_transition_applied\": false, \"value\": {\"id\": \"5y7Jdu\", \"method\": \"GET\", \"path\": \"/api/pizzas\", \"query\": {\"pizzeriaId\": 1}}}, \"RPZMFi\": {\"is_transition_applied\": false, \"value\": {\"id\": \"RPZMFi\", \"method\": \"GET\", \"path\": \"/api/pizzas\", \"query\": {\"pizzeriaId\": 320}}}}, \"checks\": {\"5y7Jdu\": [{\"name\": \"not_a_server_error\"..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.0051164779999908205, \"id\": \"57c827a2ccbe43899d06e33473f0840f\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"W8yOHS\": {\"is_transition_applied\": false, \"value\": {\"id\": \"W8yOHS\", \"method\": \"GET\", \"path\": \"/api/pizzas/{id}\", \"path_parameters\": {\"id\": 1}}}}, \"checks\": {\"W8yOHS\": [{\"name\": \"not_a_server_error\", \"status\": \"success\"}, {\"name\": \"status_code_conformance\", \"status\": \"success\"}, {\"name\": \"content_type_conformance\", \"status\": \"suc..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.004333346999999321, \"id\": \"6b37eb77a50647c3b0b2c210b2536a0c\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"yAT5zq\": {\"is_transition_applied\": false, \"value\": {\"id\": \"yAT5zq\", \"method\": \"GET\", \"path\": \"/api/pizzas/{id}\", \"path_parameters\": {\"id\": 1}}}}, \"checks\": {\"yAT5zq\": [{\"name\": \"not_a_server_error\", \"status\": \"success\"}, {\"name\": \"status_code_conformance\", \"status\": \"success\"}, {\"name\": \"content_type_conformance\", \"status\": \"succ..."
         }
       ]
     }
