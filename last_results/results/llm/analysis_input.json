@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-10-25T07:20:26.664770+00:00",
+    "generated_at": "2026-10-26T07:27:22.499042+00:00",
     "manifest_path": "results/llm/scan_manifest.json"
   },
   "manifest_summary": {
@@ -16,8 +16,8 @@
     },
     "schemathesis": {
       "tests": 11,
-      "failures": 11,
-      "errors": 0,
+      "failures": 10,
+      "errors": 10,
       "skipped": 1
     }
   },
@@ -281,7 +281,118 @@
       ]
     },
     "schemathesis": {
-      "junit_findings": [],
+      "junit_findings": [
+        {
+          "scanner": "schemathesis",
+          "target": "api",
+          "url": "/api/pizzerias",
+          "method": "POST",
+          "vulnerability": "error",
+          "severity": "unknown",
+          "confidence": "medium",
+          "evidence": "testcase: POST /api/pizzerias\ndetails: Runtime Error\n\n'many' object has no attribute 'more'\n\n    Traceback (most recent call last):\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/engine/run/unit/_executor.py\", line 129, in run_test\n        test_function(\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py\", line 268, in test_func\n        def test_wrapper(*args: Any, **kwargs: Any) -> Any:\n                   ^^^^^^^^^^^^^^^^^^^^^^...",
+          "source": "results/schemathesis/junit.xml"
+        },
+        {
+          "scanner": "schemathesis",
+          "target": "api",
+          "url": "/api/pizzas",
+          "method": "POST",
+          "vulnerability": "error",
+          "severity": "unknown",
+          "confidence": "medium",
+          "evidence": "testcase: POST /api/pizzas\ndetails: Runtime Error\n\n'many' object has no attribute 'more'\n\n    Traceback (most recent call last):\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/engine/run/unit/_executor.py\", line 129, in run_test\n        test_function(\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py\", line 268, in test_func\n        def test_wrapper(*args: Any, **kwargs: Any) -> Any:\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^...",
+          "source": "results/schemathesis/junit.xml"
+        },
+        {
+          "scanner": "schemathesis",
+          "target": "api",
+          "url": "/api/pizzas/{id}",
+          "method": "PUT",
+          "vulnerability": "error",
+          "severity": "unknown",
+          "confidence": "medium",
+          "evidence": "testcase: PUT /api/pizzas/{id}\ndetails: Runtime Error\n\n'many' object has no attribute 'more'\n\n    Traceback (most recent call last):\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/engine/run/unit/_executor.py\", line 129, in run_test\n        test_function(\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py\", line 268, in test_func\n        def test_wrapper(*args: Any, **kwargs: Any) -> Any:\n                   ^^^^^^^^^^^^^^^^^^^^^...",
+          "source": "results/schemathesis/junit.xml"
+        },
+        {
+          "scanner": "schemathesis",
+          "target": "api",
+          "url": "/api/pizzerias/{id}",
+          "method": "PUT",
+          "vulnerability": "error",
+          "severity": "unknown",
+          "confidence": "medium",
+          "evidence": "testcase: PUT /api/pizzerias/{id}\ndetails: Runtime Error\n\n'many' object has no attribute 'more'\n\n    Traceback (most recent call last):\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/engine/run/unit/_executor.py\", line 129, in run_test\n        test_function(\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py\", line 268, in test_func\n        def test_wrapper(*args: Any, **kwargs: Any) -> Any:\n                   ^^^^^^^^^^^^^^^^^^...",
+          "source": "results/schemathesis/junit.xml"
+        },
+        {
+          "scanner": "schemathesis",
+          "target": "api",
+          "url": "/api/pizzas",
+          "method": "GET",
+          "vulnerability": "error",
+          "severity": "unknown",
+          "confidence": "medium",
+          "evidence": "testcase: GET /api/pizzas\ndetails: Runtime Error\n\n'many' object has no attribute 'more'\n\n    Traceback (most recent call last):\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/engine/run/unit/_executor.py\", line 129, in run_test\n        test_function(\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py\", line 268, in test_func\n        def test_wrapper(*args: Any, **kwargs: Any) -> Any:\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^...",
+          "source": "results/schemathesis/junit.xml"
+        },
+        {
+          "scanner": "schemathesis",
+          "target": "api",
+          "url": "/api/pizzas/{id}",
+          "method": "GET",
+          "vulnerability": "error",
+          "severity": "unknown",
+          "confidence": "medium",
+          "evidence": "testcase: GET /api/pizzas/{id}\ndetails: Runtime Error\n\n'many' object has no attribute 'more'\n\n    Traceback (most recent call last):\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/engine/run/unit/_executor.py\", line 129, in run_test\n        test_function(\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py\", line 268, in test_func\n        def test_wrapper(*args: Any, **kwargs: Any) -> Any:\n                   ^^^^^^^^^^^^^^^^^^^^^...",
+          "source": "results/schemathesis/junit.xml"
+        },
+        {
+          "scanner": "schemathesis",
+          "target": "api",
+          "url": "/api/pizzerias/{id}",
+          "method": "GET",
+          "vulnerability": "error",
+          "severity": "unknown",
+          "confidence": "medium",
+          "evidence": "testcase: GET /api/pizzerias/{id}\ndetails: Runtime Error\n\n'many' object has no attribute 'more'\n\n    Traceback (most recent call last):\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/engine/run/unit/_executor.py\", line 129, in run_test\n        test_function(\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py\", line 268, in test_func\n        def test_wrapper(*args: Any, **kwargs: Any) -> Any:\n                   ^^^^^^^^^^^^^^^^^^...",
+          "source": "results/schemathesis/junit.xml"
+        },
+        {
+          "scanner": "schemathesis",
+          "target": "api",
+          "url": "/api/pizzas/{id}",
+          "method": "DELETE",
+          "vulnerability": "error",
+          "severity": "unknown",
+          "confidence": "medium",
+          "evidence": "testcase: DELETE /api/pizzas/{id}\ndetails: Runtime Error\n\n'many' object has no attribute 'more'\n\n    Traceback (most recent call last):\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/engine/run/unit/_executor.py\", line 129, in run_test\n        test_function(\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py\", line 268, in test_func\n        def test_wrapper(*args: Any, **kwargs: Any) -> Any:\n                   ^^^^^^^^^^^^^^^^^^...",
+          "source": "results/schemathesis/junit.xml"
+        },
+        {
+          "scanner": "schemathesis",
+          "target": "api",
+          "url": "/api/pizzerias/{id}",
+          "method": "DELETE",
+          "vulnerability": "error",
+          "severity": "unknown",
+          "confidence": "medium",
+          "evidence": "testcase: DELETE /api/pizzerias/{id}\ndetails: Runtime Error\n\n'many' object has no attribute 'more'\n\n    Traceback (most recent call last):\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/engine/run/unit/_executor.py\", line 129, in run_test\n        test_function(\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py\", line 268, in test_func\n        def test_wrapper(*args: Any, **kwargs: Any) -> Any:\n                   ^^^^^^^^^^^^^^^...",
+          "source": "results/schemathesis/junit.xml"
+        },
+        {
+          "scanner": "schemathesis",
+          "target": "api",
+          "url": null,
+          "method": null,
+          "vulnerability": "error",
+          "severity": "unknown",
+          "confidence": "medium",
+          "evidence": "testcase: Stateful tests\ndetails: Runtime Error\n\n'many' object has no attribute 'more'\n\n    Traceback (most recent call last):\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/engine/run/stateful/_executor.py\", line 225, in execute_state_machine_loop\n        InstrumentedStateMachine.run(settings=hypothesis_settings)\n      File \"/usr/local/lib/python3.12/site-packages/schemathesis/generation/stateful/state_machine.py\", line 280, in run\n        return run_state_machine_as_test(c...",
+          "source": "results/schemathesis/junit.xml"
+        }
+      ],
       "event_samples": [
         {
           "event_type": null,
@@ -289,39 +400,39 @@
         },
         {
           "event_type": null,
-          "excerpt": "{\"PhaseFinished\": {\"id\": \"31b10c90f92c40ca9aaf1e0a79413fab\", \"payload\": {\"probes\": [{\"outcome\": \"failure\", \"probe\": {\"name\": \"Supports NULL byte in headers\"}, \"request\": {\"body\": null, \"headers\": {\"Accept\": \"*/*\", \"Accept-Encoding\": \"gzip, deflate\", \"Connection\": \"keep-alive\", \"User-Agent\": \"schemathesis/4.14.2\", \"X-Schemathesis-Probe\": \"Supports NULL byte in headers\", \"X-Schemathesis-Probe-Null\": \"\\u0000\"}, \"method\": \"GET\", \"url\": \"http://host.docker.internal:8080/\"}, \"response\": \"<Response ..."
+          "excerpt": "{\"PhaseFinished\": {\"id\": \"2c54283417074a04a0e19cb96e142a0b\", \"payload\": {\"probes\": [{\"outcome\": \"failure\", \"probe\": {\"name\": \"Supports NULL byte in headers\"}, \"request\": {\"body\": null, \"headers\": {\"Accept\": \"*/*\", \"Accept-Encoding\": \"gzip, deflate\", \"Connection\": \"keep-alive\", \"User-Agent\": \"schemathesis/4.14.2\", \"X-Schemathesis-Probe\": \"Supports NULL byte in headers\", \"X-Schemathesis-Probe-Null\": \"\\u0000\"}, \"method\": \"GET\", \"url\": \"http://host.docker.internal:8080/\"}, \"response\": \"<Response ..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"PhaseStarted\": {\"id\": \"7492b2cc3283404cbf971a8b75e944f7\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"timestamp\": 1792912704.5987968}}"
+          "excerpt": "{\"PhaseStarted\": {\"id\": \"4eb2b4f12daa4520913f30d3654ff844\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"timestamp\": 1792999631.6943743}}"
         },
         {
           "event_type": null,
-          "excerpt": "{\"PhaseFinished\": {\"id\": \"fb674980c4824b7c95d04d12ab67d083\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"status\": \"success\", \"timestamp\": 1792912704.599794}}"
+          "excerpt": "{\"PhaseFinished\": {\"id\": \"b9c36722f547494589228a761c80a15c\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"status\": \"success\", \"timestamp\": 1792999631.6955638}}"
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.02692594600000575, \"id\": \"25461c7ff8cb4a0ba8772bfa9503e66a\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"w8lULe\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+351912345678\"}, \"id\": \"w8lULe\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\": \"/api/pizzerias\"}}}, \"checks\": {\"w8lULe\": [{\"name\": \"not_a_server_error\", \"status\": \"success\"}, {\"name\": \"status_code_conform..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.03433315600000242, \"id\": \"362315ad324049fa86f11d87fca4f1d4\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"7MXT0U\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+351912345678\"}, \"id\": \"7MXT0U\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\": \"/api/pizzerias\"}}}, \"checks\": {\"7MXT0U\": [{\"name\": \"not_a_server_error\", \"status\": \"success\"}, {\"name\": \"status_code_conform..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.005301941000027455, \"id\": \"813478ca812c49788b8c99d02e4e69b5\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"RnnxkN\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"ingredients\": \"Tomato, mozzarella, basil\", \"isAvailable\": true, \"name\": \"Margherita\", \"photoUrl\": \"https://example.com/pizzas/margherita.jpg\", \"pizzeriaId\": 1, \"price\": 12.5, \"size\": \"medium\"}, \"id\": \"RnnxkN\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\":..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.005056084999978339, \"id\": \"6856330a131046bba63c89f09b612859\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"Ie00bt\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"ingredients\": \"Tomato, mozzarella, basil\", \"isAvailable\": true, \"name\": \"Margherita\", \"photoUrl\": \"https://example.com/pizzas/margherita.jpg\", \"pizzeriaId\": 1, \"price\": 12.5, \"size\": \"medium\"}, \"id\": \"Ie00bt\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\":..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.005667912000035358, \"id\": \"a1c241d21049422995ae36583186004c\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"NudBmc\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"ingredients\": \"Tomato, mozzarella, basil\", \"isAvailable\": true, \"name\": \"Margherita\", \"photoUrl\": \"https://example.com/pizzas/margherita.jpg\", \"pizzeriaId\": 1, \"price\": 12.5, \"size\": \"medium\"}, \"id\": \"NudBmc\", \"media_type\": \"application/json\", \"method\": \"PUT\", \"path\": ..."
+          "excerpt": "{\"SuiteFinished\": {\"id\": \"155ff86a5e3f437583e8320e351db51d\", \"phase\": \"Examples\", \"status\": \"failure\", \"timestamp\": 1792999632.9004374}}"
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.007936707999988357, \"id\": \"cf915496b5dd4908ac189f95a9936a2d\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"CJuSho\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+351912345678\"}, \"id\": \"CJuSho\", \"media_type\": \"application/json\", \"method\": \"PUT\", \"path\": \"/api/pizzerias/{id}\", \"path_parameters\": {\"id\": 1}}}, \"s0ZrzL\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address..."
+          "excerpt": "{\"PhaseFinished\": {\"id\": \"e897ed691a554dddb52fbe5c94cbeb9c\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Examples\"}, \"status\": \"failure\", \"timestamp\": 1792999632.900486}}"
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.006374254999968798, \"id\": \"b10080e8c7a54422910d0451f933aa5a\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"js9iaE\": {\"is_transition_applied\": false, \"value\": {\"id\": \"js9iaE\", \"method\": \"GET\", \"path\": \"/api/pizzas\", \"query\": {\"pizzeriaId\": 320}}}, \"yI0Cn7\": {\"is_transition_applied\": false, \"value\": {\"id\": \"yI0Cn7\", \"method\": \"GET\", \"path\": \"/api/pizzas\", \"query\": {\"pizzeriaId\": 1}}}}, \"checks\": {\"js9iaE\": [{\"name\": \"not_a_server_error\"..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.15883734599998434, \"id\": \"14989a626bf0426cad19ff04791a7746\", \"is_final\": false, \"phase\": \"Coverage\", \"recorder\": {\"cases\": {\"017NY3\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": 0, \"phone\": \"+351912345678\"}, \"id\": \"017NY3\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\": \"/api/pizzerias\"}}, \"1dc1r4\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+35191..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.0028806720000034147, \"id\": \"d9c7b424f1164887a570a5f32b0a631d\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"Vl7Q1i\": {\"is_transition_applied\": false, \"value\": {\"id\": \"Vl7Q1i\", \"method\": \"GET\", \"path\": \"/api/pizzas/{id}\", \"path_parameters\": {\"id\": 1}}}}, \"checks\": {\"Vl7Q1i\": [{\"name\": \"not_a_server_error\", \"status\": \"success\"}, {\"name\": \"status_code_conformance\", \"status\": \"success\"}, {\"name\": \"content_type_conformance\", \"status\": \"suc..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.04067399800004523, \"id\": \"2d8e62fef8c247f4954149859bd9c448\", \"is_final\": false, \"phase\": \"Coverage\", \"recorder\": {\"cases\": {\"8NsV9K\": {\"is_transition_applied\": false, \"value\": {\"id\": \"8NsV9K\", \"method\": \"TRACE\", \"path\": \"/api/pizzerias\"}}, \"N2n3Nq\": {\"is_transition_applied\": false, \"value\": {\"id\": \"N2n3Nq\", \"method\": \"PUT\", \"path\": \"/api/pizzerias\"}}, \"cW97ND\": {\"is_transition_applied\": false, \"value\": {\"id\": \"cW97ND\", \"method\": \"GET\", \"path\": \"/api/piz..."
         }
       ]
     }
