@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<testsuites disabled="0" errors="10" failures="10" tests="11" time="2.0235813310000026">
-	<testsuite disabled="0" errors="10" failures="10" name="schemathesis" skipped="1" tests="11" time="2.0235813310000026" hostname="e5789f9028b9">
-		<testcase name="POST /api/pizzerias" time="0.298581">
-			<failure type="failure" message="1. Test Case ID: 7MXT0U
+<testsuites disabled="0" errors="10" failures="10" tests="11" time="1.971114618999934">
+	<testsuite disabled="0" errors="10" failures="10" name="schemathesis" skipped="1" tests="11" time="1.971114618999934" hostname="61afc42cf054">
+		<testcase name="POST /api/pizzerias" time="0.312306">
+			<failure type="failure" message="1. Test Case ID: GMbZYO
 
 - Response violates schema
 
@@ -28,7 +28,7 @@
 Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Napoli Centrale&quot;, &quot;address&quot;: 123, &quot;phone&quot;: &quot;+351912345678&quot;}' http://host.docker.internal:8080/api/pizzerias"/>
-			<failure type="failure" message="1. Test Case ID: 7MXT0U
+			<failure type="failure" message="1. Test Case ID: GMbZYO
 
 - Response violates schema
 
@@ -55,11 +55,11 @@ Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Napoli Centrale&quot;, &quot;address&quot;: 123, &quot;phone&quot;: &quot;+351912345678&quot;}' http://host.docker.internal:8080/api/pizzerias
 
-2. Test Case ID: BNYBl9
+2. Test Case ID: JmLlQB
 
 - Response violates schema
 
-    &quot;2026-10-26T07:27:12.951070568&quot; is not a &quot;date-time&quot;
+    &quot;2026-10-27T07:19:14.465486701&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -72,17 +72,17 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-10-26T07:27:12.951070568&quot;
+        &quot;2026-10-27T07:19:14.465486701&quot;
 
 [400] Bad Request:
 
-    `{&quot;error&quot;:&quot;Bad Request&quot;,&quot;message&quot;:&quot;name: must not be blank&quot;,&quot;timestamp&quot;:&quot;2026-10-26T07:27:12.951070568&quot;,&quot;status&quot;:400}`
+    `{&quot;error&quot;:&quot;Bad Request&quot;,&quot;message&quot;:&quot;name: must not be blank&quot;,&quot;timestamp&quot;:&quot;2026-10-27T07:19:14.465486701&quot;,&quot;status&quot;:400}`
 
 Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;address&quot;: 123, &quot;phone&quot;: &quot;+351912345678&quot;}' http://host.docker.internal:8080/api/pizzerias
 
-3. Test Case ID: NrK0rO
+3. Test Case ID: RZaBr7
 
 - Response violates schema
 
@@ -114,7 +114,7 @@ Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Napoli Centrale&quot;, &quot;address&quot;: 123, &quot;phone&quot;: null}' http://host.docker.internal:8080/api/pizzerias
 
-4. Test Case ID: 49W4tp
+4. Test Case ID: Tflp5G
 
 - Response violates schema
 
@@ -149,12 +149,12 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py&quot;, line 268, in test_func
         def test_wrapper(*args: Any, **kwargs: Any) -&gt; Any:
                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2299, in wrapped_test
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2330, in wrapped_test
         raise the_error_hypothesis_found
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/_hypothesis.py&quot;, line 229, in openapi_cases
         body_result = draw(strategy)
                       ^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -165,12 +165,12 @@ Reproduce with:
               ^^^^^^^^^^^^^
     AttributeError: 'many' object has no attribute 'more'</error>
 		</testcase>
-		<testcase name="GET /api/pizzerias" time="0.060597">
-			<failure type="failure" message="1. Test Case ID: cW97ND
+		<testcase name="GET /api/pizzerias" time="0.088813">
+			<failure type="failure" message="1. Test Case ID: Bh9nXL
 
 - Response violates schema
 
-    &quot;2026-10-26T07:24:05&quot; is not a &quot;date-time&quot;
+    &quot;2026-10-27T07:16:00&quot; is not a &quot;date-time&quot;
 
     Schema at /components/schemas/Pizzeria/properties/createdAt:
 
@@ -183,20 +183,20 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-10-26T07:24:05&quot;
+        &quot;2026-10-27T07:16:00&quot;
 
 [200] OK:
 
-    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;Roma Antica&quot;,&quot;address&quot;:&quot;Avenida da Liberdade 22, Lisboa&quot;,&quot;phone&quot;:&quot;+351 210 200 200&quot;,&quot;createdAt&quot;:&quot;2026-10-26T07:24:05&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-10-26T07:24:05&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-10-26T07:25:00&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-10-26T07:25:00&quot;},{&quot;id&quot;:6,&quot;n // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;Roma Antica&quot;,&quot;address&quot;:&quot;Avenida da Liberdade 22, Lisboa&quot;,&quot;phone&quot;:&quot;+351 210 200 200&quot;,&quot;createdAt&quot;:&quot;2026-10-27T07:16:00&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-10-27T07:16:00&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-10-27T07:16:51&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-10-27T07:16:52&quot;},{&quot;id&quot;:6,&quot;n // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
-			<failure type="failure" message="1. Test Case ID: cW97ND
+			<failure type="failure" message="1. Test Case ID: Bh9nXL
 
 - Response violates schema
 
-    &quot;2026-10-26T07:24:05&quot; is not a &quot;date-time&quot;
+    &quot;2026-10-27T07:16:00&quot; is not a &quot;date-time&quot;
 
     Schema at /components/schemas/Pizzeria/properties/createdAt:
 
@@ -209,23 +209,23 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-10-26T07:24:05&quot;
+        &quot;2026-10-27T07:16:00&quot;
 
 [200] OK:
 
-    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;Roma Antica&quot;,&quot;address&quot;:&quot;Avenida da Liberdade 22, Lisboa&quot;,&quot;phone&quot;:&quot;+351 210 200 200&quot;,&quot;createdAt&quot;:&quot;2026-10-26T07:24:05&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-10-26T07:24:05&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-10-26T07:25:00&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-10-26T07:25:00&quot;},{&quot;id&quot;:6,&quot;n // Output truncated...`
+    `[{&quot;id&quot;:2,&quot;name&quot;:&quot;Roma Antica&quot;,&quot;address&quot;:&quot;Avenida da Liberdade 22, Lisboa&quot;,&quot;phone&quot;:&quot;+351 210 200 200&quot;,&quot;createdAt&quot;:&quot;2026-10-27T07:16:00&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Sicilia Slice&quot;,&quot;address&quot;:&quot;Praça do Mercado 5, Coimbra&quot;,&quot;phone&quot;:&quot;+351 239 300 300&quot;,&quot;createdAt&quot;:&quot;2026-10-27T07:16:00&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;ZAP&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-10-27T07:16:51&quot;},{&quot;id&quot;:5,&quot;name&quot;:&quot;http://www.google.com/&quot;,&quot;address&quot;:&quot;688 Zaproxy Ridge&quot;,&quot;phone&quot;:&quot;9999999999&quot;,&quot;createdAt&quot;:&quot;2026-10-27T07:16:52&quot;},{&quot;id&quot;:6,&quot;n // Output truncated...`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias"/>
 			<skipped type="skipped">Hypothesis has been told to run no test cases for this test.</skipped>
 		</testcase>
-		<testcase name="POST /api/pizzas" time="0.351893">
-			<failure type="failure" message="1. Test Case ID: Ie00bt
+		<testcase name="POST /api/pizzas" time="0.402814">
+			<failure type="failure" message="1. Test Case ID: cElq5o
 
 - Response violates schema
 
-    &quot;2026-10-26T07:27:11.744527277&quot; is not a &quot;date-time&quot;
+    &quot;2026-10-27T07:19:12.857432936&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -238,20 +238,20 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-10-26T07:27:11.744527277&quot;
+        &quot;2026-10-27T07:19:12.857432936&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-10-26T07:27:11.744527277&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-10-27T07:19:12.857432936&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
     curl -X POST -H 'Content-Type: application/json' -d '{&quot;name&quot;: &quot;Margherita&quot;, &quot;ingredients&quot;: &quot;Tomato, mozzarella, basil&quot;, &quot;pizzeriaId&quot;: 1, &quot;price&quot;: 12.5, &quot;size&quot;: &quot;medium&quot;, &quot;isAvailable&quot;: true, &quot;photoUrl&quot;: &quot;https://example.com/pizzas/margherita.jpg&quot;}' http://host.docker.internal:8080/api/pizzas"/>
-			<failure type="failure" message="1. Test Case ID: Ie00bt
+			<failure type="failure" message="1. Test Case ID: cElq5o
 
 - Response violates schema
 
-    &quot;2026-10-26T07:27:11.744527277&quot; is not a &quot;date-time&quot;
+    &quot;2026-10-27T07:19:12.857432936&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -264,11 +264,11 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-10-26T07:27:11.744527277&quot;
+        &quot;2026-10-27T07:19:12.857432936&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-10-26T07:27:11.744527277&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-10-27T07:19:12.857432936&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
@@ -283,12 +283,12 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py&quot;, line 268, in test_func
         def test_wrapper(*args: Any, **kwargs: Any) -&gt; Any:
                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2299, in wrapped_test
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2330, in wrapped_test
         raise the_error_hypothesis_found
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/_hypothesis.py&quot;, line 229, in openapi_cases
         body_result = draw(strategy)
                       ^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -297,7 +297,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 103, in hybrid
         base = draw(original_strategy) or {}
                ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -308,12 +308,12 @@ Reproduce with:
               ^^^^^^^^^^^^^
     AttributeError: 'many' object has no attribute 'more'</error>
 		</testcase>
-		<testcase name="PUT /api/pizzas/{id}" time="0.324488">
-			<failure type="failure" message="1. Test Case ID: nPToww
+		<testcase name="PUT /api/pizzas/{id}" time="0.311637">
+			<failure type="failure" message="1. Test Case ID: olyp5y
 
 - Response violates schema
 
-    &quot;2026-10-26T07:27:14.649484196&quot; is not a &quot;date-time&quot;
+    &quot;2026-10-27T07:19:15.95840112&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -326,11 +326,11 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-10-26T07:27:14.649484196&quot;
+        &quot;2026-10-27T07:19:15.95840112&quot;
 
 [400] Bad Request:
 
-    `{&quot;error&quot;:&quot;Bad Request&quot;,&quot;message&quot;:&quot;size: must not be null&quot;,&quot;timestamp&quot;:&quot;2026-10-26T07:27:14.649484196&quot;,&quot;status&quot;:400}`
+    `{&quot;error&quot;:&quot;Bad Request&quot;,&quot;message&quot;:&quot;size: must not be null&quot;,&quot;timestamp&quot;:&quot;2026-10-27T07:19:15.95840112&quot;,&quot;status&quot;:400}`
 
 Reproduce with:
 
@@ -345,7 +345,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py&quot;, line 268, in test_func
         def test_wrapper(*args: Any, **kwargs: Any) -&gt; Any:
                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2299, in wrapped_test
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2330, in wrapped_test
         raise the_error_hypothesis_found
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/_hypothesis.py&quot;, line 108, in openapi_cases
         path_parameters_ = generate_parameter(
@@ -356,7 +356,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/_hypothesis.py&quot;, line 628, in get_parameters_value
         result = draw(strategy)
                  ^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -365,28 +365,28 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 103, in hybrid
         base = draw(original_strategy) or {}
                ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1400, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1426, in do_draw
         result = self.do_filtered_draw(data)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1415, in do_filtered_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1441, in do_filtered_draw
         value = data.draw(self.filtered_strategy)
                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1168, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1194, in do_draw
         x = data.draw(self.mapped_strategy)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1168, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1194, in do_draw
         x = data.draw(self.mapped_strategy)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -395,7 +395,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 177, in biased
         params = draw(strategy)
                  ^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -404,7 +404,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 230, in with_parameter_examples
         result = draw(original_strategy)
                  ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -415,12 +415,12 @@ Reproduce with:
               ^^^^^^^^^^^^^
     AttributeError: 'many' object has no attribute 'more'</error>
 		</testcase>
-		<testcase name="PUT /api/pizzerias/{id}" time="0.224497">
-			<failure type="failure" message="1. Test Case ID: 7nv8GC
+		<testcase name="PUT /api/pizzerias/{id}" time="0.228270">
+			<failure type="failure" message="1. Test Case ID: YTqpfK
 
 - Response violates schema
 
-    &quot;2026-10-26T07:27:15.973767972&quot; is not a &quot;date-time&quot;
+    &quot;2026-10-27T07:19:17.086008556&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -433,11 +433,11 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-10-26T07:27:15.973767972&quot;
+        &quot;2026-10-27T07:19:17.086008556&quot;
 
 [400] Bad Request:
 
-    `{&quot;error&quot;:&quot;Bad Request&quot;,&quot;message&quot;:&quot;name: must not be blank&quot;,&quot;timestamp&quot;:&quot;2026-10-26T07:27:15.973767972&quot;,&quot;status&quot;:400}`
+    `{&quot;error&quot;:&quot;Bad Request&quot;,&quot;message&quot;:&quot;name: must not be blank&quot;,&quot;timestamp&quot;:&quot;2026-10-27T07:19:17.086008556&quot;,&quot;status&quot;:400}`
 
 Reproduce with:
 
@@ -452,7 +452,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py&quot;, line 268, in test_func
         def test_wrapper(*args: Any, **kwargs: Any) -&gt; Any:
                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2299, in wrapped_test
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2330, in wrapped_test
         raise the_error_hypothesis_found
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/_hypothesis.py&quot;, line 108, in openapi_cases
         path_parameters_ = generate_parameter(
@@ -463,7 +463,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/_hypothesis.py&quot;, line 628, in get_parameters_value
         result = draw(strategy)
                  ^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -472,28 +472,28 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 103, in hybrid
         base = draw(original_strategy) or {}
                ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1400, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1426, in do_draw
         result = self.do_filtered_draw(data)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1415, in do_filtered_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1441, in do_filtered_draw
         value = data.draw(self.filtered_strategy)
                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1168, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1194, in do_draw
         x = data.draw(self.mapped_strategy)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1168, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1194, in do_draw
         x = data.draw(self.mapped_strategy)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -502,7 +502,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 177, in biased
         params = draw(strategy)
                  ^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -511,7 +511,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 230, in with_parameter_examples
         result = draw(original_strategy)
                  ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -522,12 +522,12 @@ Reproduce with:
               ^^^^^^^^^^^^^
     AttributeError: 'many' object has no attribute 'more'</error>
 		</testcase>
-		<testcase name="GET /api/pizzas" time="0.136082">
-			<failure type="failure" message="1. Test Case ID: VspGRP
+		<testcase name="GET /api/pizzas" time="0.115279">
+			<failure type="failure" message="1. Test Case ID: Y0b3dx
 
 - Response violates schema
 
-    &quot;2026-10-26T07:24:05&quot; is not a &quot;date-time&quot;
+    &quot;2026-10-27T07:16:00&quot; is not a &quot;date-time&quot;
 
     Schema at /components/schemas/Pizza/properties/createdAt:
 
@@ -540,7 +540,7 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-10-26T07:24:05&quot;
+        &quot;2026-10-27T07:16:00&quot;
 
 - API accepted schema-violating request
 
@@ -550,7 +550,7 @@ Reproduce with:
 
 [200] OK:
 
-    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Pepperoni&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, pepperoni&quot;,&quot;price&quot;:11.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:&quot;https://images.unsplash.com/photo-1513104890138-7c749659a591&quot;,&quot;createdAt&quot;:&quot;2026-10-26T07:24:05&quot;,&quot;pizzeriaId&quot;:2},{&quot;id&quot;:4,&quot;name&quot;:&quot;Quattro Formaggi&quot;,&quot;ingredients&quot;:&quot;Mozzarella, gorgonzola, parmesan, provolone&quot;,&quot;price&quot;:12.40,&quot;size&quot;:&quot;medium&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-10-26T07:24:05&quot;,&quot;pizzeriaId&quot;:2},{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozza // Output truncated...`
+    `[{&quot;id&quot;:3,&quot;name&quot;:&quot;Pepperoni&quot;,&quot;ingredients&quot;:&quot;Tomato, mozzarella, pepperoni&quot;,&quot;price&quot;:11.00,&quot;size&quot;:&quot;large&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:&quot;https://images.unsplash.com/photo-1513104890138-7c749659a591&quot;,&quot;createdAt&quot;:&quot;2026-10-27T07:16:00&quot;,&quot;pizzeriaId&quot;:2},{&quot;id&quot;:4,&quot;name&quot;:&quot;Quattro Formaggi&quot;,&quot;ingredients&quot;:&quot;Mozzarella, gorgonzola, parmesan, provolone&quot;,&quot;price&quot;:12.40,&quot;size&quot;:&quot;medium&quot;,&quot;isAvailable&quot;:true,&quot;photoUrl&quot;:null,&quot;createdAt&quot;:&quot;2026-10-27T07:16:00&quot;,&quot;pizzeriaId&quot;:2},{&quot;id&quot;:5,&quot;name&quot;:&quot;Vegetariana&quot;,&quot;ingredients&quot;:&quot;Tomato, mozza // Output truncated...`
 
 Reproduce with:
 
@@ -565,7 +565,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py&quot;, line 268, in test_func
         def test_wrapper(*args: Any, **kwargs: Any) -&gt; Any:
                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2299, in wrapped_test
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2330, in wrapped_test
         raise the_error_hypothesis_found
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/_hypothesis.py&quot;, line 144, in openapi_cases
         query_ = generate_parameter(
@@ -576,7 +576,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/_hypothesis.py&quot;, line 628, in get_parameters_value
         result = draw(strategy)
                  ^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -585,22 +585,22 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 103, in hybrid
         base = draw(original_strategy) or {}
                ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1168, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1194, in do_draw
         x = data.draw(self.mapped_strategy)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1400, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1426, in do_draw
         result = self.do_filtered_draw(data)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1415, in do_filtered_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1441, in do_filtered_draw
         value = data.draw(self.filtered_strategy)
                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -609,7 +609,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 230, in with_parameter_examples
         result = draw(original_strategy)
                  ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -620,8 +620,8 @@ Reproduce with:
               ^^^^^^^^^^^^^
     AttributeError: 'many' object has no attribute 'more'</error>
 		</testcase>
-		<testcase name="GET /api/pizzas/{id}" time="0.122170">
-			<failure type="failure" message="1. Test Case ID: OowuDU
+		<testcase name="GET /api/pizzas/{id}" time="0.119726">
+			<failure type="failure" message="1. Test Case ID: hryc6t
 
 - Undocumented HTTP status code
 
@@ -630,17 +630,17 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-10-26T07:27:17.240Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/null%2Cnull&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-10-27T07:19:18.184Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/null%2Cnull&quot;}`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzas/null%2Cnull
 
-2. Test Case ID: qZJ8TF
+2. Test Case ID: kD0ztc
 
 - Response violates schema
 
-    &quot;2026-10-26T07:27:17.25628619&quot; is not a &quot;date-time&quot;
+    &quot;2026-10-27T07:19:18.198996738&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -653,11 +653,11 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-10-26T07:27:17.25628619&quot;
+        &quot;2026-10-27T07:19:18.198996738&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-10-26T07:27:17.25628619&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-10-27T07:19:18.198996738&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
@@ -672,7 +672,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py&quot;, line 268, in test_func
         def test_wrapper(*args: Any, **kwargs: Any) -&gt; Any:
                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2299, in wrapped_test
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2330, in wrapped_test
         raise the_error_hypothesis_found
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/_hypothesis.py&quot;, line 108, in openapi_cases
         path_parameters_ = generate_parameter(
@@ -683,7 +683,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/_hypothesis.py&quot;, line 628, in get_parameters_value
         result = draw(strategy)
                  ^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -692,28 +692,28 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 103, in hybrid
         base = draw(original_strategy) or {}
                ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1400, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1426, in do_draw
         result = self.do_filtered_draw(data)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1415, in do_filtered_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1441, in do_filtered_draw
         value = data.draw(self.filtered_strategy)
                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1168, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1194, in do_draw
         x = data.draw(self.mapped_strategy)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1168, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1194, in do_draw
         x = data.draw(self.mapped_strategy)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -722,7 +722,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 177, in biased
         params = draw(strategy)
                  ^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -731,7 +731,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 230, in with_parameter_examples
         result = draw(original_strategy)
                  ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -742,8 +742,8 @@ Reproduce with:
               ^^^^^^^^^^^^^
     AttributeError: 'many' object has no attribute 'more'</error>
 		</testcase>
-		<testcase name="GET /api/pizzerias/{id}" time="0.158796">
-			<failure type="failure" message="1. Test Case ID: xtGkLc
+		<testcase name="GET /api/pizzerias/{id}" time="0.097379">
+			<failure type="failure" message="1. Test Case ID: qnD825
 
 - Undocumented HTTP status code
 
@@ -752,17 +752,17 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-10-26T07:27:18.367Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzerias/null%2Cnull&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-10-27T07:19:19.085Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzerias/null%2Cnull&quot;}`
 
 Reproduce with:
 
     curl -X GET http://host.docker.internal:8080/api/pizzerias/null%2Cnull
 
-2. Test Case ID: ooZSVI
+2. Test Case ID: kjrWZQ
 
 - Response violates schema
 
-    &quot;2026-10-26T07:27:18.383220538&quot; is not a &quot;date-time&quot;
+    &quot;2026-10-27T07:19:19.101055803&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -775,11 +775,11 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-10-26T07:27:18.383220538&quot;
+        &quot;2026-10-27T07:19:19.101055803&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-10-26T07:27:18.383220538&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-10-27T07:19:19.101055803&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
@@ -794,7 +794,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py&quot;, line 268, in test_func
         def test_wrapper(*args: Any, **kwargs: Any) -&gt; Any:
                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2299, in wrapped_test
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2330, in wrapped_test
         raise the_error_hypothesis_found
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/_hypothesis.py&quot;, line 108, in openapi_cases
         path_parameters_ = generate_parameter(
@@ -805,7 +805,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/_hypothesis.py&quot;, line 628, in get_parameters_value
         result = draw(strategy)
                  ^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -814,28 +814,28 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 103, in hybrid
         base = draw(original_strategy) or {}
                ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1400, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1426, in do_draw
         result = self.do_filtered_draw(data)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1415, in do_filtered_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1441, in do_filtered_draw
         value = data.draw(self.filtered_strategy)
                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1168, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1194, in do_draw
         x = data.draw(self.mapped_strategy)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1168, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1194, in do_draw
         x = data.draw(self.mapped_strategy)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -844,7 +844,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 177, in biased
         params = draw(strategy)
                  ^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -853,7 +853,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 230, in with_parameter_examples
         result = draw(original_strategy)
                  ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -864,8 +864,8 @@ Reproduce with:
               ^^^^^^^^^^^^^
     AttributeError: 'many' object has no attribute 'more'</error>
 		</testcase>
-		<testcase name="DELETE /api/pizzas/{id}" time="0.124436">
-			<failure type="failure" message="1. Test Case ID: z7LNUN
+		<testcase name="DELETE /api/pizzas/{id}" time="0.095530">
+			<failure type="failure" message="1. Test Case ID: 1HB142
 
 - Undocumented HTTP status code
 
@@ -874,17 +874,17 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-10-26T07:27:19.534Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/null%2Cnull&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-10-27T07:19:19.986Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzas/null%2Cnull&quot;}`
 
 Reproduce with:
 
     curl -X DELETE http://host.docker.internal:8080/api/pizzas/null%2Cnull
 
-2. Test Case ID: 8BSRxz
+2. Test Case ID: OhfHQw
 
 - Response violates schema
 
-    &quot;2026-10-26T07:27:19.551322918&quot; is not a &quot;date-time&quot;
+    &quot;2026-10-27T07:19:20.009624113&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -897,11 +897,11 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-10-26T07:27:19.551322918&quot;
+        &quot;2026-10-27T07:19:20.009624113&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-10-26T07:27:19.551322918&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizza with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-10-27T07:19:20.009624113&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
@@ -916,7 +916,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py&quot;, line 268, in test_func
         def test_wrapper(*args: Any, **kwargs: Any) -&gt; Any:
                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2299, in wrapped_test
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2330, in wrapped_test
         raise the_error_hypothesis_found
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/_hypothesis.py&quot;, line 108, in openapi_cases
         path_parameters_ = generate_parameter(
@@ -927,7 +927,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/_hypothesis.py&quot;, line 628, in get_parameters_value
         result = draw(strategy)
                  ^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -936,28 +936,28 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 103, in hybrid
         base = draw(original_strategy) or {}
                ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1400, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1426, in do_draw
         result = self.do_filtered_draw(data)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1415, in do_filtered_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1441, in do_filtered_draw
         value = data.draw(self.filtered_strategy)
                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1168, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1194, in do_draw
         x = data.draw(self.mapped_strategy)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1168, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1194, in do_draw
         x = data.draw(self.mapped_strategy)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -966,7 +966,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 177, in biased
         params = draw(strategy)
                  ^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -975,7 +975,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 230, in with_parameter_examples
         result = draw(original_strategy)
                  ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -986,8 +986,8 @@ Reproduce with:
               ^^^^^^^^^^^^^
     AttributeError: 'many' object has no attribute 'more'</error>
 		</testcase>
-		<testcase name="DELETE /api/pizzerias/{id}" time="0.129763">
-			<failure type="failure" message="1. Test Case ID: gpWZZ1
+		<testcase name="DELETE /api/pizzerias/{id}" time="0.093338">
+			<failure type="failure" message="1. Test Case ID: xhvYtg
 
 - Undocumented HTTP status code
 
@@ -996,17 +996,17 @@ Reproduce with:
 
 [400] Bad Request:
 
-    `{&quot;timestamp&quot;:&quot;2026-10-26T07:27:20.702Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzerias/null%2Cnull&quot;}`
+    `{&quot;timestamp&quot;:&quot;2026-10-27T07:19:20.886Z&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/pizzerias/null%2Cnull&quot;}`
 
 Reproduce with:
 
     curl -X DELETE http://host.docker.internal:8080/api/pizzerias/null%2Cnull
 
-2. Test Case ID: PpOgyX
+2. Test Case ID: rZxe4q
 
 - Response violates schema
 
-    &quot;2026-10-26T07:27:20.720818343&quot; is not a &quot;date-time&quot;
+    &quot;2026-10-27T07:19:20.901281267&quot; is not a &quot;date-time&quot;
 
     Schema at /properties/timestamp:
 
@@ -1019,11 +1019,11 @@ Reproduce with:
 
     Value:
 
-        &quot;2026-10-26T07:27:20.720818343&quot;
+        &quot;2026-10-27T07:19:20.901281267&quot;
 
 [404] Not Found:
 
-    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-10-26T07:27:20.720818343&quot;,&quot;status&quot;:404}`
+    `{&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;Pizzeria with id 1 was not found.&quot;,&quot;timestamp&quot;:&quot;2026-10-27T07:19:20.901281267&quot;,&quot;status&quot;:404}`
 
 Reproduce with:
 
@@ -1038,7 +1038,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/generation/hypothesis/builder.py&quot;, line 268, in test_func
         def test_wrapper(*args: Any, **kwargs: Any) -&gt; Any:
                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2299, in wrapped_test
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2330, in wrapped_test
         raise the_error_hypothesis_found
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/_hypothesis.py&quot;, line 108, in openapi_cases
         path_parameters_ = generate_parameter(
@@ -1049,7 +1049,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/_hypothesis.py&quot;, line 628, in get_parameters_value
         result = draw(strategy)
                  ^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -1058,28 +1058,28 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 103, in hybrid
         base = draw(original_strategy) or {}
                ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1400, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1426, in do_draw
         result = self.do_filtered_draw(data)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1415, in do_filtered_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1441, in do_filtered_draw
         value = data.draw(self.filtered_strategy)
                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1168, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1194, in do_draw
         x = data.draw(self.mapped_strategy)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1168, in do_draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/strategies.py&quot;, line 1194, in do_draw
         x = data.draw(self.mapped_strategy)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -1088,7 +1088,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 177, in biased
         params = draw(strategy)
                  ^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -1097,7 +1097,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/adapter/parameters.py&quot;, line 230, in with_parameter_examples
         result = draw(original_strategy)
                  ^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -1108,7 +1108,7 @@ Reproduce with:
               ^^^^^^^^^^^^^
     AttributeError: 'many' object has no attribute 'more'</error>
 		</testcase>
-		<testcase name="Stateful tests" time="0.092278">
+		<testcase name="Stateful tests" time="0.106022">
 			<error type="error">Runtime Error
 
 'many' object has no attribute 'more'
@@ -1127,12 +1127,12 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/stateful.py&quot;, line 154, in run_state_machine
         @given(st.data())
                    ^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2299, in wrapped_test
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/core.py&quot;, line 2330, in wrapped_test
         raise the_error_hypothesis_found
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/stateful/__init__.py&quot;, line 219, in case_strategy_factory
         return draw(strategies[GenerationMode.POSITIVE])
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
@@ -1141,7 +1141,7 @@ Reproduce with:
       File &quot;/usr/local/lib/python3.12/site-packages/schemathesis/specs/openapi/_hypothesis.py&quot;, line 229, in openapi_cases
         body_result = draw(strategy)
                       ^^^^^^^^^^^^^^
-      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1348, in draw
+      File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/internal/conjecture/data.py&quot;, line 1357, in draw
         v = unwrapped.do_draw(self)
             ^^^^^^^^^^^^^^^^^^^^^^^
       File &quot;/usr/local/lib/python3.12/site-packages/hypothesis/strategies/_internal/core.py&quot;, line 2042, in do_draw
