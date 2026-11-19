@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-11-18T09:50:14.585351+00:00",
+    "generated_at": "2026-11-19T09:57:35.534331+00:00",
     "manifest_path": "results/llm/scan_manifest.json"
   },
   "manifest_summary": {
@@ -10,8 +10,8 @@
         "instances": 73
       },
       "frontend": {
-        "alert_types": 12,
-        "instances": 44
+        "alert_types": 13,
+        "instances": 45
       }
     },
     "schemathesis": {
@@ -134,6 +134,18 @@
         }
       ],
       "frontend": [
+        {
+          "scanner": "zap",
+          "target": "frontend",
+          "url": "http://host.docker.internal:5173/",
+          "method": "GET",
+          "vulnerability": "nginx Version with Known Vulnerabilities",
+          "severity": "high",
+          "confidence": "2",
+          "instances_count": 1,
+          "evidence": "evidence: nginx/1.27.5\nother_info: <p>The server disclosed that it is running nginx version 1.27.5 via the \"Server\" HTTP response header.</p><p></p><p>32 known vulnerabilities: 0 critical, 4 high, 22 medium, 6 low.</p><p></p><p>High: CVE-2026-113425, CVE-2026-118899, CVE-2026-123007, CVE-2026-42533</p><p></p><p>Medium: CVE-2026-120967, CVE-2026-121810, CVE-2026-123633, CVE-2026-123634, CVE-2026-15176, CVE-2026-1642, CVE-2026-27654, CVE-2026-27784, CVE-2026-28753, CVE-2026-28755, CVE-2026-3264...",
+          "source": "results/zap/frontend/report.json"
+        },
         {
           "scanner": "zap",
           "target": "frontend",
@@ -265,18 +277,6 @@
           "instances_count": 5,
           "evidence": "other_info: <p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>\ndescription: <p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specifi...",
           "source": "results/zap/frontend/report.json"
-        },
-        {
-          "scanner": "zap",
-          "target": "frontend",
-          "url": "http://host.docker.internal:5173/robots.txt",
-          "method": "GET",
-          "vulnerability": "User Agent Fuzzer",
-          "severity": "info",
-          "confidence": "2",
-          "instances_count": 5,
-          "evidence": "parameter: Header User-Agent\nattack: Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko\ndescription: <p>Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.</p>",
-          "source": "results/zap/frontend/report.json"
         }
       ]
     },
@@ -289,39 +289,39 @@
         },
         {
           "event_type": null,
-          "excerpt": "{\"PhaseFinished\": {\"id\": \"c563335e213e4b6db4cf5c60459186c1\", \"payload\": {\"probes\": [{\"outcome\": \"failure\", \"probe\": {\"name\": \"Supports NULL byte in headers\"}, \"request\": {\"body\": null, \"headers\": {\"Accept\": \"*/*\", \"Accept-Encoding\": \"gzip, deflate\", \"Connection\": \"keep-alive\", \"User-Agent\": \"schemathesis/4.14.2\", \"X-Schemathesis-Probe\": \"Supports NULL byte in headers\", \"X-Schemathesis-Probe-Null\": \"\\u0000\"}, \"method\": \"GET\", \"url\": \"http://host.docker.internal:8080/\"}, \"response\": \"<Response ..."
+          "excerpt": "{\"PhaseFinished\": {\"id\": \"a4350ee4bef348aba2e118425168541d\", \"payload\": {\"probes\": [{\"outcome\": \"failure\", \"probe\": {\"name\": \"Supports NULL byte in headers\"}, \"request\": {\"body\": null, \"headers\": {\"Accept\": \"*/*\", \"Accept-Encoding\": \"gzip, deflate\", \"Connection\": \"keep-alive\", \"User-Agent\": \"schemathesis/4.14.2\", \"X-Schemathesis-Probe\": \"Supports NULL byte in headers\", \"X-Schemathesis-Probe-Null\": \"\\u0000\"}, \"method\": \"GET\", \"url\": \"http://host.docker.internal:8080/\"}, \"response\": \"<Response ..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"PhaseStarted\": {\"id\": \"659fa39e53de4783985fdc99450bd798\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"timestamp\": 1794995176.6871154}}"
+          "excerpt": "{\"PhaseStarted\": {\"id\": \"e33c4ff920b941c6a7bcf1c6357c3e04\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"timestamp\": 1795082107.325628}}"
         },
         {
           "event_type": null,
-          "excerpt": "{\"PhaseFinished\": {\"id\": \"c661893fde5a4c5c9f261a677af621a1\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"status\": \"success\", \"timestamp\": 1794995176.688786}}"
+          "excerpt": "{\"PhaseFinished\": {\"id\": \"c4788af380cd42c682aaadeb36a96c63\", \"phase\": {\"is_enabled\": true, \"is_supported\": true, \"name\": \"Schema analysis\"}, \"status\": \"success\", \"timestamp\": 1795082107.3271163}}"
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.0360676660000081, \"id\": \"5347ee608edb48829d985e39affb8031\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"Mad77h\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+351912345678\"}, \"id\": \"Mad77h\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\": \"/api/pizzerias\"}}}, \"checks\": {\"Mad77h\": [{\"name\": \"not_a_server_error\", \"status\": \"success\"}, {\"name\": \"status_code_conforma..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.03367899599999191, \"id\": \"1fbfa83a6ae34a32888b2aea10e278ca\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"rrefP4\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+351912345678\"}, \"id\": \"rrefP4\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\": \"/api/pizzerias\"}}}, \"checks\": {\"rrefP4\": [{\"name\": \"not_a_server_error\", \"status\": \"success\"}, {\"name\": \"status_code_conform..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.006782884000017475, \"id\": \"7b0ae56166a04fa78ded61367faf8e97\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"jXxKw1\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"ingredients\": \"Tomato, mozzarella, basil\", \"isAvailable\": true, \"name\": \"Margherita\", \"photoUrl\": \"https://example.com/pizzas/margherita.jpg\", \"pizzeriaId\": 1, \"price\": 12.5, \"size\": \"medium\"}, \"id\": \"jXxKw1\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\":..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.005389734999994289, \"id\": \"d59d3ea9733b494aa3f8d5c2658dbd9b\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"eCD8Ih\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"ingredients\": \"Tomato, mozzarella, basil\", \"isAvailable\": true, \"name\": \"Margherita\", \"photoUrl\": \"https://example.com/pizzas/margherita.jpg\", \"pizzeriaId\": 1, \"price\": 12.5, \"size\": \"medium\"}, \"id\": \"eCD8Ih\", \"media_type\": \"application/json\", \"method\": \"POST\", \"path\":..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.005816473000095357, \"id\": \"3f5aa1ba6d5b4300bdd0df99e62a7de1\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"OJ7sjd\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"ingredients\": \"Tomato, mozzarella, basil\", \"isAvailable\": true, \"name\": \"Margherita\", \"photoUrl\": \"https://example.com/pizzas/margherita.jpg\", \"pizzeriaId\": 1, \"price\": 12.5, \"size\": \"medium\"}, \"id\": \"OJ7sjd\", \"media_type\": \"application/json\", \"method\": \"PUT\", \"path\": ..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.006322596000018166, \"id\": \"d696dd1348044c19971fc58fb91b7180\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"jk2oxi\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"ingredients\": \"Tomato, mozzarella, basil\", \"isAvailable\": true, \"name\": \"Margherita\", \"photoUrl\": \"https://example.com/pizzas/margherita.jpg\", \"pizzeriaId\": 1, \"price\": 12.5, \"size\": \"medium\"}, \"id\": \"jk2oxi\", \"media_type\": \"application/json\", \"method\": \"PUT\", \"path\": ..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.008622639000009258, \"id\": \"9b934c1a4a9a420a8c1fecc2425f25c2\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"AwiqDs\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+351912345678\"}, \"id\": \"AwiqDs\", \"media_type\": \"application/json\", \"method\": \"PUT\", \"path\": \"/api/pizzerias/{id}\", \"path_parameters\": {\"id\": 1}}}, \"S3Idkr\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.009046019999971122, \"id\": \"8199c722db35437cbae11289bfb3c2a7\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"OcFh8T\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"address\": 123, \"name\": \"Napoli Centrale\", \"phone\": \"+351912345678\"}, \"id\": \"OcFh8T\", \"media_type\": \"application/json\", \"method\": \"PUT\", \"path\": \"/api/pizzerias/{id}\", \"path_parameters\": {\"id\": 320}}}, \"bp466g\": {\"is_transition_applied\": false, \"value\": {\"body\": {\"addre..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.008590773000037188, \"id\": \"fce976ca3af9471094bbedf46a9a2bb5\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"NpPGPX\": {\"is_transition_applied\": false, \"value\": {\"id\": \"NpPGPX\", \"method\": \"GET\", \"path\": \"/api/pizzas\", \"query\": {\"pizzeriaId\": 1}}}, \"ad4wJa\": {\"is_transition_applied\": false, \"value\": {\"id\": \"ad4wJa\", \"method\": \"GET\", \"path\": \"/api/pizzas\", \"query\": {\"pizzeriaId\": 320}}}}, \"checks\": {\"NpPGPX\": [{\"name\": \"not_a_server_error\"..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.007858386999998856, \"id\": \"53db34a30ccc412185af91e7d90c9dfc\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"Ijojxm\": {\"is_transition_applied\": false, \"value\": {\"id\": \"Ijojxm\", \"method\": \"GET\", \"path\": \"/api/pizzas\", \"query\": {\"pizzeriaId\": 1}}}, \"qHll32\": {\"is_transition_applied\": false, \"value\": {\"id\": \"qHll32\", \"method\": \"GET\", \"path\": \"/api/pizzas\", \"query\": {\"pizzeriaId\": 320}}}}, \"checks\": {\"Ijojxm\": [{\"name\": \"not_a_server_error\"..."
         },
         {
           "event_type": null,
-          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.004691032999971867, \"id\": \"ffbfd64bb1e14a27b43a549ac7df4bf8\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"BIwQEf\": {\"is_transition_applied\": false, \"value\": {\"id\": \"BIwQEf\", \"method\": \"GET\", \"path\": \"/api/pizzas/{id}\", \"path_parameters\": {\"id\": 1}}}}, \"checks\": {\"BIwQEf\": [{\"name\": \"not_a_server_error\", \"status\": \"success\"}, {\"name\": \"status_code_conformance\", \"status\": \"success\"}, {\"name\": \"content_type_conformance\", \"status\": \"succ..."
+          "excerpt": "{\"ScenarioFinished\": {\"elapsed_time\": 0.004321768000011161, \"id\": \"8aa10bbcbfa84ee0829720875193d308\", \"is_final\": false, \"phase\": \"Examples\", \"recorder\": {\"cases\": {\"Wdrh3A\": {\"is_transition_applied\": false, \"value\": {\"id\": \"Wdrh3A\", \"method\": \"GET\", \"path\": \"/api/pizzas/{id}\", \"path_parameters\": {\"id\": 1}}}}, \"checks\": {\"Wdrh3A\": [{\"name\": \"not_a_server_error\", \"status\": \"success\"}, {\"name\": \"status_code_conformance\", \"status\": \"success\"}, {\"name\": \"content_type_conformance\", \"status\": \"succ..."
         }
       ]
     }

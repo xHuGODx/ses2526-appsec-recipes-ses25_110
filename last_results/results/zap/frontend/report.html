@@ -218,7 +218,7 @@ td {
 	</h2>
 
 	<h3>
-		Generated on Wed, 18 Nov 2026 09:46:15
+		Generated on Thu, 19 Nov 2026 09:55:05
 	</h3>
 
 	<h3>
@@ -243,7 +243,7 @@ td {
 					<div>High</div>
 				</td>
 				<td align="center">
-					<div>0</div>
+					<div>1</div>
 				</td>
 			</tr>
 			<tr>
@@ -520,6 +520,14 @@ td {
 					align="center">Number of Instances</th>
 			</tr>
 			<tr>
+				<td><a href="#20020">nginx Version with Known Vulnerabilities</a></td>
+				<td align="center" class="risk-3">High</td>
+				
+				
+				<td align="center">1</td>
+				
+			</tr>
+			<tr>
 				<td><a href="#10038">Content Security Policy (CSP) Header Not Set</a></td>
 				<td align="center" class="risk-2">Medium</td>
 				
@@ -621,6 +629,215 @@ td {
 
 	
 		<h3>Alert Detail</h3>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-3"><a
+						id="20020"></a>
+						<div>High</div></th>
+					<th class="risk-3">nginx Version with Known Vulnerabilities</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The server disclosed the version of a server side technology it is running via an HTTP response header, and that version is affected by known vulnerabilities. The version, header and vulnerabilities, listed by severity, are given in the other info. See the references for the details of each.</div>
+							<br />
+						
+							<div>Note that some distributions backport security fixes without changing the version number, so check whether the fixes have actually been applied before reporting these as confirmed.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://host.docker.internal:5173/">http://host.docker.internal:5173/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Node Name</td>
+						<td width="80%">http://host.docker.internal:5173/</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">nginx/1.27.5</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">
+							<div>The server disclosed that it is running nginx version 1.27.5 via the &quot;Server&quot; HTTP response header.</div>
+							<br />
+						
+							<div>32 known vulnerabilities: 0 critical, 4 high, 22 medium, 6 low.</div>
+							<br />
+						
+							<div>High: CVE-2026-113425, CVE-2026-118899, CVE-2026-123007, CVE-2026-42533</div>
+							<br />
+						
+							<div>Medium: CVE-2026-120967, CVE-2026-121810, CVE-2026-123633, CVE-2026-123634, CVE-2026-15176, CVE-2026-1642, CVE-2026-27654, CVE-2026-27784, CVE-2026-28753, CVE-2026-28755, CVE-2026-32647, CVE-2026-40460, CVE-2026-40701, CVE-2026-42055, CVE-2026-42945, CVE-2026-42946, CVE-2026-56434, CVE-2026-60005, CVE-2026-9256, CVE-2026-95101, CVE-2026-97205, CVE-2026-97629</div>
+							<br />
+						
+							<div>Low: CVE-2025-53859, CVE-2026-123640, CVE-2026-125283, CVE-2026-27651, CVE-2026-42934, CVE-2026-48142</div>
+							
+						</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					
+					
+					<td width="80%">1</td>
+					
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Upgrade nginx to a supported version which includes fixes for the listed vulnerabilities. Also configure the server not to disclose its version, e.g. by setting &quot;server_tokens off;&quot;.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://nginx.org/en/security_advisories.html">https://nginx.org/en/security_advisories.html</a>
+							<br />
+						
+							<a href="https://nginx.org/en/CHANGES">https://nginx.org/en/CHANGES</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-113425">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-113425</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-118899">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-118899</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-123007">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-123007</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-42533">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-42533</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-120967">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-120967</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-121810">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-121810</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-123633">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-123633</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-123634">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-123634</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-15176">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-15176</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-1642">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-1642</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-27654">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-27654</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-27784">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-27784</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-28753">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-28753</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-28755">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-28755</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-32647">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-32647</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-40460">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-40460</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-40701">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-40701</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-42055">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-42055</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-42945">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-42945</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-42946">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-42946</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-56434">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-56434</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-60005">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-60005</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-9256">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-9256</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-95101">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-95101</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-97205">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-97205</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-97629">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-97629</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2025-53859">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2025-53859</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-123640">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-123640</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-125283">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-125283</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-27651">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-27651</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-42934">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-42934</a>
+							<br />
+						
+							<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-48142">https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/nginx-known-vulnerabilities/#cve-2026-48142</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/1395.html">1395</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/20020/">20020</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
 		
 			<table class="results">
 				<tr height="24">
@@ -2875,42 +3092,6 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="http://host.docker.internal:5173/robots.txt">http://host.docker.internal:5173/robots.txt</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Node Name</td>
-						<td width="80%">http://host.docker.internal:5173/robots.txt</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">Header User-Agent</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%">msnbot/1.1 (+http://search.msn.com/msnbot.htm)</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
 						<td width="80%"><a href="http://host.docker.internal:5173/sitemap.xml">http://host.docker.internal:5173/sitemap.xml</a></td>
 					</tr>
 					<tr>
@@ -2968,6 +3149,42 @@ td {
 						<td width="20%"
 							class="indent2">Attack</td>
 						<td width="80%">Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="http://host.docker.internal:5173/sitemap.xml">http://host.docker.internal:5173/sitemap.xml</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Node Name</td>
+						<td width="80%">http://host.docker.internal:5173/sitemap.xml</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Header User-Agent</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%">msnbot/1.1 (+http://search.msn.com/msnbot.htm)</td>
 					</tr>
 					<tr>
 						<td width="20%"
